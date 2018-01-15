@@ -1,0 +1,126 @@
+@mixin fontSmoothing() {
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+  }
+  
+  // iOS issue where native components in forms scale view port fix
+  @mixin nativeiOScomponentScale() {
+    input[type="text"], input[type="text"]:focus, select:focus, textarea:focus, input:focus {
+      font-size: 16px !important;
+    }
+  }
+  
+  // General Transitions
+  @mixin transition($args) {
+    -webkit-transition: #{$args};
+    -moz-transition: #{$args};
+    -ms-transition: #{$args};
+    -o-transition: #{$args};
+    transition: #{$args};
+  }
+  
+  // General Box Shadow
+  @mixin box-shadow($args) {
+    -webkit-box-shadow: #{$args};
+    -moz-box-shadow: #{$args};
+    -ms-box-shadow: #{$args};
+    -o-box-shadow: #{$args};
+    box-shadow: #{$args};
+  }
+  
+  // Responsive
+  @mixin mq-xxs {
+    @media (min-width: #{$screen-xxs}) {
+      @content;
+    }
+  }
+  
+  @mixin mq-xs {
+    @media (min-width: #{$screen-xs}) {
+      @content;
+    }
+  }
+  
+  @mixin mq-sm {
+    @media (min-width: #{$screen-sm}) {
+      @content;
+    }
+  }
+  
+  @mixin mq-md {
+    @media (min-width: #{$screen-md}) {
+      @content;
+    }
+  }
+  
+  @mixin mq-lg {
+    @media (min-width: #{$screen-lg}) {
+      @content;
+    }
+  }
+  
+  @mixin mq-xlg {
+    @media (min-width: #{$screen-xlg}) {
+      @content;
+    }
+  }
+  
+  @mixin mq-xxlg {
+    @media (min-width: #{$screen-xxlg}) {
+      @content;
+    }
+  }
+  
+  @mixin mq-xxxlg {
+    @media (min-width: #{$screen-xxxlg}) {
+      @content;
+    }
+  }
+  
+  // Alignments
+  @mixin vertical-align {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  @mixin horizontal-align {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  @mixin center-align {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @mixin clearfix() {
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+  
+
+  @mixin mq-phone-landscape() {
+    @media screen and (max-width: 736px) and (max-height: 414px) and (orientation: landscape) {
+      @content;
+    }
+  }
+  
+  @mixin mq-tablet-landscape() {
+    @media screen and (max-width: 1024px) and (max-height: 768px) and (orientation: landscape) {
+      @content;
+    }
+  }
+  
+  // Transparent Colors
+  @function fn-transparent-color($color , $opacity) {
+    @return rgba(red($color), green($color), blue($color), $opacity);
+  } // fn-transparent-color($color-white , .85)

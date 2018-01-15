@@ -1,0 +1,154 @@
+header {
+	position: relative;
+	width: 100%;
+}
+
+.menu-bars {
+	svg.menu-bars-icon {
+			fill: $brand-grey;
+		@include transition(0.2s all ease-in-out);
+		&:hover {
+			cursor: pointer;
+			fill: $brand-blue;
+		}
+	}
+}
+
+.main-nav {
+	@include transition(0.2s all cubic-bezier(0.25, 0.46, 0.45, 0.94));
+	background: transparent;
+	position: fixed;
+	left: 0px;
+	width: 100%;
+	z-index: 800;
+	top: 0;
+	padding: 1rem;
+	@include clearfix();
+	display: grid;
+	grid-template-columns: 10% 90%;
+	align-items: center;
+	box-sizing: border-box;
+	
+
+	&.scrolled {
+		background: rgba(255, 255, 255, 1);
+		box-sizing: border-box;
+
+		nav {
+			ul {
+				li {
+					a {
+						color: $brand-grey;
+					}
+
+					&.hire-us {
+						a {
+							background: fn-transparent-color($brand-blue, 0.7);
+							color: $brand-white;
+						}
+
+						&:hover {
+							background: fn-transparent-color($brand-pink, 0.8);
+						}
+					}
+				}
+			}
+		}
+
+		.logo {
+			svg.logo {
+				fill: $brand-blue;
+			}
+		}
+	}
+
+	.logo {
+		svg.logo {
+			max-width: 15px;
+			fill: $brand-white;
+		}
+
+		// h1 {
+		// 	color: $brand-white;
+		// 	font-family: $font-main;
+		// 	font-size: 1rem;
+		// 	text-transform: uppercase;
+		// 	letter-spacing: 5px;
+		// 	background: $brand-blue;
+		// }
+	}
+
+	.menu-bars {
+		svg.menu-bars-icon {
+			max-width: 15px;
+			fill: $brand-grey;
+			@include transition(0.2s all ease-in-out);
+			&:hover {
+				fill: $brand-blue;
+			}
+		}
+	}
+	nav {
+		text-align: right;
+		display: none;
+		@include mq-md {
+			display: none;
+		}
+		@include mq-lg {
+			display: block;
+		}
+	}
+	ul {
+		list-style: none;
+		li {
+			display: inline-block;
+			a {
+				color: $brand-white;
+				text-transform: uppercase;
+				letter-spacing: 0.1rem;
+				font-size: 0.75rem;
+				font-weight: 400;
+				padding: 0.5rem 1rem;
+				text-decoration: none;
+				vertical-align: middle;
+				opacity: 1;
+				@include transition(0.2s all ease-in-out);
+				&.active {
+					opacity: 1;
+					color: $brand-blue;
+				}
+				&.active > svg {
+					fill: $brand-blue;
+				}
+				svg.menu-item {
+					vertical-align: middle;
+					margin-right: 0.4rem;
+					max-width: 15px;
+					fill: $brand-dark-grey;
+
+				}
+			}
+			&:hover {
+				cursor: pointer;
+			}
+			&:hover > a,
+			&:hover > a svg {
+				opacity: 1;
+				fill: darken($brand-dark-grey, 10%);
+			}
+
+			&.hire-us {
+				a {
+					background: rgba(255, 255, 255, 0.2);
+					border-radius: 5px;
+				}
+
+				&:hover {
+					a {
+						background: fn-transparent-color($brand-pink, 0.8);
+					}
+				}
+			}
+		}
+	}
+}

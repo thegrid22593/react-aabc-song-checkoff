@@ -1,0 +1,189 @@
+.central-display {
+    background: url('/app/images/home/main-bg.jpg');
+    height: 100vh;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    @include mq-md {
+      height: 100vh;
+    }
+    @include mq-lg {
+      height: 80vh;
+    }
+    @include mq-xlg {
+      
+    }
+
+    .overlay {
+      height: 100%;
+      width: 100%;
+      background: rgba(0,0,0, 0.1);
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .headlines {
+      left: 5%;
+      text-align: center;
+      width: 80%;
+      z-index: 100;
+      @include center-align;
+
+      @include mq-md {
+        left: 5%;
+        width: 80%;
+        text-align: center;
+      }
+
+      @include mq-lg {
+        left: 20%;
+        width: 40%;
+        text-align: left;
+        @include vertical-align;
+      }
+
+      @include mq-xlg {
+        left: 20%;
+        width: 40%;
+        text-align: left;
+      }
+
+      h1, h4 {
+        color: $brand-white;
+      }
+      h1 {
+        letter-spacing: 0.1rem;
+        font-size: 3rem;
+        font-family: $font-main;
+        font-weight: 800;
+        letter-spacing: 3px;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+      }
+      h3 {
+        color: $brand-white;
+        margin-bottom: 2rem;
+      }
+      h4 {
+        letter-spacing: 0rem;
+        font-family: $font-tertiary;
+        font-size: 1.25rem;
+        font-weight: 300;
+      }
+      .divider {
+        width: 100%;
+        height: 2px;
+        background: rgba(255,255,255,.3);
+        position: relative;
+        margin: 44px 0;
+        display: block;
+        &:after {
+          content: "";
+          width: 88px;
+          height: 2px;
+          position: absolute;
+          background: $brand-blue;
+          left: 0;
+          top: -.5px;
+        }
+      }
+  
+      nav.central-display-nav {
+        margin-top: 2rem;
+        ul {
+          list-style: none;
+          li {
+            display: inline-block;
+            padding-right: 1rem;
+            a {
+              text-decoration: none;
+              color: $brand-grey;
+              line-height: 22px;
+              text-transform: uppercase;
+              letter-spacing: 2px;
+              font-family: $font-secondary;
+              font-weight: 300;
+              font-size: 0.8rem;
+              position: relative;
+              @include transition(0.2s all ease-in-out);
+              &:after {
+                position: absolute;
+                left: 0;
+                bottom: -1rem;
+                height: 2px;
+                background: $brand-white;
+                content: '';
+                width: 0%;
+                @include transition(0.2s all ease-in-out);
+              }
+            }
+            &.active,
+            &:hover {
+              & > a {
+                color: $brand-white;
+                text-decoration: none;
+                &:after {
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .skills-and-passions {
+    padding: 4rem 0;
+    background: $brand-blue;
+    position: relative;
+    overflow: hidden;
+
+    h2 {
+      color: $brand-white;
+      font-weight: 100;
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      font-family: $font-main;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      text-align: center;
+    }
+
+    .skill {
+      width: calc((100%/3) - 10px);
+      text-align: center;
+      display: inline-block;
+
+      .skill-content {
+        // padding: 0 2rem;
+
+        svg {
+          max-width: 35px;
+          fill: $brand-white;
+        }
+      
+        h3 {
+          color: $brand-white;
+          margin-bottom: 1rem;
+          font-weight: 100;
+          font-family: $font-secondary;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          font-weight: 600;
+          font-size: 0.95rem;
+          margin-top: 1rem;
+        }
+      
+        p {
+          color: $brand-white;
+          line-height: 1.75rem;
+          font-size: 0.9rem;
+          font-family: $font-tertiary;
+          font-weight: 300;
+        }
+      }
+    }    
+  }

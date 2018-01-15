@@ -1,0 +1,36 @@
+{
+  "experience": [
+    {
+      "id": 1,
+      "company": "p11 Creative",
+      "jobTitle": "Web Developer",
+      "startDate": "November 2016",
+      "EndDate": false,
+      "present": true,
+      "jobDescription": ""
+    },
+    {
+      "id": 2,
+      "company": "RUHM Luxury Marketing",
+      "jobTitle": "Jr Front End Developer",
+      "startDate": "June 2016",
+      "EndDate": "September 2016",
+      "present": false,
+      "jobDescription": ""
+    },
+    {
+      "id": 3,
+      "company": "The All-American Boys Chorus",
+      "jobTitle": "Part Time Graphic Designer & Web Designer",
+      "startDate": "June 2016",
+      "EndDate": "September 2016",
+      "present": false,
+      "jobDescription": ""
+    }
+  ],
+  "education": [
+    {
+
+    }
+  ]
+}
