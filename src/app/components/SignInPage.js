@@ -3,6 +3,7 @@ import {BrowserRouter, Link} from 'react-router-dom';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import Background from '../images/main-bg.jpg';
+import Logo from '../images/logo-icon.png';
 
 const SignInPage = () => (
   <section className="main-bg" style={{backgroundImage: "url(" + Background + ")"}}>
@@ -24,7 +25,7 @@ const SignInPage = () => (
         </div>
         <SignIn/>
         <div className="aabc-logo-crown">
-          <img alt="aabc-logo"/>
+          <img src={Logo} alt="aabc-logo"/>
         </div>
     </section>
   </section>

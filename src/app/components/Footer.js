@@ -11,7 +11,7 @@ class Footer extends React.Component {
         return (
             <footer>
                 <div className="copyright">
-                    <p>This site is built with React</p>
+                    <p>This app is built with React</p>
                 </div>
             </footer>
         )
