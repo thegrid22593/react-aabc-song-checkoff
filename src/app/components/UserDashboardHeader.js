@@ -1,10 +1,8 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import fire from '../../fire';
 require('../scss/style.scss');
-import UserDashboardHeader from './UserDashboardHeader';
 
-class UserDashboard extends React.Component {
+class UserDashboardHeader extends React.Component {
     constructor() {
         super();
     }
@@ -19,9 +17,13 @@ class UserDashboard extends React.Component {
 
     render() {
         return (
-            <div className="container">
-                <UserDashboardHeader />
-            </div>
+           <nav>
+               <ul>
+                   <li><Link to="/dashboard"></Link></li>
+                   <li><Link to="/songs"></Link></li>
+                   <li><Link to="/checkoff"></Link></li>
+               </ul>
+           </nav>
         )
     }
 }
