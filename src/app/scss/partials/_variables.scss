@@ -1,11 +1,12 @@
-$brand-grey: #b7b7b7;
-$brand-dark-grey: #5e5e5e;
-$brand-blue: #00aaff;
-$brand-pink: #ed3352;
-$brand-black: #2c2c2c;
-$brand-light-grey: #c7cacc;
-$brand-white: #ffffff;
-
+// Colors
+$aabc-gold: #9e9465;
+$aabc-cold-grey: #333;
+$aabc-cool-grey: #666;
+$aabc-light-grey: #ddd;
+$aabc-red: #A9171C;
+$aabc-dark-blue: #1F222A;
+$aabc-white: #fff;
+$aabc-completed-green: #2ECC71;
 // Break Points
 $screen-xs: 520px;
 $screen-sm: 640px;
@@ -14,7 +15,8 @@ $screen-lg: 1024px;
 $screen-xlg: 1248px;
 $screen-xxlg: 1440px;
 
-//Fonts
-$font-main: 'Montserrat', sans-serif;
-$font-secondary: 'Roboto Slab', serif;
-$font-tertiary: 'Roboto', sans-serif;
+// Fonts
+$aabc-crimson-text: 'Crimson Text', sans-serif;
+$aabc-pt-sans-narrow: 'PT Sans Narrow', sans-serif;
+$aabc-dancing-script: 'Dancing Script', cursive;
+

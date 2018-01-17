@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import SignIn from './SignIn';
+import SignInPage from './SignInPage';
 require('../scss/style.scss');
 
 class App extends React.Component {
@@ -14,7 +14,7 @@ class App extends React.Component {
         return (
             <div className="container">
                 <Header />
-                <SignIn />
+                <SignInPage />
                 <Footer />
             </div>
         )
