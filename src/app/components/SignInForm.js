@@ -24,7 +24,6 @@ class SignInForm extends React.Component {
                         <input type="password" name="loginPassword" id="loginPassword" placeholder="password"/>
                         <a href="#">Forgot Password?</a>
                         <button type="submit" onClick={this.signIn.bind(this)}>Sign In</button>
-                        <div className="sign-in-loading"></div>
                     </form>
                 </div>
             </div>
