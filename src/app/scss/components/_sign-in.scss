@@ -46,9 +46,13 @@
 
   // Dont Have An Account
   .dont-have-account {
-    display: block;
-    width: 50%;
-    float: left;
+    display: none;
+
+    &.active {
+      display: block;
+      width: 50%;
+      float: left;
+    }
 
     .dont-have-account-content {
       width: 100%;
@@ -83,7 +87,7 @@
 
   .have-an-account {
     display: none;
-    padding: 8.5rem 0 0rem 4rem;
+    
     &.active {
       width: 50%;
       float: right;
@@ -91,6 +95,7 @@
     }
     .have-an-account-content {
       width: 100%;
+      padding: 8.5rem 0 0rem 4rem;
 
       .have-an-account-title {
         color: white;
@@ -123,10 +128,13 @@
 
   // Sign Up Form
   .sign-up-form {
-    display: block;
-    background: white;
-    width: 50%;
-    float: left;
+    display: none;
+    &.active {
+      display: block;
+      background: white;
+      width: 50%;
+      float: left;
+    }
 
     .sign-up-form-content {
       padding: 4rem 2rem;
@@ -191,18 +199,17 @@
 
 }
 
-.sign-up-form {
-  display: none;
-}
-
 .login-form {
   display: none;
   &.active {
     background: white;
     width: 50%;
     float: right;
-    padding: 4rem 2rem;
     display: block;
+  }
+
+  .login-form-content {
+    padding: 4rem 2rem;
   }
 
 

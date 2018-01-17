@@ -4,9 +4,7 @@
 * {
     padding: 0;
     margin: 0;
-}
-
-h1 ,h2, h3, h4, h5, h6 {
-    font-family: $aabc-crimson-text;
+    font-family: 'Crimson Text', serif;
+    font-weight: 300;
     @include fontSmoothing;
 }
