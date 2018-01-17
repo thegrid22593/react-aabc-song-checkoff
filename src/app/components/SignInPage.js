@@ -14,6 +14,7 @@ const SignInPage = () => (
                 <p>Create an account in order to view the music library of the All-American Boys Chorus</p>
                 <button>Sign Up</button>
             </div>
+            
         </div>
         <SignUp/>
         <div className="have-an-account">
