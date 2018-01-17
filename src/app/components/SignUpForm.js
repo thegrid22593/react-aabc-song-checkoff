@@ -1,9 +1,15 @@
 import React from 'react';
 import {BrowserRouter, Link} from 'react-router-dom';
+import SignInForm from './SignInForm';
 
 class SignUpForm extends React.Component {
     constructor(props) {
         super(props);
+    }
+
+    signUp(e) {
+        e.preventDefault();
+        this.props.userSignUpRequest(this.state);
     }
 
     render() {
@@ -21,6 +27,10 @@ class SignUpForm extends React.Component {
             </div>
         )
     }
+}
+
+SignUpForm.propTypes = {
+    userSignUpRequest: React.PropTypes.func.isRequired
 }
 
 export default SignUpForm;

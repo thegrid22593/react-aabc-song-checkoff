@@ -4,7 +4,16 @@ import {BrowserRouter, Link} from 'react-router-dom';
 class SignInForm extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            email: '',
+            password: ''
+        }
     }
+
+    signIn(e) {
+    }
+
     render() {
         return (
             <div className={"login-form " + (this.props.active ? 'active' : 'false')}>
@@ -14,7 +23,7 @@ class SignInForm extends React.Component {
                         <input type="email" name="loginEmail" id="loginEmail" placeholder="email"/>
                         <input type="password" name="loginPassword" id="loginPassword" placeholder="password"/>
                         <a href="#">Forgot Password?</a>
-                        <button type="submit">Sign In</button>
+                        <button type="submit" onClick={this.signIn.bind(this)}>Sign In</button>
                         <div className="sign-in-loading"></div>
                     </form>
                 </div>
