@@ -1,17 +1,32 @@
 import React from 'react';
 import {BrowserRouter, Link} from 'react-router-dom';
+import fire from '../../fire';
 
 class SignInForm extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            email: '',
-            password: ''
+            loginEmail: '',
+            loginPassword: ''
         }
     }
 
     signIn(e) {
+        e.preventDefault();
+        let auth = fire.auth();
+        auth.signInWithEmailAndPassword(this.state.loginEmail, this.state.loginPassword).then((user) => {
+            console.log('user', user);
+            // Route to the dashboard with the user
+        }).catch((error) => {
+            console.log('could not sign in', error);
+        });
+    }
+
+    handleChange(e) {
+        let change = {};
+        change[e.target.name] = e.target.value;
+        this.setState(change);
     }
 
     render() {
@@ -20,8 +35,8 @@ class SignInForm extends React.Component {
                 <div className="login-form-content">
                     <h3>Login</h3>
                     <form action="" className="login">
-                        <input type="email" name="loginEmail" id="loginEmail" placeholder="email"/>
-                        <input type="password" name="loginPassword" id="loginPassword" placeholder="password"/>
+                        <input type="email" onChange={ this.handleChange.bind(this) } value={this.state.email} name="loginEmail" id="loginEmail" placeholder="email"/>
+                        <input type="password" onChange={ this.handleChange.bind(this) }value={this.state.password} name="loginPassword" id="loginPassword" placeholder="password"/>
                         <a href="#">Forgot Password?</a>
                         <button type="submit" onClick={this.signIn.bind(this)}>Sign In</button>
                     </form>

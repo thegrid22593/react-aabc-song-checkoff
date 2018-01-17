@@ -1,12 +1,9 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import SignInPage from './SignInPage';
 import fire from '../../fire';
 require('../scss/style.scss');
 
-class App extends React.Component {
+class UserDashboard extends React.Component {
     constructor() {
         super();
     }
@@ -17,7 +14,6 @@ class App extends React.Component {
         if(currentUser) {
             // Route to dashboard
         }
-
     }
 
     render() {
@@ -31,4 +27,4 @@ class App extends React.Component {
     }
 }
 
-module.exports = App;
+module.exports = UserDashboard;
