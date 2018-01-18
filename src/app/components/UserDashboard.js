@@ -3,7 +3,7 @@ import React from 'react';
 import fire from '../../fire';
 require('../scss/style.scss');
 import UserDashboardHeader from './UserDashboardHeader';
-
+import UserDashboardSidebar from './UserDashboardSidebar'
 class UserDashboard extends React.Component {
     constructor() {
         super();
