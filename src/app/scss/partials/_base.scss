@@ -8,3 +8,11 @@
     font-weight: 300;
     @include fontSmoothing;
 }
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
