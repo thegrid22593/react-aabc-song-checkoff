@@ -4,6 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import SignInPage from './SignInPage';
 import fire from '../../fire';
+import Main from './Main';
 require('../scss/style.scss');
 
 class App extends React.Component {
@@ -12,23 +13,23 @@ class App extends React.Component {
     }
 
     componentWillMount() {
-        let currentUser = fire.auth().currentUser;
-        console.log('current user:', currentUser);
-        if(currentUser) {
-            // Route to dashboard
+        let userId = sessionStorage.getItem('userID');
+        if(userId) {
+            this.context.router.history.push('/dashboard');
+        } else {
+            this.context.router.history.push('/sign-in');
         }
-
     }
 
     render() {
         return (
-            <div className="container">
-                <Header />
-                <SignInPage />
-                <Footer />
-            </div>
+            <Main/>
         )
     }
+}
+
+App.contextTypes = {
+    router: React.PropTypes.object.isRequired
 }
 
 module.exports = App;

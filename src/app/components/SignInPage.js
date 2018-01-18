@@ -15,6 +15,7 @@ class SignInPage extends React.Component {
             signInFormActive: true,
             signUpFormActive: false,
         }
+
     }
 
     signUp() {

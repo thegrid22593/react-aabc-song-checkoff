@@ -1,6 +1,8 @@
 import React from 'react';
 import {BrowserRouter, Link} from 'react-router-dom';
+import { Redirect } from 'react-router';
 import fire from '../../fire';
+import { browserHistory } from 'react-router';
 
 class SignInForm extends React.Component {
     constructor(props) {
@@ -17,7 +19,9 @@ class SignInForm extends React.Component {
         let auth = fire.auth();
         auth.signInWithEmailAndPassword(this.state.loginEmail, this.state.loginPassword).then((user) => {
             console.log('user', user);
-            // Route to the dashboard with the user
+            let userId = user.uid;
+            sessionStorage.setItem('userID', userId);
+            this.context.router.history.push('/dashboard');
         }).catch((error) => {
             console.log('could not sign in', error);
         });
@@ -44,6 +48,10 @@ class SignInForm extends React.Component {
             </div>
         )
     }
+}
+
+SignInForm.contextTypes = {
+    router: React.PropTypes.object.isRequired
 }
 
 export default SignInForm;

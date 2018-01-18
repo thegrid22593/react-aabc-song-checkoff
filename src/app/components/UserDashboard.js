@@ -7,13 +7,21 @@ import UserDashboardHeader from './UserDashboardHeader';
 class UserDashboard extends React.Component {
     constructor() {
         super();
+
+        this.state = {
+            user: {
+
+            }
+        }
     }
 
     componentWillMount() {
-        let currentUser = fire.auth().currentUser;
-        console.log('current user:', currentUser);
-        if(currentUser) {
-            // Route to dashboard
+        let currentUserId = sessionStorage.getItem('userID');
+        if(currentUserId) {
+            let userDbRef = fire.database().ref('users').once('value').then((snapshot)=> {
+                console.log('snapshot', snapshot);
+            });
+            console.log('userdbref:', userDbRef);
         }
     }
 
@@ -21,6 +29,7 @@ class UserDashboard extends React.Component {
         return (
             <div className="container">
                 <UserDashboardHeader />
+                <h1>This is the dashboard</h1>
             </div>
         )
     }
