@@ -5,6 +5,8 @@ require('../scss/style.scss');
 import UserDashboardHeader from './UserDashboardHeader';
 import UserDashboardSidebar from './UserDashboardSidebar';
 import UserDashboard from './UserDashboard';
+import UserDashboardMenu from './UserDashboardMenu';
+
 class UserDashboardPage extends React.Component {
     constructor() {
         super();
@@ -31,6 +33,7 @@ class UserDashboardPage extends React.Component {
             <div className="container">
                 <UserDashboardHeader />
                 <UserDashboardSidebar />
+                <UserDashboardMenu />
                 <UserDashboard />
             </div>
         )

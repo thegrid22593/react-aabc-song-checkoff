@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import fire from '../../fire';
 require('../scss/style.scss');
+import UserDashboardHeader from './UserDashboardHeader';
 import UserDashboardSidebar from './UserDashboardSidebar';
 import MusicLibrary from './MusicLibrary';
 
