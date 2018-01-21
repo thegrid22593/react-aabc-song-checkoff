@@ -1,11 +1,17 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import fire from '../../fire';
+import { Switch, Route, Router } from 'react-router-dom';
 require('../scss/style.scss');
 import UserDashboardHeader from './UserDashboardHeader';
 import UserDashboardSidebar from './UserDashboardSidebar';
 import UserDashboard from './UserDashboard';
 import UserDashboardMenu from './UserDashboardMenu';
+import UserDashboardSummary from './UserDashboardSummary';
+import UserDashboardFeedback from './UserDashboardFeedback';
+import UserDashboardPartComparison from './UserDashboardPartComparison';
+
+function messages () {}
 
 class UserDashboardPage extends React.Component {
     constructor() {
@@ -34,7 +40,13 @@ class UserDashboardPage extends React.Component {
                 <UserDashboardHeader />
                 <UserDashboardSidebar />
                 <UserDashboardMenu />
-                <UserDashboard />
+                <Switch>
+                    <Route path="/dashboard" exact component={UserDashboard} />
+                    <Route path="/dashboard/summary" exact component={ UserDashboardSummary } />
+                    <Route path="/dashboard/feedback" exact component={ UserDashboardFeedback } />
+                    <Route path="/dashboard/part-comparison" exact component={ UserDashboardPartComparison } />
+                </Switch>
+                
             </div>
         )
     }
