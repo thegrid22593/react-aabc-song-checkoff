@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Link} from 'react-router-dom';
 import { Redirect } from 'react-router';
-import fire from '../../fire';
+import firebase from 'firebase';
 import { browserHistory } from 'react-router';
 
 class SignInForm extends React.Component {
@@ -16,7 +16,7 @@ class SignInForm extends React.Component {
 
     signIn(e) {
         e.preventDefault();
-        let auth = fire.auth();
+        let auth = firebase.auth();
         auth.signInWithEmailAndPassword(this.state.loginEmail, this.state.loginPassword).then((user) => {
             console.log('user', user);
             let userId = user.uid;

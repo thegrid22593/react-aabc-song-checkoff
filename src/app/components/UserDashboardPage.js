@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import fire from '../../fire';
+import firebase from 'firebase';
+require("firebase/firestore");
 import { Switch, Route, Router } from 'react-router-dom';
 require('../scss/style.scss');
 import UserDashboardHeader from './UserDashboardHeader';
@@ -28,10 +29,15 @@ class UserDashboardPage extends React.Component {
     componentWillMount() {
         let currentUserId = sessionStorage.getItem('userID');
         if(currentUserId) {
-            let userDbRef = fire.database().ref('users').once('value').then((snapshot)=> {
-                console.log('snapshot', snapshot);
-            });
-            console.log('userdbref:', userDbRef);
+            firebase.firestore()
+            .collection('users')
+            .where("uid", "==", currentUserId)
+            .get()
+            .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(doc);
+                });
+            })
         }
     }
 
