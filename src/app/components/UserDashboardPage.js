@@ -39,21 +39,21 @@ class UserDashboardPage extends React.Component {
 
     render() {
         return (
-            <div className="container">
-                <UserDashboardHeader />
-                <div className="user-dashboard-sidebar-container">
-                    <UserDashboardSidebar />
+                <div>
+                    <UserDashboardHeader />
+                    <div className="user-dashboard-sidebar-container">
+                        <UserDashboardSidebar />
+                    </div>
+                    <div className="user-dashboard-content-container">
+                        <UserDashboardProfile user={this.state.user} />
+                        <UserDashboardMenu />
+                        <Switch>
+                            <Route path="/dashboard" exact component={ UserDashboardSummary } />
+                            <Route path="/dashboard/feedback" exact component={ UserDashboardFeedback } />
+                            <Route path="/dashboard/part-comparison" exact component={ UserDashboardPartComparison } />
+                        </Switch>
+                    </div>
                 </div>
-                <div className="user-dashboard-content-container">
-                    <UserDashboardProfile user={this.state.user} />
-                    <UserDashboardMenu />
-                    <Switch>
-                        <Route path="/dashboard" exact component={ UserDashboardSummary } />
-                        <Route path="/dashboard/feedback" exact component={ UserDashboardFeedback } />
-                        <Route path="/dashboard/part-comparison" exact component={ UserDashboardPartComparison } />
-                    </Switch>
-                </div>
-            </div>
         )
     }
 }

@@ -11,8 +11,6 @@ class UserDashboardProfile extends React.Component {
     }
 
     render() {
-        
-
         return (
             <section className="dashboard-profile">
                 <div className="dashboard-member-info">
