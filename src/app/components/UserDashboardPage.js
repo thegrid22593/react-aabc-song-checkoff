@@ -45,7 +45,7 @@ class UserDashboardPage extends React.Component {
       <div>
         <UserDashboardHeader />
         <div className="user-dashboard-sidebar-container">
-          <UserDashboardSidebar />
+          <UserDashboardSidebar user={this.state.user} />
         </div>
         <div className="user-dashboard-content-container">
           <UserDashboardProfile user={this.state.user} />

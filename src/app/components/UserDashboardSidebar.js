@@ -5,8 +5,22 @@ import fire from '../../fire';
 require('../scss/style.scss');
 
 class UserDashboardSidebar extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+  }
+
+  checkIfPartleader(user) {
+      if(user.partLeader) {
+          return (
+            <li>
+                <NavLink to="/checkoff" activeClassName="active">
+                <i className="fa fa-check-square" aria-hidden="true" />Check Off
+                </NavLink>
+            </li>
+          )
+      } else {
+          return;
+      }
   }
 
   render() {
@@ -23,11 +37,7 @@ class UserDashboardSidebar extends React.Component {
               <i className="fa fa-music" aria-hidden="true" />Music Library
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/checkoff" activeClassName="active">
-              <i className="fa fa-check-square" aria-hidden="true" />Check Off
-            </NavLink>
-          </li>
+          {this.checkIfPartleader(this.props.user)}
           <li>
             <NavLink to="/solo-songs" activeClassName="active">
               <i className="fa fa-microphone" aria-hidden="true" />Solo Songs
