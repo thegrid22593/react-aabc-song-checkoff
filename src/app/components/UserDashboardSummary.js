@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import firebase from 'firebase';
 import React from 'react';
 import { Link , NavLink} from 'react-router-dom';
+import UserDashboardSummaryPartMember from './UserDashboardSummaryPartMember';
 require('../scss/style.scss');
 
 class UserDashboardSummary extends React.Component {
