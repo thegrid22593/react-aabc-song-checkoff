@@ -17,22 +17,17 @@ class UserDashboardMenu extends React.Component {
             <nav className="dashboard-menu">
                 <ul>
                     <li>
-                        <NavLink to="/dashboard">
-                            <i className="fa fa-pie-chart" aria-hidden="true"></i>Dashboard
-                        </NavLink>
-                    </li>
-                    <li>
-                    <NavLink to="/dashboard/summary">
+                    <NavLink to="/dashboard/summary" activeClassName="active">
                         <i className="fa fa-pie-chart" aria-hidden="true"></i>Summary
                     </NavLink>
                     </li>
                     <li>
-                    <NavLink to="/dashboard/feedback">
+                    <NavLink to="/dashboard/feedback" activeClassName="active">
                     <i className="fa fa-comment-o" aria-hidden="true"></i>Messages
                     </NavLink>
                     </li>
                     <li>
-                    <NavLink to="/dashboard/part-comparison">
+                    <NavLink to="/dashboard/part-comparison" activeClassName="active">
                     <i className="fa fa-bar-chart" aria-hidden="true"></i>Part Comparison
                     </NavLink>
                     </li>

@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import firebase from 'firebase';
-require("firebase/firestore");
+require('firebase/firestore');
 import { Switch, Route, Router } from 'react-router-dom';
 require('../scss/style.scss');
 import UserDashboardHeader from './UserDashboardHeader';
@@ -29,14 +29,10 @@ class UserDashboardPage extends React.Component {
     componentWillMount() {
         let currentUserId = sessionStorage.getItem('userID');
         if(currentUserId) {
-            firebase.firestore()
-            .collection('users')
-            .where("uid", "==", currentUserId)
-            .get()
-            .then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    console.log(doc);
-                });
+            firebase.firestore().collection('users').doc(currentUserId).get().then((doc) => {
+                console.log('data', doc.data());
+                let user = doc.data();
+                this.setState({user});
             })
         }
     }
@@ -49,11 +45,10 @@ class UserDashboardPage extends React.Component {
                     <UserDashboardSidebar />
                 </div>
                 <div className="user-dashboard-content-container">
-                    <UserDashboardProfile />
+                    <UserDashboardProfile user={this.state.user} />
                     <UserDashboardMenu />
                     <Switch>
-                        <Route path="/dashboard" exact component={UserDashboard} />
-                        <Route path="/dashboard/summary" exact component={ UserDashboardSummary } />
+                        <Route path="/dashboard" exact component={ UserDashboardSummary } />
                         <Route path="/dashboard/feedback" exact component={ UserDashboardFeedback } />
                         <Route path="/dashboard/part-comparison" exact component={ UserDashboardPartComparison } />
                     </Switch>

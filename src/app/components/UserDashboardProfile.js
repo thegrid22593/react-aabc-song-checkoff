@@ -6,50 +6,36 @@ require('../scss/style.scss');
 
 
 class UserDashboardProfile extends React.Component {
-    constructor() {
-        super();
-
-        this.state = {
-            user: {
-
-            }
-        }
-    }
-
-    componentWillMount() {
-        let currentUserId = sessionStorage.getItem('userID');
-        if(currentUserId) {
-            let userDbRef = fire.database().ref('users').once('value').then((snapshot)=> {
-                console.log('snapshot', snapshot);
-            });
-            console.log('userdbref:', userDbRef);
-        }
+    constructor(props) {
+        super(props);
     }
 
     render() {
+        
+
         return (
             <section className="dashboard-profile">
                 <div className="dashboard-member-info">
                     <div className="member-name-and-photo">
-                        {/* <img className="user-profile-pic" alt="user profile pic"> */}
+                        <img className="user-profile-pic" src={this.props.user.profilePicURL} alt="user profile pic" />
                         <h5>Details</h5>
-                        {/* <h2 className="current-user-name">{{currentUserName}}</h2> */}
-                        {/* <strong className="current-user-part">{{currentUserPart}}</strong> */}
+                        <h2 className="current-user-name">{this.props.user.firstName} {this.props.user.lastName}</h2>
+                        <strong className="current-user-part">{this.props.user.singingPart}</strong>
                      </div>
-                    {/* <div className="member-songs-completed"> */}
-                        {/* <h5>Songs Completed</h5> */}
-                        {/* <p>{{this.completedSongs}} / {{songCount}}</p> */}
-                    {/* </div>
+                    <div className="member-songs-completed">
+                        <h5>Songs Completed</h5>
+                        <p>{this.props.user.completedSongs}</p>
+                    </div>
 
                     <div className="member-songs-percentage">
-                        <h5>Percentage</h5> */}
-                        {/* <p>{{songPercentage}}%</p> */}
-                    {/* </div>
+                        <h5>Percentage</h5>
+                        <p>{this.props.user.percentage}%</p>
+                    </div>
 
                     <div className="member-last-completed-song">
-                        <h5>Last Completed Song:</h5> */}
-                        {/* <p>{{lastCompletedSong}}</p> */}
-                    {/* </div> */}
+                        <h5>Last Completed Song:</h5>
+                        <p>{this.props.user.lastCompletedSong}</p>
+                    </div>
                 </div>
             </section>
         )
