@@ -1,10 +1,12 @@
-nav.sidebar-nav {
+.user-dashboard-sidebar-container {
+  width: 15%;
+  float: left;
+  height: 100vh;
+  nav.sidebar-nav {
     background: #fbfbfb;
-    height: 100vh;
+    height: 100%;
     border-right: 1px solid #ddd;
     padding: 0;
-    width: 15%;
-    float: left;
     position: relative;
     ul.nav-links {
       list-style: none;
@@ -103,3 +105,4 @@ nav.sidebar-nav {
       }
     }
   }
+}

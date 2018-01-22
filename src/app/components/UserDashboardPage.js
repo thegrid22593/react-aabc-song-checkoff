@@ -10,6 +10,7 @@ import UserDashboardMenu from './UserDashboardMenu';
 import UserDashboardSummary from './UserDashboardSummary';
 import UserDashboardFeedback from './UserDashboardFeedback';
 import UserDashboardPartComparison from './UserDashboardPartComparison';
+import UserDashboardProfile from './UserDashboardProfile';
 
 function messages () {}
 
@@ -38,15 +39,19 @@ class UserDashboardPage extends React.Component {
         return (
             <div className="container">
                 <UserDashboardHeader />
-                <UserDashboardSidebar />
-                <UserDashboardMenu />
-                <Switch>
-                    <Route path="/dashboard" exact component={UserDashboard} />
-                    <Route path="/dashboard/summary" exact component={ UserDashboardSummary } />
-                    <Route path="/dashboard/feedback" exact component={ UserDashboardFeedback } />
-                    <Route path="/dashboard/part-comparison" exact component={ UserDashboardPartComparison } />
-                </Switch>
-                
+                <div className="user-dashboard-sidebar-container">
+                    <UserDashboardSidebar />
+                </div>
+                <div className="user-dashboard-content-container">
+                    <UserDashboardProfile />
+                    <UserDashboardMenu />
+                    <Switch>
+                        <Route path="/dashboard" exact component={UserDashboard} />
+                        <Route path="/dashboard/summary" exact component={ UserDashboardSummary } />
+                        <Route path="/dashboard/feedback" exact component={ UserDashboardFeedback } />
+                        <Route path="/dashboard/part-comparison" exact component={ UserDashboardPartComparison } />
+                    </Switch>
+                </div>
             </div>
         )
     }

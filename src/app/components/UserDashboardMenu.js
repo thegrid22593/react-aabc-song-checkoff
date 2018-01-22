@@ -17,6 +17,11 @@ class UserDashboardMenu extends React.Component {
             <nav className="dashboard-menu">
                 <ul>
                     <li>
+                        <NavLink to="/dashboard">
+                            <i className="fa fa-pie-chart" aria-hidden="true"></i>Dashboard
+                        </NavLink>
+                    </li>
+                    <li>
                     <NavLink to="/dashboard/summary">
                         <i className="fa fa-pie-chart" aria-hidden="true"></i>Summary
                     </NavLink>

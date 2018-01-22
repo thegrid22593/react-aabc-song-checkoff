@@ -9,7 +9,7 @@ class UserDashboard extends React.Component {
 
     render() {
         return (
-            <h1>This is the dashboard</h1>
+            <h1>Dashboard</h1>
         )
     }
 }
