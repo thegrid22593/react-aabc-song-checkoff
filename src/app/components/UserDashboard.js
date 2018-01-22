@@ -3,15 +3,13 @@ import React from 'react';
 import fire from '../../fire';
 require('../scss/style.scss');
 class UserDashboard extends React.Component {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    render() {
-        return (
-            <h1>Dashboard</h1>
-        )
-    }
+  render() {
+    return <h1>Dashboard</h1>;
+  }
 }
 
 module.exports = UserDashboard;

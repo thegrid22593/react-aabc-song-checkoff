@@ -3,19 +3,19 @@ import React from 'react';
 require('../scss/style.scss');
 
 class UserDashboardSummaryPartMember extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-        return (
-            <div className="container">
-                <UserDashboardHeader />
-                <UserDashboardSidebar />
-                <MusicLibrary />
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className="container">
+        <UserDashboardHeader />
+        <UserDashboardSidebar />
+        <MusicLibrary />
+      </div>
+    );
+  }
 }
 
 module.exports = UserDashboardSummaryPartMember;
