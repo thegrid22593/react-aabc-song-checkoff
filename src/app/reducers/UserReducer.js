@@ -1,12 +1,31 @@
+import firebase from 'firebase';
+
+
 export default function reducer(state={
-    tweets: [],
+    userID: null,
     fetching: false,
     fetched: false,
     error: null,
+    userAuth: {},
+    user: {}
 }, action) {
 
     switch(action.type) {
-        case 'UPDATE_USER': {
+        case 'USER_SIGNED_IN_SUCCESS': {
+            state = {...state, userAuth: action.payload, fetched: true}
+            return state;
+        }
+        case 'USER_SIGNED_IN_ERROR': {
+            return state;
+        }
+
+        case 'USER_DATA_RECEIVED': {
+            state = {...state, user: action.payload}
+            return state;
+        }
+
+        case 'USER_DATA_ERROR': {
+            state = {...state, error: action.payload}
             return state;
         }
 

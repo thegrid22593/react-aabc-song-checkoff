@@ -6,7 +6,9 @@ import SignInPage from './SignInPage';
 import fire from '../../fire';
 import Main from './Main';
 import { connect } from 'react-redux';
+import { userSignIn } from '../actions/userActions';
 require('../scss/style.scss');
+
 
 
 class App extends React.Component {
@@ -15,12 +17,13 @@ class App extends React.Component {
     }
 
     componentWillMount() {
-        let userId = sessionStorage.getItem('userID');
-        if(userId) {
-            this.context.router.history.push('/dashboard');
-        } else {
+        // this.props.dispatch(userSignIn('garrett.sanderson@gmail.com', 'h2osurf1'));
+        // let userId = sessionStorage.getItem('userID');
+        // if(userId) {
+        //     this.context.router.history.push('/dashboard');
+        // } else {
             this.context.router.history.push('/sign-in');
-        }
+        // }
     }
 
     render() {
@@ -37,8 +40,9 @@ App.contextTypes = {
 
 App = connect((store) => {
     return {
-        user: 1,
-        // user: store.user
+        user: store.user.user,
+        userFetched: store.user.fetched,
+        songs: store.songs.songs
     };
 })(App);
 

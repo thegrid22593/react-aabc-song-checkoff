@@ -13,8 +13,6 @@ import UserDashboardFeedback from './UserDashboardFeedback';
 import UserDashboardPartComparison from './UserDashboardPartComparison';
 import UserDashboardProfile from './UserDashboardProfile';
 
-function messages() {}
-
 class UserDashboardPage extends React.Component {
   constructor() {
     super();

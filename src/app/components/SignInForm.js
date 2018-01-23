@@ -3,6 +3,8 @@ import {BrowserRouter, Link} from 'react-router-dom';
 import { Redirect } from 'react-router';
 import firebase from 'firebase';
 import { browserHistory } from 'react-router';
+import { connect } from 'react-redux';
+import {userSignIn} from '../actions/userActions';
 
 class SignInForm extends React.Component {
     constructor(props) {
@@ -14,17 +16,16 @@ class SignInForm extends React.Component {
         }
     }
 
+    componentDidUpdate() {
+        console.log('updated', this.props.user);
+        if(this.props.userFetched) {
+            this.context.router.history.push('/dashboard');
+        }
+    }
+
     signIn(e) {
         e.preventDefault();
-        let auth = firebase.auth();
-        auth.signInWithEmailAndPassword(this.state.loginEmail, this.state.loginPassword).then((user) => {
-            console.log('user', user);
-            let userId = user.uid;
-            sessionStorage.setItem('userID', userId);
-            this.context.router.history.push('/dashboard');
-        }).catch((error) => {
-            console.log('could not sign in', error);
-        });
+        this.props.dispatch(userSignIn(this.state.loginEmail, this.state.loginPassword));
     }
 
     handleChange(e) {
@@ -50,8 +51,17 @@ class SignInForm extends React.Component {
     }
 }
 
+
 SignInForm.contextTypes = {
     router: React.PropTypes.object.isRequired
 }
+
+SignInForm = connect((store) => {
+    return {
+        user: store.user.user,
+        userFetched: store.user.fetched,
+        songs: store.songs.songs
+    };
+})(SignInForm);
 
 export default SignInForm;
