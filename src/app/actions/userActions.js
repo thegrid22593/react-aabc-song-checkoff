@@ -29,7 +29,6 @@ export function userSignIn(email, password) {
             dispatch({type: 'USER_SIGN_IN_ERROR', payload: error});
         });
     }
-  
 }
 
 export function setUserName(name) {

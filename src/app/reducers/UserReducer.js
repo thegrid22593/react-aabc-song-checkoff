@@ -16,6 +16,7 @@ export default function reducer(state={
             return state;
         }
         case 'USER_SIGNED_IN_ERROR': {
+            state = {...state, error: action.payload, fetched: true}
             return state;
         }
 
@@ -26,6 +27,11 @@ export default function reducer(state={
 
         case 'USER_DATA_ERROR': {
             state = {...state, error: action.payload}
+            return state;
+        }
+
+        case 'CREATE_USER_SUCCESS': {
+            state = {...state, user: action.payload}
             return state;
         }
 
