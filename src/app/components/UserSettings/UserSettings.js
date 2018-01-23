@@ -7,11 +7,11 @@ class UserSettings extends React.Component {
         super(props);
 
         this.state = {
-            currentUserFirstName: '',
-            currentUserLastName: '',
-            currentUserStartDate: '',
-            currentUserPart: '',
-            isPartLeader: null,
+            currentUserFirstName: this.props.user.firstName || '',
+            currentUserLastName: this.props.user.lastName || '',
+            currentUserStartDate: this.props.user.startDate || '',
+            currentUserPart: this.props.user.singingPart || '',
+            isPartLeader: this.props.user.partLeader || null,
 
         }
     }
@@ -68,19 +68,19 @@ class UserSettings extends React.Component {
                     <form action="" className="user-settings">
                     <div>
                         <label for="currentUserFirstName">First Name</label>
-                        <input type="text" onChange={this.handleChange.bind(this)} name="currentUserFirstName"/>
+                        <input type="text" onChange={this.handleChange.bind(this)} name="currentUserFirstName" value={this.state.currentUserFirstName}/>
                     </div>
                     <div>
                         <label for="currentUserLastName">Last Name</label>
-                        <input type="text" onChange={this.handleChange.bind(this)} name="currentUserLastName"/>
+                        <input type="text" onChange={this.handleChange.bind(this)} name="currentUserLastName" value={this.state.currentUserLastName} />
                     </div>
                     <div>
                         <label for="currentUserStartDate">Start Date</label>
-                        <input type="text" onChange={this.handleChange.bind(this)} name="currentUserStartDate"/>
+                        <input type="text" onChange={this.handleChange.bind(this)} name="currentUserStartDate" value={this.state.currentUserStartDate}/>
                     </div>
                     <div>
                         <label for="currentUserPart">Part</label>
-                        <input type="text" onChange={this.handleChange.bind(this)} name="currentUserPart"/>
+                        <input type="text" onChange={this.handleChange.bind(this)} name="currentUserPart" value={this.state.currentUserPart}/>
                     </div>
                     <div>
                         <label for="is-partleader">Partleader?</label>

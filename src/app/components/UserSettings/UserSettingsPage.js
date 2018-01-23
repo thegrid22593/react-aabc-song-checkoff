@@ -6,33 +6,13 @@ import firebase from 'firebase';
 import UserDashboardHeader from '../UserDashboardHeader';
 import UserDashboardSidebar from '../UserDashboardSidebar';
 import UserSettings from './UserSettings';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 
 class UserSettingsPage extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            user: {}
-        }
-    }
-
-    componentWillMount() {
-        if(!this.props.user) {
-            let currentUserId = sessionStorage.getItem('userID');
-            if (currentUserId) {
-              firebase
-                .firestore()
-                .collection('users')
-                .doc(currentUserId)
-                .get()
-                .then(doc => {
-                  console.log('data', doc.data());
-                  let user = doc.data();
-                  this.setState({user});
-                });
-            }
-          }
     }
 
     filebuttoni(e) {
@@ -44,13 +24,20 @@ class UserSettingsPage extends React.Component {
             <div>
                 <UserDashboardHeader/>
                 <div className="user-dashboard-sidebar-container">
-                    <UserDashboardSidebar user={this.state.user} />
+                    <UserDashboardSidebar user={this.props.user} />
                 </div>
-                <UserSettings user={this.state.user}/>
+                <UserSettings user={this.props.user}/>
             </div>
 
         )
     }
 }
+
+UserSettingsPage = withRouter(connect((store) => {
+    return {
+        user: store.user.user,
+        userFetched: store.user.fetched,
+    };
+  })(UserSettingsPage));
 
 module.exports = UserSettingsPage;
