@@ -6,6 +6,7 @@ import MusicLibraryPage from './MusicLibraryPage';
 import UserDashboardSummary from './UserDashboardSummary';
 import CheckOffPage from './CheckOff/CheckOffPage';
 import UserSettingsPage from "./UserSettings/UserSettingsPage";
+import UserSignUp from './UserSignUp/UserSignUp';
 
 const Main = () => (
   <main>
@@ -15,6 +16,7 @@ const Main = () => (
       <Route path="/music-library" component={MusicLibraryPage}/>
       <Route path="/checkoff" component={CheckOffPage}/>
       <Route path="/user-settings" component={UserSettingsPage}/>
+      <Route path="/user-sign-up" component={UserSignUp}/>
     </Switch>
   </main>
 )
