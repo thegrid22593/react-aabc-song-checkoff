@@ -1,6 +1,5 @@
 import firebase from 'firebase';
 
-
 export default function reducer(state={
     userID: null,
     fetching: false,
