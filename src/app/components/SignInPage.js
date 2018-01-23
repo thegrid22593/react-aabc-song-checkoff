@@ -5,7 +5,6 @@ import SignUpForm from './SignUpForm';
 import Background from '../images/main-bg.jpg';
 import Logo from '../images/logo-icon.png';
 import { connect } from 'react-redux';
-import userSignUpRequest from '../actions/signUpActions';
 
 class SignInPage extends React.Component {
     constructor(props) {
@@ -43,7 +42,7 @@ class SignInPage extends React.Component {
                             <button onClick={this.signUp.bind(this)}>Sign Up</button>
                         </div>
                     </div>
-                    <SignUpForm active={this.state.signUpFormActive} userSignUpRequest={userSignUpRequest}/>
+                    <SignUpForm active={this.state.signUpFormActive}/>
                     <div className={"have-an-account " + (!this.state.signInFormActive ? 'active' : 'false')}>
                         <div className="have-an-account-content">
                             <h2 className="have-an-account-title">Have An Account?</h2>
@@ -62,7 +61,7 @@ class SignInPage extends React.Component {
 }
 
 SignInPage.propTypes = {
-    userSignUpRequest: React.PropTypes.func.isRequired
+    // userSignUpRequest: React.PropTypes.func.isRequired
 }
 
-export default connect(null, { userSignUpRequest })(SignInPage);
+export default SignInPage;

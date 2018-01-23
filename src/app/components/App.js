@@ -5,7 +5,9 @@ import Footer from './Footer';
 import SignInPage from './SignInPage';
 import fire from '../../fire';
 import Main from './Main';
+import { connect } from 'react-redux';
 require('../scss/style.scss');
+
 
 class App extends React.Component {
     constructor() {
@@ -22,6 +24,7 @@ class App extends React.Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <Main/>
         )
@@ -31,5 +34,12 @@ class App extends React.Component {
 App.contextTypes = {
     router: React.PropTypes.object.isRequired
 }
+
+App = connect((store) => {
+    return {
+        user: 1,
+        // user: store.user
+    };
+})(App);
 
 module.exports = App;

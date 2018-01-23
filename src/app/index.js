@@ -4,13 +4,7 @@ import render from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import App from './components/App';
 import {Provider} from 'react-redux';
-import thunk from 'redux-thunk';
-import {createStore, applyMiddleware} from 'redux';
-
-const store = createStore(
-  (state = {}) => state,
-  applyMiddleware(thunk)
-);
+import store from './store';
 
 ReactDOM.render(
   <Provider store={store}>
