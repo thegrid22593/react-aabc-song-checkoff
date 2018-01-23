@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import {Link, NavLink} from 'react-router-dom';
-import fire from '../../fire';
 require('../scss/style.scss');
 
 class UserDashboardSidebar extends React.Component {

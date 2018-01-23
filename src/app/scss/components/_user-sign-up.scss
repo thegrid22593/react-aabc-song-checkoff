@@ -20,7 +20,7 @@
     }
     input {
       width: 100%;
-      @include aabc-transition(0.2s all ease-in-out);
+      @include transition(0.2s all ease-in-out);
       margin-bottom: 2rem;
       padding: 0.5rem 0.5rem;
       border: 1px solid $aabc-light-grey;
@@ -47,7 +47,7 @@
       border: none;
       color: $aabc-white;
       font-size: 1rem;
-      @include aabc-transition(0.2s all ease-in-out);
+      @include transition(0.2s all ease-in-out);
       &:hover {
         background: darken($aabc-red, 5%);
       }

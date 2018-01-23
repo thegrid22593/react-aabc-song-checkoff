@@ -10,10 +10,10 @@ class UserDashboardHeader extends React.Component {
   }
 
   componentWillMount() {
-    let currentUser = fire.auth().currentUser;
-    console.log('current user:', currentUser);
-    if (currentUser) {
-    }
+    // let currentUser = fire.auth().currentUser;
+    // console.log('current user:', currentUser);
+    // if (currentUser) {
+    // }
   }
 
   render() {
