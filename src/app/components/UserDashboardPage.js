@@ -13,6 +13,7 @@ import UserDashboardFeedback from './UserDashboardFeedback';
 import UserDashboardPartComparison from './UserDashboardPartComparison';
 import UserDashboardProfile from './UserDashboardProfile';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 class UserDashboardPage extends React.Component {
   constructor() {
@@ -31,16 +32,8 @@ class UserDashboardPage extends React.Component {
           <UserDashboardMenu />
           <Switch>
             <Route path="/dashboard" exact component={UserDashboardSummary} />
-            <Route
-              path="/dashboard/feedback"
-              exact
-              component={UserDashboardFeedback}
-            />
-            <Route
-              path="/dashboard/part-comparison"
-              exact
-              component={UserDashboardPartComparison}
-            />
+            <Route path="/dashboard/feedback" exact component={UserDashboardFeedback} />
+            <Route path="/dashboard/part-comparison" exact component={UserDashboardPartComparison} />
           </Switch>
         </div>
       </div>
@@ -48,11 +41,11 @@ class UserDashboardPage extends React.Component {
   }
 }
 
-UserDashboardPage = connect((store) => {
+UserDashboardPage = withRouter(connect((store) => {
   return {
       user: store.user.user,
       userFetched: store.user.fetched,
   };
-})(UserDashboardPage);
+})(UserDashboardPage));
 
 module.exports = UserDashboardPage;

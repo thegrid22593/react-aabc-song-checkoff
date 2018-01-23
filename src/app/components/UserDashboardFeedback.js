@@ -16,7 +16,7 @@ class UserDashboardFeedback extends React.Component {
   componentWillMount() {}
 
   render() {
-    return <h1>Messages</h1>;
+    return <h1>Feedback</h1>;
   }
 }
 

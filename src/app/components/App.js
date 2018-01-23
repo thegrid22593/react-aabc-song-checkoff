@@ -7,6 +7,7 @@ import fire from '../../fire';
 import Main from './Main';
 import { connect } from 'react-redux';
 import { userSignIn } from '../actions/userActions';
+import { withRouter } from "react-router";
 require('../scss/style.scss');
 
 
@@ -36,12 +37,12 @@ App.contextTypes = {
     router: React.PropTypes.object.isRequired
 }
 
-App = connect((store) => {
+App = withRouter(connect((store) => {
     return {
         user: store.user.user,
         userFetched: store.user.fetched,
         songs: store.songs.songs
     };
-})(App);
+})(App));
 
 module.exports = App;

@@ -21,7 +21,7 @@ class UserDashboardMenu extends React.Component {
           </li>
           <li>
             <NavLink to="/dashboard/feedback" activeClassName="active">
-              <i className="fa fa-comment-o" aria-hidden="true" />Messages
+              <i className="fa fa-comment-o" aria-hidden="true" />Feedback
             </NavLink>
           </li>
           <li>
