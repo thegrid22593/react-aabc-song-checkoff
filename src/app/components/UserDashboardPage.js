@@ -12,30 +12,11 @@ import UserDashboardSummary from './UserDashboardSummary';
 import UserDashboardFeedback from './UserDashboardFeedback';
 import UserDashboardPartComparison from './UserDashboardPartComparison';
 import UserDashboardProfile from './UserDashboardProfile';
+import { connect } from 'react-redux';
 
 class UserDashboardPage extends React.Component {
   constructor() {
     super();
-
-    this.state = {
-      user: {},
-    };
-  }
-
-  componentWillMount() {
-    let currentUserId = sessionStorage.getItem('userID');
-    if (currentUserId) {
-      firebase
-        .firestore()
-        .collection('users')
-        .doc(currentUserId)
-        .get()
-        .then(doc => {
-          console.log('data', doc.data());
-          let user = doc.data();
-          this.setState({user});
-        });
-    }
   }
 
   render() {
@@ -43,10 +24,10 @@ class UserDashboardPage extends React.Component {
       <div>
         <UserDashboardHeader />
         <div className="user-dashboard-sidebar-container">
-          <UserDashboardSidebar user={this.state.user} />
+          <UserDashboardSidebar user={this.props.user} />
         </div>
         <div className="user-dashboard-content-container">
-          <UserDashboardProfile user={this.state.user} />
+          <UserDashboardProfile user={this.props.user} />
           <UserDashboardMenu />
           <Switch>
             <Route path="/dashboard" exact component={UserDashboardSummary} />
@@ -66,5 +47,12 @@ class UserDashboardPage extends React.Component {
     );
   }
 }
+
+UserDashboardPage = connect((store) => {
+  return {
+      user: store.user.user,
+      userFetched: store.user.fetched,
+  };
+})(UserDashboardPage);
 
 module.exports = UserDashboardPage;
