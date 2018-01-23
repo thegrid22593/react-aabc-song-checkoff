@@ -5,6 +5,8 @@ require('../scss/style.scss');
 import UserDashboardHeader from './UserDashboardHeader';
 import UserDashboardSidebar from './UserDashboardSidebar';
 import MusicLibrary from './MusicLibrary';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 class MusicLibraryPage extends React.Component {
     constructor() {
@@ -23,13 +25,21 @@ class MusicLibraryPage extends React.Component {
 
     render() {
         return (
-            <div className="container">
+            <div>
                 <UserDashboardHeader />
-                <UserDashboardSidebar />
-                <MusicLibrary />
+                <div className="user-dashboard-sidebar-container">
+                    <UserDashboardSidebar user={this.props.user}/>
+                </div>
+                <MusicLibrary songs={this.props.user.songs}/>
             </div>
         )
     }
 }
+
+MusicLibraryPage = withRouter(connect((store) => {
+    return {
+        user: store.user.user,
+    };
+  })(MusicLibraryPage));
 
 module.exports = MusicLibraryPage;
