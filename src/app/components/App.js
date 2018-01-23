@@ -17,13 +17,11 @@ class App extends React.Component {
     }
 
     componentWillMount() {
-        // this.props.dispatch(userSignIn('garrett.sanderson@gmail.com', 'h2osurf1'));
-        // let userId = sessionStorage.getItem('userID');
-        // if(userId) {
-        //     this.context.router.history.push('/dashboard');
-        // } else {
+        if(this.props.user.uid) {
+            this.context.router.history.push('/dashboard');
+        } else {
             this.context.router.history.push('/sign-in');
-        // }
+        }
     }
 
     render() {
