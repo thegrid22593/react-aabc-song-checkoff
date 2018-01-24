@@ -8,12 +8,15 @@ import CheckOffMembers from './CheckOffMembers';
 import CheckOffFeedback from './CheckOffFeedback';
 import CheckOffPartLeaderProfile from './CheckOffPartLeaderProfile';
 import { getAllMembersByPartName } from '../../actions/userActions';
+import UserDashboardHeader from '../UserDashboardHeader';
+import UserDashboardSidebar from '../UserDashboardSidebar';
 
 
 class CheckOffPage extends React.Component {
     constructor(props) {
         super(props);
         console.log('checkoff page', props);
+        
     }
 
     componentWillMount() {
@@ -24,11 +27,17 @@ class CheckOffPage extends React.Component {
 
     render() {
         return(
-            <section className="checkoff">
-                <h1>Checkoff</h1>
-                <CheckOffPartLeaderProfile user={this.props.user}/>
-                <CheckOffMembers members={this.props.user.partMembers}/>
-            </section>
+            <div>
+                <UserDashboardHeader />
+                <div className="user-dashboard-sidebar-container">
+                    <UserDashboardSidebar user={this.props.user.user} />
+                </div>
+                <section className="checkoff">
+                    <h1>Checkoff</h1>
+                    <CheckOffPartLeaderProfile user={this.props.user.user}/>
+                    <CheckOffMembers members={this.props.user.partMembers}/>
+                </section>
+            </div>
         )
     }
 }

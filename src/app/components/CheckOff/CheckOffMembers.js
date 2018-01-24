@@ -15,7 +15,9 @@ class CheckOffMembers extends React.Component {
                 <div className="container-full">
                     <div className="col-lg-3 col-md-6 col-sm-12">
                         {this.props.members.map((member, index) => {
-                            <CheckOffMember key={index} member={member}/>
+                            return (
+                                <CheckOffMember key={index} member={member}/>
+                            )
                         })}
                     </div>
                 </div>

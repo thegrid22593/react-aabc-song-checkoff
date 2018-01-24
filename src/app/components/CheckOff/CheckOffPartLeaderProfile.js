@@ -6,6 +6,7 @@ require('../../scss/style.scss');
 class CheckOffPartLeaderProfile extends React.Component {
     constructor(props) {
         super(props);
+        console.log('profile', props);
     }
 
     render() {
@@ -13,9 +14,9 @@ class CheckOffPartLeaderProfile extends React.Component {
             <div className="checkoff-menu-bar">
                 <div className="container-full">
                     <div className="part-info">
-                        <div className="part-leader-avatar"><img alt="part-leader-profile-pic"/></div>
-                        {/* <div className="part-leader-name">{{ partLeaderName }}</div> */}
-                        {/* <div className="part-leader-part">{{ partLeaderPart }}</div> */}
+                        <div className="part-leader-avatar"><img src={this.props.user.profilePicURL} alt="part-leader-profile-pic"/></div>
+                        <div className="part-leader-name">{ this.props.user.firstName }</div>
+                        <div className="part-leader-part">{ this.props.user.singingPart }</div>
                     </div>
                 </div>
             </div>
