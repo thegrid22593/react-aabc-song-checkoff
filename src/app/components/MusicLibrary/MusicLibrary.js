@@ -1,7 +1,5 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import fire from '../../fire';
-require('../scss/style.scss');
 import MusicLibrarySongDetail from './MusicLibrarySongDetail';
 
 class MusicLibrary extends React.Component {
@@ -13,8 +11,8 @@ class MusicLibrary extends React.Component {
         }
     }
 
-    openDetail(e) {
-        this.setState({songDetailIsActive: !songDetailIsActive})
+    toggleSongDetail(e) {
+        this.setState({songDetailIsActive: !this.state.songDetailIsActive})
         e.preventDefault();
         console.log('open detail', e);
     } 
@@ -77,7 +75,7 @@ class MusicLibrary extends React.Component {
                                 <tbody>
                                     {this.props.songs.map((song, index) => {
                                         return (
-                                            <tr key={index} onClick={this.openDetail.bind(this)}>
+                                            <tr key={index} onClick={this.toggleSongDetail.bind(this)}>
                                                 <td>{song.name}</td>
                                                 <td>{song.difficulty}</td>
                                                 <td>{song.time}</td>
@@ -94,7 +92,7 @@ class MusicLibrary extends React.Component {
                         </div>
                     </section>
                 </div>
-                <MusicLibrarySongDetail isActive={this.state.songDetailIsActive}/>
+                <MusicLibrarySongDetail isActive={this.state.songDetailIsActive} toggleSongDetail={this.toggleSongDetail.bind(this)}/>
             </div>
         )
     }

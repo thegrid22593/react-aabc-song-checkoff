@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom';
 import SignInPage from './SignInPage';
 import UserDashboardPage from './UserDashboardPage';
-import MusicLibraryPage from './MusicLibraryPage';
+import MusicLibraryPage from './MusicLibrary/MusicLibraryPage';
 import UserDashboardSummary from './UserDashboardSummary';
 import CheckOffPage from './CheckOff/CheckOffPage';
 import UserSettingsPage from "./UserSettings/UserSettingsPage";
