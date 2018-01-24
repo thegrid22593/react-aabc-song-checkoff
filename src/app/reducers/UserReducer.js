@@ -36,8 +36,13 @@ export default function reducer(state={
             return state;
         }
 
+        case 'FETCH_PART_MEMBERS_PENDING': {
+            state = {...state, fetching: action.payload}
+            return state;
+        }
+
         case 'FETCH_PART_MEMBERS_SUCCESS': {
-            state = {...state, partMembers: action.payload}
+            state = {...state, partMembers: action.payload, fetching: false}
             return state;
         }
 

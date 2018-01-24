@@ -17,7 +17,7 @@ class CheckOffPage extends React.Component {
     }
 
     componentWillMount() {
-        let userSingingPart = this.props.user.singingPart;
+        let userSingingPart = this.props.user.user.singingPart;
         this.props.dispatch(getAllMembersByPartName(userSingingPart));
     }
     
@@ -35,9 +35,7 @@ class CheckOffPage extends React.Component {
 
 CheckOffPage = withRouter(connect((store) => {
     return {
-        user: store.user.user,
-        userFetched: store.user.fetched,
-        partMembers: store.partMembers
+        user: store.user,
     };
   })(CheckOffPage));
 

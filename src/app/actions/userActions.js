@@ -32,6 +32,7 @@ export function userSignIn(email, password) {
 
 export function getAllMembersByPartName(singingPart) {
   return function(dispatch) {
+    dispatch({type: 'FETCH_PART_MEMBERS_PENDING', payload: true})
     firebase
     .firestore()
     .collection('users')
@@ -41,7 +42,6 @@ export function getAllMembersByPartName(singingPart) {
       let members = [];
       snapshot
       .forEach(doc => {
-        console.log('part members:', doc.data())
         members.push(doc.data());
       })
       dispatch({type: 'FETCH_PART_MEMBERS_SUCCESS', payload: members})
