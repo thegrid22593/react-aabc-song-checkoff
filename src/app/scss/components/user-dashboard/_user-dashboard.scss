@@ -1,0 +1,10 @@
+@import './partials/menu';
+@import './partials/profile';
+@import './partials/rename';
+@import './partials/sidebar';
+@import './partials/summary';
+
+.user-dashboard-content-container {
+    width: 85%;
+    float: right;
+}

@@ -1,13 +1,9 @@
 @import './partials/base';
-@import './components/main-nav';
-@import './components/user-dashboard-sidebar';
-@import './components/user-dashboard-menu';
-@import './components/user-dashboard-rename';
-@import './components/user-dashboard-profile';
-@import './components/user-dashboard-summary';
-@import './components/user-dashboard';
-@import './components/user-sign-up';
-@import './components/user-settings';
-@import './components/sign-in';
-@import './components/music-library-list';
-@import './components/_music-library-song-detail';
+
+// Components
+@import './components/common/main-nav';
+@import './components/music-library/music-library';
+@import './components/user-dashboard/user-dashboard';
+@import './components/user-settings/user-settings';
+@import './components/user-sign-in/user-sign-in';
+@import './components/user-sign-up-continued/user-sign-up-continued';
