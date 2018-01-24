@@ -13,21 +13,23 @@ class MusicLibrary extends React.Component {
         }
     }
 
-    componentWillMount() {
-        
-    }
+    openDetail(e) {
+        this.setState({songDetailIsActive: !songDetailIsActive})
+        e.preventDefault();
+        console.log('open detail', e);
+    } 
 
     render() {
         console.log('songs', this.props.songs);
         return (
             <div className="music-library">
-                <section className="search-bar">
-                    <h3>Music Library</h3>
+                {/* <section className="search-bar"> */}
+                    {/* <h3>Music Library</h3> */}
                     {/* <form className="search-bar-input">
                         <input #searchBox id="search-box" (keyup)="search(searchBox.value)" type="text">
                     </form> */}
-                </section>
-                <div className="col-lg-2">
+                {/* </section> */}
+                {/* <div className="col-lg-2">
                     <section className="song-filter">
                         <h4>Filter</h4>
                         <hr className="filter-hr"/>
@@ -54,15 +56,15 @@ class MusicLibrary extends React.Component {
                             <li>Long</li>
                         </ul>
                     </section>
-                </div>
+                </div> */}
                 <div className="col-lg-10">
                     <section className="songs">
-                        <div className="spinner">
+                        {/* <div className="spinner">
                             <div className="bounce1"></div>
                             <div className="bounce2"></div>
                             <div className="bounce3"></div>
                             <div className="bounce4"></div>
-                        </div>
+                        </div> */}
                         <div className="songs-list">
                             <table className="table table-hover">
                                 <thead>
@@ -73,6 +75,15 @@ class MusicLibrary extends React.Component {
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {this.props.songs.map((song, index) => {
+                                        return (
+                                            <tr key={index} onClick={this.openDetail.bind(this)}>
+                                                <td>{song.name}</td>
+                                                <td>{song.difficulty}</td>
+                                                <td>{song.time}</td>
+                                            </tr>
+                                        )
+                                    })}
                                     <tr>
                                         {/* <td>{song.name}</td> */}
                                         {/* <td>{song.difficulty}</td> */}
