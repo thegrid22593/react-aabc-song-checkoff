@@ -27,7 +27,6 @@ class CheckOffPage extends React.Component {
             <section className="checkoff">
                 <h1>Checkoff</h1>
                 <CheckOffPartLeaderProfile user={this.props.user}/>
-
                 <CheckOffMembers members={this.props.user.partMembers}/>
             </section>
         )
