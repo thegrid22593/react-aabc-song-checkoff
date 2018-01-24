@@ -23,7 +23,6 @@ class CheckOffPage extends React.Component {
         let userSingingPart = this.props.user.user.singingPart;
         this.props.dispatch(getAllMembersByPartName(userSingingPart));
     }
-    
 
     render() {
         return(
@@ -33,7 +32,6 @@ class CheckOffPage extends React.Component {
                     <UserDashboardSidebar user={this.props.user.user} />
                 </div>
                 <section className="checkoff">
-                    <h1>Checkoff</h1>
                     <CheckOffPartLeaderProfile user={this.props.user.user}/>
                     <CheckOffMembers members={this.props.user.partMembers}/>
                 </section>
