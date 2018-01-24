@@ -5,5 +5,5 @@ import user from './UserReducer';
 
 export default combineReducers({
     songs,
-    user
+    user,
 });

@@ -6,7 +6,9 @@ export default function reducer(state={
     fetched: false,
     error: null,
     userAuth: {},
-    user: {}
+    user: {
+        partMembers: []
+    },
 }, action) {
 
     switch(action.type) {
@@ -31,6 +33,11 @@ export default function reducer(state={
 
         case 'CREATE_USER_SUCCESS': {
             state = {...state, user: action.payload}
+            return state;
+        }
+
+        case 'FETCH_PART_MEMBERS_SUCCESS': {
+            state = {...state, partMembers: action.payload}
             return state;
         }
 

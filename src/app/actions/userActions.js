@@ -17,7 +17,6 @@ export function userSignIn(email, password) {
               .doc(user.uid)
               .get()
               .then(user => {
-                  console.log('working');
                 dispatch({
                   type: 'USER_DATA_RECEIVED',
                   payload: user.data(),
@@ -29,6 +28,27 @@ export function userSignIn(email, password) {
             dispatch({type: 'USER_SIGN_IN_ERROR', payload: error});
         });
     }
+}
+
+export function getAllMembersByPartName(singingPart) {
+  return function(dispatch) {
+    firebase
+    .firestore()
+    .collection('users')
+    .where('singingPart', '==', singingPart)
+    .get()
+    .then(snapshot => {
+      let members = [];
+      snapshot
+      .forEach(doc => {
+        console.log('part members:', doc.data())
+        members.push(doc.data());
+      })
+      dispatch({type: 'FETCH_PART_MEMBERS_SUCCESS', payload: members})
+    }).catch(err => {
+      console.log('Error getting part members', err);
+    });
+  }
 }
 
 export function setUserName(name) {
