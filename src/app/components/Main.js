@@ -4,7 +4,7 @@ import SignInPage from './SignInPage';
 import UserDashboardPage from './UserDashboard/UserDashboardPage';
 import MusicLibraryPage from './MusicLibrary/MusicLibraryPage';
 import CheckOffPage from './CheckOff/CheckOffPage';
-import UserSignUp from './UserSignUp/UserSignUp';
+import UserSignUp from './UserSignUp/UserSignUpContinued';
 
 const Main = () => (
    <main>
@@ -14,7 +14,7 @@ const Main = () => (
          <Route path="/music-library" component={MusicLibraryPage} />
          <Route path="/checkoff" component={CheckOffPage} />
          <Route path="/user-settings" component={UserSettingsPage} />
-         <Route path="/user-sign-up" component={UserSignUp} />
+         <Route path="/user-sign-up" component={UserSignUpContinued} />
       </Switch>
    </main>
 );
