@@ -4,7 +4,8 @@ import SignInPage from './SignInPage';
 import UserDashboardPage from './UserDashboard/UserDashboardPage';
 import MusicLibraryPage from './MusicLibrary/MusicLibraryPage';
 import CheckOffPage from './CheckOff/CheckOffPage';
-import UserSignUp from './UserSignUp/UserSignUpContinued';
+import UserSignUpContinued from './UserSignUp/UserSignUpContinued';
+import UserSettingsPage from './UserSettings/UserSettingsPage';
 
 const Main = () => (
    <main>
