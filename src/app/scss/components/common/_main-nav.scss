@@ -1,9 +1,7 @@
-
 nav.main-nav {
   background: lighten($aabc-dark-blue, 5%);
   min-height: 51px;
   @include clearfix();
-
 
   a.nav-branding {
     float: left;
@@ -58,8 +56,6 @@ nav.main-nav {
       display: inline-block;
     }
   }
-
-
 
   a {
     color: white;
