@@ -1,67 +1,67 @@
 nav.main-nav {
-  background: lighten($aabc-dark-blue, 5%);
-  min-height: 51px;
-  @include clearfix();
+   background: lighten($aabc-dark-blue, 5%);
+   min-height: 51px;
+   @include clearfix();
 
-  a.nav-branding {
-    float: left;
-    padding-top: 0.4rem;
-    padding-left: 1rem;
-    padding-right: 2rem;
-    font-family: $aabc-dancing-script;
-    font-size: 1.5rem;
-  }
+   a.nav-branding {
+      float: left;
+      padding-top: 0.4rem;
+      padding-left: 1rem;
+      padding-right: 2rem;
+      font-family: $aabc-dancing-script;
+      font-size: 1.5rem;
+   }
 
-  ul.nav-links {
-    list-style: none;
-    width: 80%;
-    float: right;
-    text-align: right;
-    margin-bottom: 0;
+   ul.nav-links {
+      list-style: none;
+      width: 80%;
+      float: right;
+      text-align: right;
+      margin-bottom: 0;
 
-    li {
-      display: inline-block;
-      padding: 1rem;
-      font-family: $aabc-pt-sans-narrow;
-      color: $aabc-light-grey;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 0.8rem;
-      @include transition(0.2s all ease-in-out);
+      li {
+         display: inline-block;
+         padding: 1rem;
+         font-family: $aabc-pt-sans-narrow;
+         color: $aabc-light-grey;
+         font-weight: 900;
+         text-transform: uppercase;
+         letter-spacing: 2px;
+         font-size: 0.8rem;
+         @include transition(0.2s all ease-in-out);
 
-      i {
-        color: $aabc-light-grey;
-        margin-right: 5px;
-        @include transition(0.2s all ease-in-out);
+         i {
+            color: $aabc-light-grey;
+            margin-right: 5px;
+            @include transition(0.2s all ease-in-out);
+         }
+
+         &:hover {
+            color: $aabc-white;
+            background: $aabc-red;
+            cursor: pointer;
+
+            i {
+               color: $aabc-white;
+               margin-right: 2px;
+            }
+         }
       }
+   }
+
+   ul.user-info {
+      list-style: none;
+      li {
+         padding: 0;
+         display: inline-block;
+      }
+   }
+
+   a {
+      color: white;
 
       &:hover {
-        color: $aabc-white;
-        background: $aabc-red;
-        cursor: pointer;
-
-        i {
-          color: $aabc-white;
-          margin-right: 2px;
-        }
+         text-decoration: none;
       }
-    }
-  }
-
-  ul.user-info {
-    list-style: none;
-    li {
-      padding: 0;
-      display: inline-block;
-    }
-  }
-
-  a {
-    color: white;
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
+   }
 }

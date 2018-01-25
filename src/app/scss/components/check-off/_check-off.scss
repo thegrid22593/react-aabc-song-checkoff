@@ -1,40 +1,40 @@
 .checkoff-menu-bar {
-  background: $aabc-light-grey;
-  width: 100%;
-  padding: 1rem;
-  .part-info {
-    width: 100%;
-    .part-leader-avatar,
-    .part-leader-name,
-    .part-leader-part {
-      display: inline-block;
-      padding: 0 0.4rem;
-      font-family: $aabc-pt-sans-narrow;
-      font-weight: 900;
-    }
-
-    .part-leader-avatar {
-      margin-left: 3rem;
-      img {
-        max-width: 30px;
-        border-radius: 50%;
+   background: $aabc-light-grey;
+   width: 100%;
+   padding: 1rem;
+   .part-info {
+      width: 100%;
+      .part-leader-avatar,
+      .part-leader-name,
+      .part-leader-part {
+         display: inline-block;
+         padding: 0 0.4rem;
+         font-family: $aabc-pt-sans-narrow;
+         font-weight: 900;
       }
-    }
-  }
+
+      .part-leader-avatar {
+         margin-left: 3rem;
+         img {
+            max-width: 30px;
+            border-radius: 50%;
+         }
+      }
+   }
 }
 
 .part-members {
-  margin: 2rem 0;
-  .member {
-    text-align: center;
-    border-radius: 5px;
-    padding: 2rem;
-    margin: 1rem 0;
-    box-shadow: 0px 0px 5px $aabc-light-grey;
+   margin: 2rem 0;
+   .member {
+      text-align: center;
+      border-radius: 5px;
+      padding: 2rem;
+      margin: 1rem 0;
+      box-shadow: 0px 0px 5px $aabc-light-grey;
 
-    img {
-      max-width: 100px;
-      border-radius: 50%;
-    }
-  }
+      img {
+         max-width: 100px;
+         border-radius: 50%;
+      }
+   }
 }

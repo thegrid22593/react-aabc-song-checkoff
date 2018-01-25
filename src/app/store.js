@@ -14,7 +14,7 @@ const middleware = applyMiddleware(promise(), thunk, createLogger());
 const store = createStore(reducer, stateLoader.loadState(), middleware);
 
 store.subscribe(() => {
-  stateLoader.saveState(store.getState());
+   stateLoader.saveState(store.getState());
 });
 
 module.exports = store;
