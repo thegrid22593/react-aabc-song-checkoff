@@ -13,13 +13,15 @@ class MusicLibrary extends React.Component {
    }
 
    toggleSongDetail(e, index) {
-      this.setState({ songDetailIsActive: !this.state.songDetailIsActive });
       e.preventDefault();
       console.log('open detail', e);
       console.log('index', index);
       let activatedSong = this.props.songs[index];
       console.log(activatedSong);
-      this.setState({ activeSong: activatedSong });
+      this.setState({
+         activeSong: activatedSong,
+         songDetailIsActive: !this.state.songDetailIsActive,
+      });
    }
 
    render() {

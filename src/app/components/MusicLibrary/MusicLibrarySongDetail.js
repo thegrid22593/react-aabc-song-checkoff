@@ -11,7 +11,9 @@ class MusicLibraySongDetail extends React.Component {
    }
 
    componentWillReceiveProps(nextProps) {
-      this.setState({ activeSong: nextProps.activeSong });
+      this.setState({
+         activeSong: nextProps.activeSong,
+      });
    }
 
    songCompleted(songName) {}
