@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 require('../../scss/style.scss');
 import AppTopBar from '../AppTopBar';
-import UserDashboardSidebar from '../UserDashboardSidebar';
+import AppSidebar from '../AppSidebar';
 import MusicLibrary from './MusicLibrary';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
@@ -23,7 +23,7 @@ class MusicLibraryPage extends React.Component {
          <div>
             <AppTopBar />
             <div className="user-dashboard-sidebar-container">
-               <UserDashboardSidebar user={this.props.user} />
+               <AppSidebar user={this.props.user} />
             </div>
             <MusicLibrary songs={this.props.user.songs} />
          </div>

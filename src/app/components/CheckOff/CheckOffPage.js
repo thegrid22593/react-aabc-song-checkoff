@@ -9,7 +9,7 @@ import CheckOffFeedback from './CheckOffFeedback';
 import CheckOffPartLeaderProfile from './CheckOffPartLeaderProfile';
 import { getAllMembersByPartName } from '../../actions/userActions';
 import AppTopBar from '../AppTopBar';
-import UserDashboardSidebar from '../UserDashboardSidebar';
+import AppSidebar from '../AppSidebar';
 
 class CheckOffPage extends React.Component {
    constructor(props) {
@@ -27,7 +27,7 @@ class CheckOffPage extends React.Component {
          <div>
             <AppTopBar />
             <div className="user-dashboard-sidebar-container">
-               <UserDashboardSidebar user={this.props.user.user} />
+               <AppSidebar user={this.props.user.user} />
             </div>
             <section className="checkoff">
                <CheckOffPartLeaderProfile user={this.props.user.user} />

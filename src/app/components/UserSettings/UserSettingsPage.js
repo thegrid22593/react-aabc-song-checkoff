@@ -4,7 +4,7 @@ require('../../scss/style.scss');
 import firebase from 'firebase';
 
 import AppTopBar from '../AppTopBar';
-import UserDashboardSidebar from '../UserDashboardSidebar';
+import AppSidebar from '../AppSidebar';
 import UserSettings from './UserSettings';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
@@ -21,7 +21,7 @@ class UserSettingsPage extends React.Component {
          <div>
             <AppTopBar />
             <div className="user-dashboard-sidebar-container">
-               <UserDashboardSidebar user={this.props.user} />
+               <AppSidebar user={this.props.user} />
             </div>
             <UserSettings user={this.props.user} />
          </div>

@@ -5,7 +5,7 @@ require('firebase/firestore');
 require('../scss/style.scss');
 import { Switch, Route, Router } from 'react-router-dom';
 import AppTopBar from './AppTopBar';
-import UserDashboardSidebar from './UserDashboardSidebar';
+import AppSidebar from './AppSidebar';
 import UserDashboard from './UserDashboard';
 import UserDashboardMenu from './UserDashboardMenu';
 import UserDashboardSummary from './UserDashboardSummary';
@@ -25,7 +25,7 @@ class UserDashboardPage extends React.Component {
          <div>
             <AppTopBar />
             <div className="user-dashboard-sidebar-container">
-               <UserDashboardSidebar user={this.props.user} />
+               <AppSidebar user={this.props.user} />
             </div>
             <div className="user-dashboard-content-container">
                <UserDashboardProfile user={this.props.user} />
