@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SongURL from './SongURL';
 
 class MusicLibraySongDetail extends React.Component {
    constructor(props) {
@@ -18,7 +19,19 @@ class MusicLibraySongDetail extends React.Component {
       console.log(this.state);
    }
 
-   songCompleted(songName) {}
+   renderSongUrlList(part, index) {
+      console.log('part', part);
+      let urls = Object.values(part.urls);
+      let keys = Object.keys(part.urls);
+      console.log('keys', keys);
+      console.log('values', urls);
+   }
+
+   songCompleted(songName) {
+      console.log('completed', songName);
+   }
+
+   playSong(url) {}
 
    render() {
       return (
@@ -50,10 +63,12 @@ class MusicLibraySongDetail extends React.Component {
                      return (
                         <div key={index} className="song-parts">
                            <div className="part-name">{part.name}</div>
+                           <ul>
+                              <SongURL song={part} index={index} />
+                           </ul>
                         </div>
                      );
                   })}
-
                   {/* <li (click)="playSong(part.urls.pianoSolfa, activeSong, 'Piano Solfa')" *ngIf="part.urls.pianoSolfa"><i className="fa fa-play-circle-o" aria-hidden="true"></i>Piano Solfa</li>
                   <li (click)="playSong(part.urls.pianoWords, activeSong, 'Piano Words') "*ngIf="part.urls.pianoWords"><i className="fa fa-play-circle-o" aria-hidden="true"></i>Piano Words</li>
                   <li (click)="playSong(part.urls.trackWords, activeSong, 'Track Words') "*ngIf="part.urls.trackWords"><i className="fa fa-play-circle-o" aria-hidden="true"></i>Track Words</li> */}
