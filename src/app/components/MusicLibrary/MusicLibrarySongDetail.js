@@ -14,6 +14,8 @@ class MusicLibraySongDetail extends React.Component {
       this.setState({
          activeSong: nextProps.activeSong,
       });
+
+      console.log(this.state);
    }
 
    songCompleted(songName) {}
@@ -28,7 +30,9 @@ class MusicLibraySongDetail extends React.Component {
             <div className="crop-height">
                <img src="" alt="The All-American Boys Chorus" />
                <i
-                  onClick={this.props.toggleSongDetail}
+                  onClick={e => {
+                     this.props.toggleSongDetail(e, null);
+                  }}
                   className="fa fa-close"
                   aria-hidden="true"
                />
@@ -42,11 +46,13 @@ class MusicLibraySongDetail extends React.Component {
                </span>
                <hr />
                <ul>
-                  {/* {this.state.activeSong.parts.map((parts, index) => {
-                     <div className="song-parts">
-                        <div className="part-name">{parts.name}</div>
-                     </div>;
-                  })} */}
+                  {this.state.activeSong.parts.map((part, index) => {
+                     return (
+                        <div key={index} className="song-parts">
+                           <div className="part-name">{part.name}</div>
+                        </div>
+                     );
+                  })}
 
                   {/* <li (click)="playSong(part.urls.pianoSolfa, activeSong, 'Piano Solfa')" *ngIf="part.urls.pianoSolfa"><i className="fa fa-play-circle-o" aria-hidden="true"></i>Piano Solfa</li>
                   <li (click)="playSong(part.urls.pianoWords, activeSong, 'Piano Words') "*ngIf="part.urls.pianoWords"><i className="fa fa-play-circle-o" aria-hidden="true"></i>Piano Words</li>

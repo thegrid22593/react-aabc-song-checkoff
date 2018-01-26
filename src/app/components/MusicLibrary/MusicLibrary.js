@@ -8,7 +8,9 @@ class MusicLibrary extends React.Component {
 
       this.state = {
          songDetailIsActive: false,
-         activeSong: {},
+         activeSong: {
+            parts: [],
+         },
       };
    }
 
@@ -16,12 +18,17 @@ class MusicLibrary extends React.Component {
       e.preventDefault();
       console.log('open detail', e);
       console.log('index', index);
-      let activatedSong = this.props.songs[index];
-      console.log(activatedSong);
-      this.setState({
-         activeSong: activatedSong,
-         songDetailIsActive: !this.state.songDetailIsActive,
-      });
+      console.log('this', this);
+      if (index !== null) {
+         this.setState({
+            activeSong: this.props.songs[index],
+            songDetailIsActive: true,
+         });
+      } else {
+         this.setState({
+            songDetailIsActive: false,
+         });
+      }
    }
 
    render() {
@@ -93,11 +100,6 @@ class MusicLibrary extends React.Component {
                                  </tr>
                               );
                            })}
-                           <tr>
-                              {/* <td>{song.name}</td> */}
-                              {/* <td>{song.difficulty}</td> */}
-                              {/* <td>{song.time}</td> */}
-                           </tr>
                         </tbody>
                      </table>
                   </div>
