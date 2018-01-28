@@ -20,8 +20,12 @@ class MusicLibrary extends React.Component {
       console.log('index', index);
       console.log('this', this);
       if (index !== null) {
+            let activeSong = {
+                index: index,
+                ...this.props.songs[index]
+            }
          this.setState({
-            activeSong: this.props.songs[index],
+            activeSong: activeSong,
             songDetailIsActive: true,
          });
       } else {
@@ -29,6 +33,13 @@ class MusicLibrary extends React.Component {
             songDetailIsActive: false,
          });
       }
+   }
+
+   completedSong() {
+       console.log('fired');
+       let index = this.state.activeSong.index;
+       this.props.songs[index].completed = true;
+       this.props.updateUserSongs(this.props.songs[index]);
    }
 
    render() {
@@ -85,22 +96,24 @@ class MusicLibrary extends React.Component {
                               <th>Time</th>
                            </tr>
                         </thead>
-                        <tbody>
+                        
                            {this.props.songs.map((song, index) => {
                               return (
-                                 <tr
-                                    key={index}
-                                    onClick={e => {
-                                       this.toggleSongDetail(e, index);
-                                    }}
-                                 >
-                                    <td>{song.name}</td>
-                                    <td>{song.difficulty}</td>
-                                    <td>{song.time}</td>
-                                 </tr>
+                                <tbody className={song.completed ? 'completed' : ''}>
+                                    <tr
+                                        key={index}
+                                        onClick={e => {
+                                        this.toggleSongDetail(e, index);
+                                        }}
+                                    >
+                                        <td>{song.name}</td>
+                                        <td>{song.difficulty}</td>
+                                        <td>{song.time}</td>
+                                    </tr>
+                                 </tbody>
                               );
                            })}
-                        </tbody>
+                        
                      </table>
                   </div>
                </section>
@@ -109,6 +122,7 @@ class MusicLibrary extends React.Component {
                isActive={this.state.songDetailIsActive}
                toggleSongDetail={this.toggleSongDetail.bind(this)}
                activeSong={this.state.activeSong}
+               completedSong={this.completedSong.bind(this)}
             />
          </div>
       );

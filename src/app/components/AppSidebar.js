@@ -6,6 +6,7 @@ require('../scss/style.scss');
 class AppSidebar extends React.Component {
    constructor(props) {
       super(props);
+      console.log('sidebar props', props);
    }
 
    checkIfPartleader(user) {
@@ -24,6 +25,7 @@ class AppSidebar extends React.Component {
    }
 
    render() {
+       const songsRemaining = this.props.user.songs.length - this.props.user.completedSongs;
       return (
          <nav className="sidebar-nav">
             <ul className="nav-links">
@@ -58,11 +60,11 @@ class AppSidebar extends React.Component {
                </li>
             </ul>
 
-            {/* <ul class="user-details">
-                    <div class="completion-percentage"><span>Completion</span> {{ userPercentage }}%</div>
-                    <div class="completion-percentage-bar"><div class="completion" [ngStyle]="{'width': userPercentage+'%'}"></div></div>
-                    <div class="songs-remaining"><span>Songs Remaining</span> {{ userSongsRemaining }}</div>
-                </ul> */}
+            <ul className="user-details">
+                <div className="completion-percentage"><span>Completion</span> { this.props.user.percentage }%</div>
+                <div className="completion-percentage-bar"><div className="completion" style={{width: this.props.user.percentage+"%"}}></div></div>
+                <div className="songs-remaining"><span>Songs Remaining</span> { songsRemaining }</div>
+            </ul>
          </nav>
       );
    }

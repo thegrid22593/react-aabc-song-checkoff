@@ -27,9 +27,9 @@ class MusicLibraySongDetail extends React.Component {
       console.log('values', urls);
    }
 
-   songCompleted(songName) {
-      console.log('completed', songName);
-   }
+//    songCompleted(songName) {
+//       console.log('completed', songName);
+//    }
 
    playSong(url) {}
 
@@ -77,7 +77,7 @@ class MusicLibraySongDetail extends React.Component {
             <button
                className="checked-off-btn"
                onClick={() => {
-                  this.songCompleted(this.state.activeSong.name);
+                  this.props.completedSong();
                }}
             >
                Checked Off

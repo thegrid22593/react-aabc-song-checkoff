@@ -60,7 +60,7 @@ export function updateUserData(user) {
          .then(() => {
             dispatch({
                type: 'UPDATE_USER_SUCCESS',
-               payload: { loading: true },
+               payload: { loading: false },
             });
             dispatch(fetchUser(user.uid));
          })
