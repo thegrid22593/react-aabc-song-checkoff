@@ -25,7 +25,7 @@ class AppSidebar extends React.Component {
    }
 
    render() {
-       const songsRemaining = this.props.user.songs.length - this.props.user.completedSongs;
+    //    const songsRemaining = this.props.user.songs.length - this.props.user.completedSongs;
       return (
          <nav className="sidebar-nav">
             <ul className="nav-links">
@@ -63,7 +63,7 @@ class AppSidebar extends React.Component {
             <ul className="user-details">
                 <div className="completion-percentage"><span>Completion</span> { this.props.user.percentage }%</div>
                 <div className="completion-percentage-bar"><div className="completion" style={{width: this.props.user.percentage+"%"}}></div></div>
-                <div className="songs-remaining"><span>Songs Remaining</span> { songsRemaining }</div>
+                {/* <div className="songs-remaining"><span>Songs Remaining</span> { songsRemaining }</div> */}
             </ul>
          </nav>
       );
