@@ -21,6 +21,9 @@ class AppTopBar extends React.Component {
                <li>
                   <i className="fa fa-sign-out" aria-hidden="true" />Sign Out
                </li>
+               <li>
+                  <i className="fa fa-inbox" aria-hidden="true" />
+               </li>
             </ul>
             <ul className="user-info">
                <li>
