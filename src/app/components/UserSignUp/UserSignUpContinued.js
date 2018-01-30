@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 require('../../scss/style.scss');
+import { updateUserData } from '../../actions/userActions';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 class UserSignUpContinued extends React.Component {
    constructor(props) {
@@ -22,6 +25,8 @@ class UserSignUpContinued extends React.Component {
       console.log('change', change);
       this.setState(change);
    }
+
+   updateUserInfo() {}
 
    render() {
       return (
@@ -87,5 +92,11 @@ class UserSignUpContinued extends React.Component {
       );
    }
 }
+
+UserSignUpContinued = withRouter(
+   connect(store => {
+      return {};
+   })(UserSignUpContinued)
+);
 
 module.exports = UserSignUpContinued;

@@ -14,6 +14,20 @@ export default function reducer(
    action
 ) {
    switch (action.type) {
+      case 'USER_SIGNED_UP_PENDING': {
+         state = { ...state, loading: true };
+         return state;
+      }
+
+      case 'USER_SIGNED_UP_SUCCESS': {
+         state = { ...state, userAuth: action.payload, loading: false };
+      }
+
+      case 'USER_SIGNED_UP_ERROR': {
+         state = { ...state, error: action.payload, loading: false };
+         return state;
+      }
+
       case 'USER_SIGNED_IN_SUCCESS': {
          state = { ...state, userAuth: action.payload, fetched: true };
          return state;

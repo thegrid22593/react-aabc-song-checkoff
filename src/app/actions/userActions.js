@@ -48,6 +48,24 @@ export function fetchUser(userid) {
    };
 }
 
+export function userSignUp(email, password) {
+   return function(dispatch) {
+      dispatch({ type: 'USER_SIGNED_UP_PENDING', payload: { loading: true } });
+      firebase
+         .auth()
+         .createUserWithEmailAndPassword(email, password)
+         .then(user => {
+            if (user) {
+               dispatch({ type: 'USER_SIGNED_UP_SUCCESS', payload: user });
+            }
+         })
+         .catch(error => {
+            dispatch({ type: 'USER_SIGNED_UP_ERROR', payload: error });
+            console.log('could not create this user', error);
+         });
+   };
+}
+
 export function updateUserData(user) {
    console.log('user action', user);
    return function(dispatch) {
