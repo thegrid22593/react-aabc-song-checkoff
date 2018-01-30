@@ -92,169 +92,137 @@ class UserDashboardSummary extends React.Component {
 
    render() {
       return (
-         <div className="dashboard-member-part-info">
-            <div className="container-full">
-               <div className="row">
-                  <div className="col-lg-5 col-md-6 col-sm-12">
-                     <div className="part-container">
-                        <div className="part-container-header clearfix">
-                           <h3 className="col-lg-6">Basses</h3>
-                           <h5 className="col-lg-6">
-                              {this.state.bassAvgPercentage}%
-                           </h5>
-                        </div>
-                        <div className="part-table">
-                           <div className="col-lg-8">Name</div>
-                           <div className="col-lg-4">Percentage</div>
-                        </div>
-                        {this.state.users.map((user, index) => {
-                           if (user.singingPart === 'Bass') {
-                              return (
-                                 <div
-                                    key={index}
-                                    className="col-lg-12 part-member"
-                                 >
-                                    <div className="col-lg-2">
-                                       <img
-                                          className="part-member-avatar"
-                                          src={user.profilePicURL}
-                                          alt=""
-                                       />
-                                    </div>
-                                    <div className="col-lg-6">
-                                       {user.firstName} {user.lastName}
-                                    </div>
-                                    <div className="col-lg-4">
-                                       {user.percentage}%
-                                    </div>
-                                    {/* <div className="col-lg-4">0%</div> */}
-                                 </div>
-                              );
-                           }
-                        })}
-                     </div>
-                  </div>
-
-                  <div className="col-lg-5 col-md-6 col-sm-12">
-                     <div className="part-container">
-                        <div className="part-container-header clearfix">
-                           <h3 className="col-lg-6">Second Tenor</h3>
-                           <h5 className="col-lg-6">
-                              {this.state.secondTenorAvgPercentage}%
-                           </h5>
-                        </div>
-                        <div className="part-table">
-                           <div className="col-lg-8">Name</div>
-                           <div className="col-lg-4">Percentage</div>
-                        </div>
-                        {this.state.users.map((user, index) => {
-                           if (user.singingPart === 'Second Tenor') {
-                              return (
-                                 <div
-                                    key={index}
-                                    className="col-lg-12 part-member"
-                                 >
-                                    <div className="col-lg-2">
-                                       <img
-                                          className="part-member-avatar"
-                                          src={user.profilePicURL}
-                                          alt=""
-                                       />
-                                    </div>
-                                    <div className="col-lg-6">
-                                       {user.firstName} {user.lastName}
-                                    </div>
-                                    <div className="col-lg-4">
-                                       {user.percentage}%
-                                    </div>
-                                    {/* <div className="col-lg-4">0%</div> */}
-                                 </div>
-                              );
-                           }
-                        })}
-                     </div>
-                  </div>
-
-                  <div className="col-lg-5 col-md-6 col-sm-12">
-                     <div className="part-container">
-                        <div className="part-container-header clearfix">
-                           <h3 className="col-lg-6">First Tenor</h3>
-                           <h5 className="col-lg-6">
-                              {this.state.firstTenorAvgPercentage}%
-                           </h5>
-                        </div>
-                        <div className="part-table">
-                           <div className="col-lg-8">Name</div>
-                           <div className="col-lg-4">Percentage</div>
-                        </div>
-                        {this.state.users.map((user, index) => {
-                           if (user.singingPart === 'First Tenor') {
-                              return (
-                                 <div
-                                    key={index}
-                                    className="col-lg-12 part-member"
-                                 >
-                                    <div className="col-lg-2">
-                                       <img
-                                          className="part-member-avatar"
-                                          src={user.profilePicURL}
-                                          alt=""
-                                       />
-                                    </div>
-                                    <div className="col-lg-6">
-                                       {user.firstName} {user.lastName}
-                                    </div>
-                                    <div className="col-lg-4">
-                                       {user.percentage}%
-                                    </div>
-                                    {/* <div className="col-lg-4">0%</div> */}
-                                 </div>
-                              );
-                           }
-                        })}
-                     </div>
-                  </div>
-
-                  <div className="col-lg-5 col-md-6 col-sm-12">
-                     <div className="part-container">
-                        <div className="part-container-header clearfix">
-                           <h3 className="col-lg-6">Baritone</h3>
-                           <h5 className="col-lg-6">
-                              {this.state.baritoneAvgPercentage}%
-                           </h5>
-                        </div>
-                        <div className="part-table">
-                           <div className="col-lg-8">Name</div>
-                           <div className="col-lg-4">Percentage</div>
-                        </div>
-                        {this.state.users.map((user, index) => {
-                           if (user.singingPart === 'Baritone') {
-                              return (
-                                 <div
-                                    key={index}
-                                    className="col-lg-12 part-member"
-                                 >
-                                    <div className="col-lg-2">
-                                       <img
-                                          className="part-member-avatar"
-                                          src={user.profilePicURL}
-                                          alt=""
-                                       />
-                                    </div>
-                                    <div className="col-lg-6">
-                                       {user.firstName} {user.lastName}
-                                    </div>
-                                    <div className="col-lg-4">
-                                       {user.percentage}%
-                                    </div>
-                                    {/* <div className="col-lg-4">0%</div> */}
-                                 </div>
-                              );
-                           }
-                        })}
-                     </div>
-                  </div>
+         <div className="dashboard-member-part-tables">
+            <div className="part-container">
+               <div className="part-container-header clearfix">
+                  <h3 className="part-name">Basses</h3>
+                  <h5 className="part-average-percentage">
+                     {this.state.bassAvgPercentage}%
+                  </h5>
                </div>
+               <div className="part-table">
+                  <div className="part-table-name">Name</div>
+                  <div className="part-table-percentage">Percentage</div>
+               </div>
+               {this.state.users.map((user, index) => {
+                  if (user.singingPart === 'Bass') {
+                     return (
+                        <div key={index} className="part-member">
+                           <img
+                              className="part-member-avatar"
+                              src={user.profilePicURL}
+                              alt=""
+                           />
+                           <div className="part-member-name">
+                              {user.firstName} {user.lastName}
+                           </div>
+                           <div className="part-member-percentage">
+                              {user.percentage}%
+                           </div>
+                           {/* <div className="col-lg-4">0%</div> */}
+                        </div>
+                     );
+                  }
+               })}
+            </div>
+
+            <div className="part-container">
+               <div className="part-container-header clearfix">
+                  <h3 className="part-name">Second Tenor</h3>
+                  <h5 className="part-average-percentage">
+                     {this.state.secondTenorAvgPercentage}%
+                  </h5>
+               </div>
+               <div className="part-table">
+                  <div className="part-table-name">Name</div>
+                  <div className="part-table-percentage">Percentage</div>
+               </div>
+               {this.state.users.map((user, index) => {
+                  if (user.singingPart === 'Second Tenor') {
+                     return (
+                        <div key={index} className="part-member">
+                           <img
+                              className="part-member-avatar"
+                              src={user.profilePicURL}
+                              alt=""
+                           />
+                           <div className="part-member-name">
+                              {user.firstName} {user.lastName}
+                           </div>
+                           <div className="part-member-percentage">
+                              {user.percentage}%
+                           </div>
+                           {/* <div className="col-lg-4">0%</div> */}
+                        </div>
+                     );
+                  }
+               })}
+            </div>
+
+            <div className="part-container">
+               <div className="part-container-header clearfix">
+                  <h3 className="part-name">First Tenor</h3>
+                  <h5 className="part-average-percentage">
+                     {this.state.firstTenorAvgPercentage}%
+                  </h5>
+               </div>
+               <div className="part-table">
+                  <div className="part-table-name">Name</div>
+                  <div className="part-table-percentage">Percentage</div>
+               </div>
+               {this.state.users.map((user, index) => {
+                  if (user.singingPart === 'First Tenor') {
+                     return (
+                        <div key={index} className="part-member">
+                           <img
+                              className="part-member-avatar"
+                              src={user.profilePicURL}
+                              alt=""
+                           />
+                           <div className="part-member-name">
+                              {user.firstName} {user.lastName}
+                           </div>
+                           <div className="part-member-percentage">
+                              {user.percentage}%
+                           </div>
+                           {/* <div className="col-lg-4">0%</div> */}
+                        </div>
+                     );
+                  }
+               })}
+            </div>
+
+            <div className="part-container">
+               <div className="part-container-header clearfix">
+                  <h3 className="part-name">Baritone</h3>
+                  <h5 className="part-average-percentage">
+                     {this.state.baritoneAvgPercentage}%
+                  </h5>
+               </div>
+               <div className="part-table">
+                  <div className="part-table-name">Name</div>
+                  <div className="part-table-percentage">Percentage</div>
+               </div>
+               {this.state.users.map((user, index) => {
+                  if (user.singingPart === 'Baritone') {
+                     return (
+                        <div key={index} className="part-member">
+                           <img
+                              className="part-member-avatar"
+                              src={user.profilePicURL}
+                              alt=""
+                           />
+                           <div className="part-member-name">
+                              {user.firstName} {user.lastName}
+                           </div>
+                           <div className="part-member-percentage">
+                              {user.percentage}%
+                           </div>
+                           {/* <div className="col-lg-4">0%</div> */}
+                        </div>
+                     );
+                  }
+               })}
             </div>
          </div>
       );

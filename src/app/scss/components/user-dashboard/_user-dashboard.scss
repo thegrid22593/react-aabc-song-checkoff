@@ -3,8 +3,9 @@
 @import './partials/rename';
 @import './partials/sidebar';
 @import './partials/summary';
+@import './partials/feedback';
 
 .user-dashboard-content-container {
-    width: 85%;
-    float: right;
+   background: #f9f9f9;
+   @include make-col(12);
 }

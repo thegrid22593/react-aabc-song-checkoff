@@ -1,0 +1,23 @@
+.feedback {
+   margin: 2rem;
+   background: $aabc-white;
+   border-radius: 8px;
+   border: 1px solid $aabc-light-grey;
+
+   .feedback-list {
+      li {
+         padding: 0.5rem;
+         border-bottom: 1px solid lighten($aabc-light-grey, 10%);
+         @include transition(0.2s all ease-in-out);
+         &:hover {
+            cursor: pointer;
+            @include box-shadow(0px 1px 5px fn-transparent-color(#666, 0.1));
+         }
+      }
+   }
+}
+
+.feedback-message {
+   width: 30%;
+   float: right;
+}

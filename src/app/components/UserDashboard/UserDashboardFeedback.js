@@ -30,24 +30,28 @@ class UserDashboardFeedback extends React.Component {
    render() {
       return (
          <section className="feedback">
-            <div className="songs-with-feedback">
-               <ul className="feedback-list">
-                  {this.props.user.songs.map((song, index) => {
-                     if (song.notes !== undefined) {
-                        return (
-                           <li
-                              key={index}
-                              onClick={() => this.showFeedback(song)}
-                              className="feedback-song"
-                           >
-                              {song.name}
-                           </li>
-                        );
-                     }
-                  })}
-               </ul>
+            <div className="col-lg-4 columns">
+               <div className="songs-with-feedback">
+                  <ul className="feedback-list">
+                     {this.props.user.songs.map((song, index) => {
+                        if (song.notes !== undefined) {
+                           return (
+                              <li
+                                 key={index}
+                                 onClick={() => this.showFeedback(song)}
+                                 className="feedback-song"
+                              >
+                                 {song.name}
+                              </li>
+                           );
+                        }
+                     })}
+                  </ul>
+               </div>
+               <UserDashboardSingleFeedback
+                  feedback={this.state.activeFeedback}
+               />
             </div>
-            <UserDashboardSingleFeedback feedback={this.state.activeFeedback} />
          </section>
       );
    }

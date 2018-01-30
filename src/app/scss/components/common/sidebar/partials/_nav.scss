@@ -1,6 +1,5 @@
 .user-dashboard-sidebar-container {
-   width: 15%;
-   float: left;
+   @include make-col(2);
    height: 100vh;
    nav.sidebar-nav {
       background: #fbfbfb;

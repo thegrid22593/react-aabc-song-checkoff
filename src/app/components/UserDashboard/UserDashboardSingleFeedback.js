@@ -26,7 +26,7 @@ class UserDashboardSingleFeedback extends React.Component {
 
    render() {
       return (
-         <div className="single-feedback">
+         <div className="single-feedback col-lg-6 columns">
             {this.props.feedback.map((feedback, index) => {
                return <h2 key={index}>{feedback.title}</h2>;
             })}

@@ -3,139 +3,129 @@ $spin-duration: 1s;
 $pulse-duration: 750ms;
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+   0% {
+      transform: rotate(0deg);
+   }
+   100% {
+      transform: rotate(360deg);
+   }
 }
 
-.dashboard-member-part-info {
-  .part-container {
-    display: inline-block;
-    .part-loading {
-        border-radius: 50%;
-        width: $base-line-height;
-        height: $base-line-height;
-        border: .25rem solid $aabc-light-grey;
-        border-top-color: $aabc-cold-grey;
-        animation: spin $spin-duration infinite linear;
-      &--double {
-        border-style: double;
-        border-width: .5rem;
+.dashboard-member-part-tables {
+   @include make-row();
+   .part-container {
+      @include make-col(6);
+      padding: 2rem;
+      .part-loading {
+         border-radius: 50%;
+         width: $base-line-height;
+         height: $base-line-height;
+         border: 0.25rem solid $aabc-light-grey;
+         border-top-color: $aabc-cold-grey;
+         animation: spin $spin-duration infinite linear;
+         &--double {
+            border-style: double;
+            border-width: 0.5rem;
+         }
       }
-    }
-    .part-container-header {
-      background: lighten($aabc-light-grey, 10%);
-      padding: 0.5rem;
-      margin-bottom: 0.25rem;
+      .part-container-header {
+         background: lighten($aabc-light-grey, 10%);
+         padding: 0.5rem;
+         margin-bottom: 0.25rem;
 
-      h3 {
-        font-size: 0.9rem;
-        color: $aabc-cold-grey;
-        font-family: $aabc-pt-sans-narrow;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 0;
-      }
+         h3.part-name {
+            font-size: 0.9rem;
+            color: $aabc-cold-grey;
+            font-family: $aabc-pt-sans-narrow;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0;
+            @include make-col(6);
+            float: left;
+         }
 
-      h5 {
-        color: $aabc-cold-grey;
-        padding-top: 0;
-        margin-bottom: 0;
-        font-size: 0.9rem;
-      }
-    }
-
-    .part-member {
-      margin: 0.5rem 0;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid $aabc-light-grey;
-
-      .part-member-avatar {
-        border-radius: 50%;
-        max-width: 40px;
-        margin-right: 15px;
-      }
-    }
-
-
-
-
-    table {
-      tr {
-        th {
-          border-top: none;
-          font-family: $aabc-pt-sans-narrow;
-          font-weight: 600;
-          text-transform: uppercase;
-          font-size: 0.95rem;
-          letter-spacing: 1px;
-        }
-      }
-    }
-  }
-}
-
-.dashboard-member-part-info {
-  .part-container {
-    display: inline-block;
-    padding: 1rem 2rem;
-    .part-loading {
-        border-radius: 50%;
-        width: $base-line-height;
-        height: $base-line-height;
-        border: .25rem solid $aabc-light-grey;
-        border-top-color: $aabc-cold-grey;
-        animation: spin $spin-duration infinite linear;
-      &--double {
-        border-style: double;
-        border-width: .5rem;
-      }
-    }
-    .part-container-header {
-      background: lighten($aabc-light-grey, 10%);
-      padding: 0.5rem;
-      margin-bottom: 0.25rem;
-
-      h3 {
-        font-size: 0.9rem;
-        color: $aabc-cold-grey;
-        font-family: $aabc-pt-sans-narrow;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-
+         h5.part-average-percentage {
+            color: $aabc-cold-grey;
+            padding-top: 0;
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            @include make-col(6);
+            float: right;
+         }
       }
 
-      h5 {
-        color: $aabc-cold-grey;
-        padding-top: 0;
+      .part-table {
+         @include clearfix();
+         .part-table-name {
+            @include make-col(6);
+            float: left;
+         }
+         .part-table-percentage {
+            @include make-col(6);
+            float: right;
+         }
       }
-    }
 
+      .part-member {
+         margin: 0.5rem 0;
+         padding: 0.5rem 0;
+         border-bottom: 1px solid $aabc-light-grey;
+         @include clearfix();
 
-    table {
-      tr {
-        th {
-          border-top: none;
-          font-family: $aabc-pt-sans-narrow;
-          font-weight: 600;
-          text-transform: uppercase;
-          font-size: 0.95rem;
-          letter-spacing: 1px;
-        }
-        td {
-          img {
+         .part-member-avatar {
             border-radius: 50%;
             max-width: 40px;
             margin-right: 15px;
-          }
-        }
+            @include make-col(1);
+            float: left;
+         }
+         .part-member-name {
+            @include make-col(4);
+            float: left;
+         }
+         .part-member-percentage {
+            @include make-col(6);
+            float: right;
+         }
       }
-    }
-  }
-
+   }
 }
+
+// .dashboard-member-part-tables {
+//    .part-container {
+//       display: inline-block;
+//       padding: 1rem 2rem;
+//       .part-loading {
+//          border-radius: 50%;
+//          width: $base-line-height;
+//          height: $base-line-height;
+//          border: 0.25rem solid $aabc-light-grey;
+//          border-top-color: $aabc-cold-grey;
+//          animation: spin $spin-duration infinite linear;
+//          &--double {
+//             border-style: double;
+//             border-width: 0.5rem;
+//          }
+//       }
+//       .part-container-header {
+//          background: lighten($aabc-light-grey, 10%);
+//          padding: 0.5rem;
+//          margin-bottom: 0.25rem;
+
+//          h3 {
+//             font-size: 0.9rem;
+//             color: $aabc-cold-grey;
+//             font-family: $aabc-pt-sans-narrow;
+//             font-weight: bold;
+//             text-transform: uppercase;
+//             letter-spacing: 1px;
+//          }
+
+//          h5 {
+//             color: $aabc-cold-grey;
+//             padding-top: 0;
+//          }
+//       }
+//    }
+// }
