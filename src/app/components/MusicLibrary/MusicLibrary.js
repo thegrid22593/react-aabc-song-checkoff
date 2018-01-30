@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import MusicLibrarySongDetail from './MusicLibrarySongDetail';
+import MusicLibrarySearch from './MusicLibrarySearch';
 
 class MusicLibrary extends React.Component {
    constructor(props) {
@@ -11,7 +12,12 @@ class MusicLibrary extends React.Component {
          activeSong: {
             parts: [],
          },
+         songs: this.props.songs,
       };
+   }
+
+   componentWillReceiveProps(nextProps) {
+      this.setState({ songs: nextProps.songs });
    }
 
    toggleSongDetail(e, index) {
@@ -42,43 +48,72 @@ class MusicLibrary extends React.Component {
       this.props.updateUserSongs(this.props.songs[index]);
    }
 
+   searchLibrary(e) {
+      console.log('working', e.target.value);
+      let searchValue = e.target.value.toLowerCase();
+      let searchedSongs = this.props.songs.filter(song => {
+         return song.name.toLowerCase().includes(searchValue);
+      });
+      this.setState({ songs: searchedSongs });
+   }
+
+   handleSelectChange(e) {
+      console.log('working', e.target.value);
+      let sortValue = e.target.value;
+      let songsToSort = this.state.songs;
+      if (sortValue === 'difficulty-ascending') {
+         let sortedSongs = songsToSort.sort((a, b) => {
+            let x = a.difficulty;
+            let y = b.difficulty;
+            return x < y ? -1 : x > y ? 1 : 0;
+         });
+         this.setState({ songs: sortedSongs });
+      } else if (sortValue === 'difficulty-descending') {
+         let sortedSongs = songsToSort.sort((a, b) => {
+            let x = a.difficulty;
+            let y = b.difficulty;
+            return x > y ? -1 : x < y ? 1 : 0;
+         });
+         this.setState({ songs: sortedSongs });
+      }
+   }
+
    render() {
       return (
          <div className="music-library">
-            {/* <section className="search-bar"> */}
-            {/* <h3>Music Library</h3> */}
-            {/* <form className="search-bar-input">
-                        <input #searchBox id="search-box" (keyup)="search(searchBox.value)" type="text">
-                    </form> */}
-            {/* </section> */}
+            <MusicLibrarySearch
+               searchLibrary={e => this.searchLibrary(e)}
+               handleSelectChange={e => this.handleSelectChange(e)}
+               songs={this.state.songs}
+            />
             {/* <div className="col-lg-2">
-                    <section className="song-filter">
-                        <h4>Filter</h4>
-                        <hr className="filter-hr"/>
+               <section className="song-filter">
+                  <h4>Filter</h4>
+                  <hr className="filter-hr" />
 
-                        <span className="filter-section-title">Difficulty</span>
-                        <ul className="filter-option-list">
-                            <li>Easy</li>
-                            <li>Medium</li>
-                            <li>Hard</li>
-                        </ul>
+                  <span className="filter-section-title">Difficulty</span>
+                  <ul className="filter-option-list">
+                     <li>Easy</li>
+                     <li>Medium</li>
+                     <li>Hard</li>
+                  </ul>
 
-                        <span className="filter-section-title">Genre</span>
-                        <ul className="filter-option-list">
-                            <li>Americana</li>
-                            <li>Sacred / Religious</li>
-                            <li>Jazz</li>
-                            <li>Pop</li>
-                        </ul>
+                  <span className="filter-section-title">Genre</span>
+                  <ul className="filter-option-list">
+                     <li>Americana</li>
+                     <li>Sacred / Religious</li>
+                     <li>Jazz</li>
+                     <li>Pop</li>
+                  </ul>
 
-                        <span className="filter-option-title">Length</span>
-                        <ul className="filter-option-list">
-                            <li>Short</li>
-                            <li>Medium</li>
-                            <li>Long</li>
-                        </ul>
-                    </section>
-                </div> */}
+                  <span className="filter-option-title">Length</span>
+                  <ul className="filter-option-list">
+                     <li>Short</li>
+                     <li>Medium</li>
+                     <li>Long</li>
+                  </ul>
+               </section>
+            </div> */}
             <section className="songs">
                {/* <div className="spinner">
                             <div className="bounce1"></div>
@@ -96,7 +131,7 @@ class MusicLibrary extends React.Component {
                         </tr>
                      </thead>
 
-                     {this.props.songs.map((song, index) => {
+                     {this.state.songs.map((song, index) => {
                         return (
                            <tbody className={song.completed ? 'completed' : ''}>
                               <tr

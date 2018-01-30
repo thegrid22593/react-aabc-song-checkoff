@@ -26,11 +26,6 @@ class UserSettings extends React.Component {
    }
 
    updateSettings() {
-      //   if (!this.props.user.uid) {
-      //      let user = {
-      //         uid: null,
-      //      };
-      //   }
       let newUser = {
          ...this.props.user,
          ...this.state,
@@ -44,20 +39,26 @@ class UserSettings extends React.Component {
          <div className="settings">
             <div className="settings-content">
                <h1>Public Profile</h1>
-               {/* <h1>Hello {{currentUserName}}</h1> */}
+               <h1>
+                  Hello {this.props.user.firstName} {this.props.user.lastName}
+               </h1>
                <form>
                   <div className="user-pic-container">
-                     <img className="profile-pic" src="" alt="" />
+                     <img
+                        className="profile-pic"
+                        src={this.props.user.profilePicURL}
+                        alt=""
+                     />
                      <span>
-                        <i className="fa fa-camera" aria-hidden="true" />Upload
-                        Photo
+                        <i className="fa fa-camera" aria-hidden="true" />
+                        Upload Photo
                      </span>
                   </div>
 
-                  <input type="text" name="name" />
+                  {/* <input type="text" name="name" /> */}
                   {/* <input type="file" id="filebutton"/> */}
                   {/* <div>{{uploadProgress}}</div> */}
-                  <button type="button">Update</button>
+                  {/* <button type="button">Update</button> */}
                </form>
 
                <form action="" className="user-settings">

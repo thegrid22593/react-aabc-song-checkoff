@@ -1,0 +1,24 @@
+section.search-bar {
+   @include make-col(10);
+   padding: 2rem;
+   float: left;
+   form.search-bar-input {
+      width: 100%;
+      input {
+         width: 100%;
+         padding: 0.5rem;
+         border: none;
+         border-bottom: 1px solid $aabc-light-grey;
+
+         &:focus {
+            outline: none;
+         }
+      }
+   }
+}
+
+.form-inline {
+   .form-control {
+      width: 100% !important;
+   }
+}
