@@ -84,7 +84,19 @@ export function updateUserData(user) {
          })
          .catch(error => {
             dispatch({ type: 'UPDATE_USER_ERROR', payload: error });
-            console.log('could not create user data', error);
+            firebase
+               .firestore()
+               .collection('users')
+               .doc(user.uid)
+               .set(user)
+               .then(() => {
+                  dispatch({
+                     type: 'UPDATE_USER_SUCCESS',
+                     payload: { loading: false },
+                  });
+                  dispatch(fetchUser(user.uid));
+               });
+            console.log('could not update user data', error);
          });
    };
 }
