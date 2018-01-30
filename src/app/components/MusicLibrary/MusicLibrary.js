@@ -20,10 +20,10 @@ class MusicLibrary extends React.Component {
       console.log('index', index);
       console.log('this', this);
       if (index !== null) {
-            let activeSong = {
-                index: index,
-                ...this.props.songs[index]
-            }
+         let activeSong = {
+            index: index,
+            ...this.props.songs[index],
+         };
          this.setState({
             activeSong: activeSong,
             songDetailIsActive: true,
@@ -36,10 +36,10 @@ class MusicLibrary extends React.Component {
    }
 
    completedSong() {
-       console.log('fired');
-       let index = this.state.activeSong.index;
-       this.props.songs[index].completed = true;
-       this.props.updateUserSongs(this.props.songs[index]);
+      console.log('fired');
+      let index = this.state.activeSong.index;
+      this.props.songs[index].completed = true;
+      this.props.updateUserSongs(this.props.songs[index]);
    }
 
    render() {
@@ -79,45 +79,42 @@ class MusicLibrary extends React.Component {
                         </ul>
                     </section>
                 </div> */}
-            <div className="col-lg-10">
-               <section className="songs">
-                  {/* <div className="spinner">
+            <section className="songs">
+               {/* <div className="spinner">
                             <div className="bounce1"></div>
                             <div className="bounce2"></div>
                             <div className="bounce3"></div>
                             <div className="bounce4"></div>
                         </div> */}
-                  <div className="songs-list">
-                     <table className="table table-hover">
-                        <thead>
-                           <tr>
-                              <th>Name</th>
-                              <th>Difficulty</th>
-                              <th>Time</th>
-                           </tr>
-                        </thead>
-                        
-                           {this.props.songs.map((song, index) => {
-                              return (
-                                <tbody className={song.completed ? 'completed' : ''}>
-                                    <tr
-                                        key={index}
-                                        onClick={e => {
-                                        this.toggleSongDetail(e, index);
-                                        }}
-                                    >
-                                        <td>{song.name}</td>
-                                        <td>{song.difficulty}</td>
-                                        <td>{song.time}</td>
-                                    </tr>
-                                 </tbody>
-                              );
-                           })}
-                        
-                     </table>
-                  </div>
-               </section>
-            </div>
+               <div className="songs-list">
+                  <table className="table table-hover">
+                     <thead>
+                        <tr>
+                           <th>Name</th>
+                           <th>Difficulty</th>
+                           <th>Time</th>
+                        </tr>
+                     </thead>
+
+                     {this.props.songs.map((song, index) => {
+                        return (
+                           <tbody className={song.completed ? 'completed' : ''}>
+                              <tr
+                                 key={index}
+                                 onClick={e => {
+                                    this.toggleSongDetail(e, index);
+                                 }}
+                              >
+                                 <td>{song.name}</td>
+                                 <td>{song.difficulty}</td>
+                                 <td>{song.time}</td>
+                              </tr>
+                           </tbody>
+                        );
+                     })}
+                  </table>
+               </div>
+            </section>
             <MusicLibrarySongDetail
                isActive={this.state.songDetailIsActive}
                toggleSongDetail={this.toggleSongDetail.bind(this)}

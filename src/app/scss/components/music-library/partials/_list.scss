@@ -1,208 +1,222 @@
+.music-library {
+   @include make-row();
+
+   section.songs {
+      background: #eee;
+      padding: 3rem;
+      @include make-col(12);
+      float: right;
+      .songs-list {
+         background: white;
+         padding: 3rem;
+         table {
+            tbody.completed {
+               tr {
+                  color: $aabc-light-grey;
+                  text-decoration: line-through;
+               }
+            }
+         }
+      }
+   }
+}
+
 .song {
-  list-style: none;
-  padding-left: 0;
+   list-style: none;
+   padding-left: 0;
 
-  .song-body {
-    background: white;
-    border-radius: 0.4rem;
-    margin-top: 2rem;
-    display: block;
-    overflow: hidden;
+   .song-body {
+      background: white;
+      border-radius: 0.4rem;
+      margin-top: 2rem;
+      display: block;
+      overflow: hidden;
 
-    .song-header {
-      background: $aabc-dark-blue;
-      padding: 0.5rem 1rem;
-      border-radius: 0.4rem 0.4rem 0 0;
+      .song-header {
+         background: $aabc-dark-blue;
+         padding: 0.5rem 1rem;
+         border-radius: 0.4rem 0.4rem 0 0;
 
-      .song-time {
-        font-weight: 900;
-        font-size: 1rem;
-        float: right;
-        color: white;
-      }
-
-      .song-difficulty {
-        color: white;
-      }
-    }
-
-    .song-content {
-      padding: 2rem;
-
-      .song-title {
-        font-size: 2rem;
-        font-weight: bold;
-      }
-
-      .song-urls {
-        list-style: none;
-        float: left;
-        padding-left: 0;
-        padding-bottom: 2rem;
-
-        .part-songs {
-          padding: 0rem 0.6rem;
-          .song-part-name {
-            font-family: $aabc-pt-sans-narrow;
+         .song-time {
             font-weight: 900;
-          }
+            font-size: 1rem;
+            float: right;
+            color: white;
+         }
 
-          li {
-            i {
-              margin-right: 0.3rem;
-            }
-
-            &:hover {
-              color: $aabc-red;
-              cursor: pointer;
-
-              i {
-                color: $aabc-red;
-              }
-            }
-          }
-        }
+         .song-difficulty {
+            color: white;
+         }
       }
-    }
-  }
+
+      .song-content {
+         padding: 2rem;
+
+         .song-title {
+            font-size: 2rem;
+            font-weight: bold;
+         }
+
+         .song-urls {
+            list-style: none;
+            float: left;
+            padding-left: 0;
+            padding-bottom: 2rem;
+
+            .part-songs {
+               padding: 0rem 0.6rem;
+               .song-part-name {
+                  font-family: $aabc-pt-sans-narrow;
+                  font-weight: 900;
+               }
+
+               li {
+                  i {
+                     margin-right: 0.3rem;
+                  }
+
+                  &:hover {
+                     color: $aabc-red;
+                     cursor: pointer;
+
+                     i {
+                        color: $aabc-red;
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
 }
 
 section.search-bar {
-  width: 70%;
-  padding: 2rem;
-  float: left;
-  form.search-bar-input {
-    width: 100%;
-    input {
+   width: 70%;
+   padding: 2rem;
+   float: left;
+   form.search-bar-input {
       width: 100%;
-    }
-  }
-}
-
-section.songs {
-  background: #eee;
-  padding: 3rem;
-
-  .songs-list {
-    background: white;
-    padding: 3rem;
-    table {
-      tbody.completed {
-        tr {
-          color: $aabc-light-grey;
-          text-decoration: line-through;
-        }
+      input {
+         width: 100%;
       }
-    }
-  }
+   }
 }
 
 .form-inline {
-  .form-control {
-    width: 100% !important;
-  }
+   .form-control {
+      width: 100% !important;
+   }
 }
 
 .checked-off-btn {
-  position: absolute;
-  bottom: 20px;
-  background: $aabc-red;
-  width: 100%;
-  padding: 2rem;
-  border: none;
-  color: white;
-  @include transition(0.2s all ease-in-out);
+   position: absolute;
+   bottom: 20px;
+   background: $aabc-red;
+   width: 100%;
+   padding: 2rem;
+   border: none;
+   color: white;
+   @include transition(0.2s all ease-in-out);
 
-  &:hover {
-    background: darken($aabc-dark-blue, 10%);
-  }
+   &:hover {
+      background: darken($aabc-dark-blue, 10%);
+   }
 }
-
 
 // Audio Player
 .audio-player {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  z-index: 6;
-  margin-bottom: -8px;
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   z-index: 6;
+   margin-bottom: -8px;
 
-  .current-song {
-    background: $aabc-dark-blue;
-    list-style: none;
-    padding: 1rem;
-    margin-bottom: 0;
+   .current-song {
+      background: $aabc-dark-blue;
+      list-style: none;
+      padding: 1rem;
+      margin-bottom: 0;
 
-    li {
-      color: $aabc-white;
+      li {
+         color: $aabc-white;
 
-      span {
-        color: $aabc-gold;
-        margin-right: 1rem;
+         span {
+            color: $aabc-gold;
+            margin-right: 1rem;
+         }
       }
-    }
-  }
+   }
 
-  audio {
-    width: 100%;
-    background: black;
-  }
+   audio {
+      width: 100%;
+      background: black;
+   }
 }
 
-
 .spinner {
-  margin: 100px auto 0;
-  width: 100px;
-  text-align: center;
+   margin: 100px auto 0;
+   width: 100px;
+   text-align: center;
 }
 
 .spinner > div {
-  width: 10px;
-  height: 10px;
-  margin-right: 10px;
-  background-color: $aabc-red;
+   width: 10px;
+   height: 10px;
+   margin-right: 10px;
+   background-color: $aabc-red;
 
-  border-radius: 100%;
-  display: inline-block;
-  -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
-  animation: bouncedelay 1.4s infinite ease-in-out;
-  /* Prevent first frame from flickering when animation starts */
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+   border-radius: 100%;
+   display: inline-block;
+   -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+   animation: bouncedelay 1.4s infinite ease-in-out;
+   /* Prevent first frame from flickering when animation starts */
+   -webkit-animation-fill-mode: both;
+   animation-fill-mode: both;
 }
 
 .spinner .bounce1 {
-  -webkit-animation-delay: -0.48s;
-  animation-delay: -0.48s;
+   -webkit-animation-delay: -0.48s;
+   animation-delay: -0.48s;
 }
 
 .spinner .bounce2 {
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
+   -webkit-animation-delay: -0.32s;
+   animation-delay: -0.32s;
 }
 
 .spinner .bounce3 {
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
+   -webkit-animation-delay: -0.16s;
+   animation-delay: -0.16s;
 }
 
 @-webkit-keyframes bouncedelay {
-  0%, 80%, 100% { -webkit-transform: scale(0.5); opacity: .5; }
-  40% { -webkit-transform: scale(1.0); opacity: 1; }
+   0%,
+   80%,
+   100% {
+      -webkit-transform: scale(0.5);
+      opacity: 0.5;
+   }
+   40% {
+      -webkit-transform: scale(1);
+      opacity: 1;
+   }
 }
 
 @keyframes bouncedelay {
-  0%, 80%, 100% {
-    transform: scale(0.5);
-    -webkit-transform: scale(0.5);
-    opacity: .5;
-  } 40% {
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
-    opacity: 1;
-  }
+   0%,
+   80%,
+   100% {
+      transform: scale(0.5);
+      -webkit-transform: scale(0.5);
+      opacity: 0.5;
+   }
+   40% {
+      transform: scale(1);
+      -webkit-transform: scale(1);
+      opacity: 1;
+   }
 }
 
 .table tr:hover {
-  background: lighten($aabc-light-grey, 10%);
+   background: lighten($aabc-light-grey, 10%);
 }

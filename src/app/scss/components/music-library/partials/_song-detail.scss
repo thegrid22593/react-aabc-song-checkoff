@@ -1,133 +1,102 @@
 .song-detail-panel {
-  position: fixed;
-  width: 25%;
-  background: white;
-  height: 100%;
-  z-index: 5;
-  top: 0;
-  right: -30%;
-  @include box-shadow(0px 0px 5px rgba(0, 0, 0, 0.3));
-  @include transition(0.2s all ease-in-out);
+   position: fixed;
+   background: white;
+   height: 100%;
+   z-index: 5;
+   top: 0;
+   right: -30%;
+   @include box-shadow(0px 0px 5px rgba(0, 0, 0, 0.3));
+   @include transition(0.2s all ease-in-out);
 
-  &.active {
-    right: 0;
-  }
+   &.active {
+      right: 0;
+   }
 
-  .crop-height {
-    max-height: 320px;
-    overflow: hidden;
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto !important;
-      width: auto\9; /* ie8+9 */
-      -ms-interpolation-mode: bicubic;
-    }
+   .crop-height {
+      max-height: 320px;
+      overflow: hidden;
+      img {
+         display: block;
+         max-width: 100%;
+         height: auto !important;
+         width: auto\9; /* ie8+9 */
+         -ms-interpolation-mode: bicubic;
+      }
 
-    i {
-      position: absolute;
-      top: 0;
-      z-index: 1000;
-      left: 7px;
-      font-size: 21px;
-      color: white;
+      i {
+         position: absolute;
+         top: 0;
+         z-index: 1000;
+         left: 7px;
+         font-size: 21px;
+         color: white;
+         @include transition(0.2s all ease-in-out);
+         &:hover {
+            color: darken($aabc-white, 10%);
+            cursor: pointer;
+         }
+      }
+   }
+
+   .song-details {
+      padding: 3rem;
+
+      .song-detail-name {
+         color: $aabc-gold;
+         font-size: 2rem;
+      }
+
+      .song-detail-difficulty {
+         margin-top: -5px;
+         text-transform: uppercase;
+         color: $aabc-cold-grey;
+         letter-spacing: 0.2rem;
+         font-size: 0.9rem;
+      }
+
+      ul {
+         list-style: none;
+         padding-left: 0;
+
+         .part-name {
+            font-family: $aabc-pt-sans-narrow;
+            font-weight: bold;
+            background: lighten($aabc-light-grey, 10%);
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            padding: 0.3rem;
+         }
+
+         li {
+            @include transition(0.1s all ease-in-out);
+
+            &:hover {
+               color: $aabc-red;
+               cursor: pointer;
+               i {
+                  color: $aabc-red;
+               }
+            }
+            i {
+               color: #ddd;
+               margin-right: 5px;
+               @include transition(0.1s all ease-in-out);
+            }
+         }
+      }
+   }
+   button.checked-off-btn {
+      background: $aabc-red;
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: none;
+      color: $aabc-white;
       @include transition(0.2s all ease-in-out);
       &:hover {
-        color: darken($aabc-white, 10%);
-        cursor: pointer;
+         background: darken($aabc-red, 10%);
+         cursor: pointer;
       }
-    }
-  }
-
-  .song-details {
-    padding: 3rem;
-
-    .song-detail-name {
-      color: $aabc-gold;
-      font-size: 2rem;
-    }
-
-    .song-detail-difficulty {
-      margin-top: -5px;
-      text-transform: uppercase;
-      color: $aabc-cold-grey;
-      letter-spacing: 0.2rem;
-      font-size: 0.9rem;
-
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-
-      .part-name {
-        font-family: $aabc-pt-sans-narrow;
-        font-weight: bold;
-        background: lighten($aabc-light-grey, 10%);
-        text-transform: uppercase;
-        letter-spacing: 0.2rem;
-        font-size: 0.8rem;
-        margin-bottom: 0.5rem;
-        padding: 0.3rem;
-      }
-
-      li {
-        @include transition(0.1s all ease-in-out);
-
-        &:hover {
-          color: $aabc-red;
-          cursor: pointer;
-          i {
-            color: $aabc-red;
-          }
-        }
-        i {
-          color: #ddd;
-          margin-right: 5px;
-          @include transition(0.1s all ease-in-out);
-        }
-      }
-    }
-  }
-  button.checked-off-btn {
-    background: $aabc-red;
-    width: 100%;
-    padding: 0.5rem 0.75rem;
-    border: none;
-    color: $aabc-white;
-    @include transition(0.2s all ease-in-out);
-    &:hover {
-      background: darken($aabc-red, 10%);
-      cursor: pointer;
-    }
-  }
-}
-
-.audio-player {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  z-index: 6;
-  margin-bottom: -8px;
-
-  .current-song {
-    background: $aabc-dark-blue;
-    list-style: none;
-    padding: 1rem;
-    margin-bottom: 0;
-
-    li {
-      color: $aabc-white;
-
-      span {
-        color: $aabc-gold;
-        margin-right: 1rem;
-      }
-    }
-  }
-
-  audio {
-    width: 100%;
-    background: black;
-  }
+   }
 }
