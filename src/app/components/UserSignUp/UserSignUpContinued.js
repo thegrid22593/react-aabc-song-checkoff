@@ -5,10 +5,13 @@ import { updateUserData } from '../../actions/userActions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { fetchSongs } from '../../actions/songActions';
+import firebase from 'firebase';
 
 class UserSignUpContinued extends React.Component {
    constructor(props) {
       super(props);
+
+      this.storage = firebase.storage().ref();
 
       let date = new Date();
       date = date.getMonth() + ' ' + date.getDay() + ' ' + date.getFullYear();
@@ -76,11 +79,69 @@ class UserSignUpContinued extends React.Component {
       this.getCheckOffSongs();
    }
 
+   filebuttoni(event) {
+      console.log(event);
+      let files = event.target.files[0];
+      let self = this;
+      let uploader = document.getElementById('uploader');
+      let path = 'user-profile-pics/' + files.name;
+      let storageref = this.storage.child(path);
+      let uploadTask = storageref.put(files);
+
+      uploadTask.on(
+         firebase.storage.TaskEvent.STATE_CHANGED,
+         snapshot => {
+            console.log(snapshot);
+            console.log(snapshot.totalBytes);
+
+            this.uploadProgress =
+               snapshot.bytesTransferred / snapshot.totalBytes * 100;
+
+            console.log('Upload is ' + this.uploadProgress + '% done!');
+
+            switch (snapshot.state) {
+               case firebase.storage.TaskState.PAUSED:
+                  console.log('upload is paused');
+                  break;
+               case firebase.storage.TaskState.RUNNING:
+                  console.log('Upload is running');
+                  break;
+            }
+         },
+         error => {
+            switch (error) {
+               case 'storage/unauthorized':
+                  break;
+
+               case 'storage/canceled':
+                  break;
+
+               case 'storage/unknown':
+                  break;
+            }
+         },
+         () => {
+            console.log('THIS', this);
+            let downloadURL = uploadTask.snapshot.downloadURL;
+            console.log('Upload done!');
+            storageref.getDownloadURL().then(url => {
+               this.setState({ profilePicURL: url });
+            });
+         }
+      );
+   }
+
    render() {
       return (
          <div class="user-sign-up-more-info-form">
             <h2>Please Fill In More Information About Yourself.</h2>
             <form>
+               <label for="filebutton">Upload a Profile Picture</label>
+               <input
+                  type="file"
+                  id="filebutton"
+                  onChange={e => this.filebuttoni(e)}
+               />
                <label for="first-name">First Name</label>
                <input
                   type="text"
