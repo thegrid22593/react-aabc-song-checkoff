@@ -61,21 +61,33 @@ class MusicLibrary extends React.Component {
       console.log('working', e.target.value);
       let sortValue = e.target.value;
       let songsToSort = this.state.songs;
+      let sortedSongs;
       if (sortValue === 'difficulty-ascending') {
-         let sortedSongs = songsToSort.sort((a, b) => {
+         sortedSongs = songsToSort.sort((a, b) => {
             let x = a.difficulty;
             let y = b.difficulty;
             return x < y ? -1 : x > y ? 1 : 0;
          });
-         this.setState({ songs: sortedSongs });
       } else if (sortValue === 'difficulty-descending') {
-         let sortedSongs = songsToSort.sort((a, b) => {
+         sortedSongs = songsToSort.sort((a, b) => {
             let x = a.difficulty;
             let y = b.difficulty;
             return x > y ? -1 : x < y ? 1 : 0;
          });
-         this.setState({ songs: sortedSongs });
+      } else if (sortValue === 'time-ascending') {
+         sortedSongs = songsToSort.sort((a, b) => {
+            let x = parseFloat(a.time.replace(':', ''));
+            let y = parseFloat(b.time.replace(':', ''));
+            return x > y ? -1 : x < y ? 1 : 0;
+         });
+      } else if (sortValue === 'time-descending') {
+         sortedSongs = songsToSort.sort((a, b) => {
+            let x = parseFloat(a.time.replace(':', ''));
+            let y = parseFloat(b.time.replace(':', ''));
+            return x < y ? -1 : x > y ? 1 : 0;
+         });
       }
+      this.setState({ songs: sortedSongs });
    }
 
    render() {

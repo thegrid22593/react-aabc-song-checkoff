@@ -22,7 +22,7 @@ class MusicLibrarySearch extends React.Component {
                   {this.props.songs.length} Results found
                </div>
                <select onChange={this.props.handleSelectChange}>
-                  <option disabled selected>
+                  <option disabled defaultValue="selected">
                      Filter
                   </option>
                   <option value="difficulty-descending">
@@ -31,6 +31,8 @@ class MusicLibrarySearch extends React.Component {
                   <option value="difficulty-ascending">
                      Difficulty Ascending
                   </option>
+                  <option value="time-descending">Time Descending</option>
+                  <option value="time-ascending">Time Ascending</option>
                </select>
             </div>
          </section>
