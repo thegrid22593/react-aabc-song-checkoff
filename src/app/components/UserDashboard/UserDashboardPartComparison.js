@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 require('../../scss/style.scss');
 import firebase from 'firebase';
+import UserDashboardPartPercentageBar from './UserDashboardPartPercentageBar';
 
 class UserDashboardPartComparison extends React.Component {
    constructor(props) {
@@ -98,75 +99,31 @@ class UserDashboardPartComparison extends React.Component {
             <div className="part-graphs">
                <div className="part">
                   <div className="part-name">First Tenor</div>
-                  <div className="part-percentage-bar">
-                     <div
-                        className="part-percentage"
-                        style={{
-                           width: this.state.firstTenorAvgPercentage + '%',
-                           backgroundColor: '#469ff3',
-                        }}
-                     >
-                        <div className="percentage-container">
-                           <div className="percentage">
-                              {this.state.firstTenorAvgPercentage + '%'}
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                  <UserDashboardPartPercentageBar
+                     averagePercentage={this.state.firstTenorAvgPercentage}
+                     color={'#469ff3'}
+                  />
                </div>
                <div className="part">
                   <div className="part-name">Second Tenor</div>
-                  <div className="part-percentage-bar">
-                     <div
-                        className="part-percentage"
-                        style={{
-                           width: this.state.secondTenorAvgPercentage + '%',
-                           backgroundColor: '#2ECC71',
-                        }}
-                     >
-                        <div className="percentage-container">
-                           <div className="percentage">
-                              {this.state.secondTenorAvgPercentage + '%'}
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                  <UserDashboardPartPercentageBar
+                     averagePercentage={this.state.secondTenorAvgPercentage}
+                     color={'#2ECC71'}
+                  />
                </div>
                <div className="part">
                   <div className="part-name">Baritone</div>
-                  <div className="part-percentage-bar">
-                     <div
-                        className="part-percentage"
-                        style={{
-                           width: this.state.baritoneAvgPercentage + '%',
-                           backgroundColor: '#f3cc46',
-                        }}
-                     >
-                        <div className="percentage-container">
-                           <div className="percentage">
-                              {this.state.baritoneAvgPercentage + '%'}
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                  <UserDashboardPartPercentageBar
+                     averagePercentage={this.state.baritoneAvgPercentage}
+                     color={'#f3cc46'}
+                  />
                </div>
                <div className="part">
                   <div className="part-name">Bass</div>
-                  <div className="part-percentage-bar">
-                     <div
-                        className="part-percentage"
-                        style={{
-                           width: this.state.bassAvgPercentage + '%',
-                           backgroundColor: '#A9171C',
-                        }}
-                     >
-                        <div className="percentage-container">
-                           <div className="percentage">
-                              {this.state.bassAvgPercentage + '%'}
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                  <UserDashboardPartPercentageBar
+                     averagePercentage={this.state.bassAvgPercentage}
+                     color={'#A9171C'}
+                  />
                </div>
             </div>
          </section>
