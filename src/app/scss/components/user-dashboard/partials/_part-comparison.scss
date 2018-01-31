@@ -13,8 +13,23 @@
             background: #eee;
             position: relative;
             .part-percentage {
-               width: 50%;
                height: 50px;
+               width: 0px;
+               @include transition(0.8s all cubic-bezier(0.23, 1, 0.32, 1));
+               .percentage-container {
+                  position: relative;
+                  height: 100%;
+                  width: 100%;
+                  .percentage {
+                     @include center-align;
+                     color: $aabc-white;
+                     font-family: $aabc-pt-sans-narrow;
+                     font-weight: 800;
+                     font-size: 2rem;
+                     letter-spacing: 5px;
+                     text-transform: uppercase;
+                  }
+               }
             }
          }
       }
