@@ -28,7 +28,7 @@ class UserDashboardProfile extends React.Component {
                </div>
                <div className="member-songs-completed">
                   <h5>Songs Completed</h5>
-                  <p>{this.props.user.completedSongs}</p>
+                  <p>{this.props.user.completedSongs}/{this.props.user.songs.length}</p>
                </div>
 
                <div className="member-songs-percentage">

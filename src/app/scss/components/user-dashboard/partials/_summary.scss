@@ -83,10 +83,12 @@ $pulse-duration: 750ms;
          .part-member-name {
             @include make-col(4);
             float: left;
+            margin-top: 1.4rem;
          }
          .part-member-percentage {
             @include make-col(6);
             float: right;
+            margin-top: 1.4rem;
          }
       }
    }
