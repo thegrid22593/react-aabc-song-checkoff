@@ -9,6 +9,7 @@ import CheckOffFeedback from './CheckOffFeedback';
 import CheckOffPartLeaderProfile from './CheckOffPartLeaderProfile';
 import { getAllMembersByPartName } from '../../actions/userActions';
 import ActiveCheckOffMember from './ActiveCheckOffMember';
+import SelectedCheckOffSong from './SelectedCheckOffSong';
 import AppTopBar from '../AppTopBar';
 import AppSidebar from '../AppSidebar';
 
@@ -19,6 +20,7 @@ class CheckOffPage extends React.Component {
 
       this.state = {
          activeCheckOffMember: null,
+         activeCheckOffSong: null,
       };
    }
 
@@ -32,6 +34,18 @@ class CheckOffPage extends React.Component {
       this.setState({
          activeCheckOffMember: member,
       });
+   }
+
+   selectActiveSong(song) {
+      console.log('song', song);
+      this.setState({
+         activeCheckOffSong: song,
+      });
+   }
+
+   sendFeedback(feedback, song) {
+      console.log(feedback);
+      console.log(song);
    }
 
    render() {
@@ -53,6 +67,13 @@ class CheckOffPage extends React.Component {
                   <section className="active-check-off-member">
                      <ActiveCheckOffMember
                         activeMember={this.state.activeCheckOffMember}
+                        selectCheckOffSong={this.selectActiveSong.bind(this)}
+                     />
+                  </section>
+                  <section className="selected-check-off-song">
+                     <SelectedCheckOffSong
+                        activeSong={this.state.activeCheckOffSong}
+                        sendFeedback={this.sendFeedback.bind(this)}
                      />
                   </section>
                </section>

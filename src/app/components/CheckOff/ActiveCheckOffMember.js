@@ -10,10 +10,12 @@ class ActiveCheckOffMember extends React.Component {
       };
    }
 
-   componentWillReceiveProps(newProps) {
-      this.setState({
-         activeMember: newProps.activeMember,
-      });
+   componentWillReceiveProps(nextProps) {
+      if (nextProps != undefined) {
+         this.setState({
+            activeMember: nextProps.activeMember,
+         });
+      }
    }
 
    render() {
@@ -38,7 +40,12 @@ class ActiveCheckOffMember extends React.Component {
                         );
                      } else {
                         return (
-                           <li key={index}>
+                           <li
+                              key={index}
+                              onClick={() =>
+                                 this.props.selectCheckOffSong(song)
+                              }
+                           >
                               <i
                                  className="far fa-check-square"
                                  aria-hidden="true"
