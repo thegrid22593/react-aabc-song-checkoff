@@ -12,21 +12,17 @@ class CheckOffMembers extends React.Component {
    render() {
       return (
          <div className="part-members">
-            <div className="container-full">
-               <div className="col-lg-3 col-md-6 col-sm-12">
-                  {this.props.members.map((member, index) => {
-                     return (
-                        <CheckOffMember
-                           key={index}
-                           member={member}
-                           showMemberSongs={() => {
-                              this.props.showMemberSongs(member);
-                           }}
-                        />
-                     );
-                  })}
-               </div>
-            </div>
+            {this.props.members.map((member, index) => {
+               return (
+                  <CheckOffMember
+                     key={index}
+                     member={member}
+                     showMemberSongs={() => {
+                        this.props.showMemberSongs(member);
+                     }}
+                  />
+               );
+            })}
          </div>
       );
    }

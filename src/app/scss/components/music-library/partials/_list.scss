@@ -1,11 +1,7 @@
 .music-library {
-   @include make-row();
-
    section.songs {
       background: #eee;
       padding: 3rem;
-      @include make-col(12);
-      float: right;
       .songs-list {
          background: white;
          padding: 3rem;
@@ -40,7 +36,7 @@
          .song-time {
             font-weight: 900;
             font-size: 1rem;
-            float: right;
+            @include float-right();
             color: white;
          }
 
@@ -59,7 +55,7 @@
 
          .song-urls {
             list-style: none;
-            float: left;
+            @include float-left();
             padding-left: 0;
             padding-bottom: 2rem;
 

@@ -1,7 +1,6 @@
 section.search-bar {
    @include make-col(10);
    padding: 2rem;
-   float: left;
    form.search-bar-input {
       width: 100%;
       input {

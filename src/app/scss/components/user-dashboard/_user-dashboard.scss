@@ -5,8 +5,3 @@
 @import './partials/summary';
 @import './partials/feedback';
 @import './partials/part-comparison';
-
-.user-dashboard-content-container {
-   background: #f9f9f9;
-   @include make-col(12);
-}

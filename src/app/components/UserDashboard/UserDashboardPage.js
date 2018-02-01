@@ -26,12 +26,12 @@ class UserDashboardPage extends React.Component {
 
    render() {
       return (
-         <div>
+         <div className="app-row">
             <AppTopBar />
             <div className="user-dashboard-sidebar-container">
                <AppSidebar user={this.props.user} />
             </div>
-            <div className="user-dashboard-content-container">
+            <div className="app-content-container">
                <UserDashboardProfile user={this.props.user} />
                <UserDashboardMenu />
                <Switch>
