@@ -2,14 +2,18 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 require('../scss/style.scss');
 
 class AppTopBar extends React.Component {
-   constructor() {
-      super();
-   }
+   constructor(props) {
+      super(props);
 
-   componentWillMount() {}
+      this.state = {
+         notifications: null,
+      };
+   }
 
    signOut() {
       firebase
@@ -24,6 +28,18 @@ class AppTopBar extends React.Component {
          });
    }
 
+   componentWillMount() {
+      let notifications = 0;
+      console.log('loop', this.props);
+      this.props.user.songs.forEach(song => {
+         if (song.notes) {
+            notifications += song.notes.length;
+         }
+      });
+      console.log('notification', notifications);
+      this.setState({ notifications });
+   }
+
    render() {
       return (
          <nav className="main-nav">
@@ -35,7 +51,16 @@ class AppTopBar extends React.Component {
                   <i className="fa fa-sign-out" aria-hidden="true" />Sign Out
                </li>
                <li>
-                  <i className="fa fa-inbox" aria-hidden="true" />
+                  <div className="notifications">
+                     <i className="fa fa-inbox" aria-hidden="true" />
+                     <div className="notification-number">
+                        <div className="number-container">
+                           <div className="number">
+                              {this.state.notifications}
+                           </div>
+                        </div>
+                     </div>
+                  </div>
                </li>
             </ul>
             <ul className="user-info">
@@ -55,5 +80,11 @@ class AppTopBar extends React.Component {
 AppTopBar.contextTypes = {
    router: React.PropTypes.object.isRequired,
 };
+
+AppTopBar = connect(store => {
+   return {
+      user: store.user.user,
+   };
+})(AppTopBar);
 
 module.exports = AppTopBar;

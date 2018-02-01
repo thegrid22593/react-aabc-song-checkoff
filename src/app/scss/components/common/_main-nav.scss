@@ -47,6 +47,29 @@ nav.main-nav {
                margin-right: 2px;
             }
          }
+
+         .notifications {
+            position: relative;
+            .notification-number {
+               background: $aabc-red;
+               border-radius: 30px;
+               position: absolute;
+               top: -10px;
+               right: -8px;
+
+               .number-container {
+                  position: relative;
+                  width: 20px;
+                  height: 20px;
+                  .number {
+                     color: $aabc-white;
+                     font-family: $aabc-pt-sans-narrow;
+                     font-weight: 800;
+                     @include center-align;
+                  }
+               }
+            }
+         }
       }
    }
 
