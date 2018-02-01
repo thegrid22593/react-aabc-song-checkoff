@@ -1,4 +1,4 @@
-.checkoff {
+.checkoff-members {
    @include make-row();
 }
 .checkoff-menu-bar {
@@ -42,4 +42,9 @@
          border-radius: 50%;
       }
    }
+}
+
+.active-check-off-member {
+   @include make-col(6);
+   float: right;
 }

@@ -8,6 +8,7 @@ import CheckOffMembers from './CheckOffMembers';
 import CheckOffFeedback from './CheckOffFeedback';
 import CheckOffPartLeaderProfile from './CheckOffPartLeaderProfile';
 import { getAllMembersByPartName } from '../../actions/userActions';
+import ActiveCheckOffMember from './ActiveCheckOffMember';
 import AppTopBar from '../AppTopBar';
 import AppSidebar from '../AppSidebar';
 
@@ -15,11 +16,22 @@ class CheckOffPage extends React.Component {
    constructor(props) {
       super(props);
       console.log('checkoff page', props);
+
+      this.state = {
+         activeCheckOffMember: null,
+      };
    }
 
    componentWillMount() {
       let userSingingPart = this.props.user.user.singingPart;
       this.props.dispatch(getAllMembersByPartName(userSingingPart));
+   }
+
+   showMemberSongs(member) {
+      console.log('member', member);
+      this.setState({
+         activeCheckOffMember: member,
+      });
    }
 
    render() {
@@ -29,9 +41,17 @@ class CheckOffPage extends React.Component {
             <div className="user-dashboard-sidebar-container">
                <AppSidebar user={this.props.user.user} />
             </div>
-            <section className="checkoff">
+            <section className="checkoff-members">
                <CheckOffPartLeaderProfile user={this.props.user.user} />
-               <CheckOffMembers members={this.props.user.partMembers} />
+               <CheckOffMembers
+                  showMemberSongs={this.showMemberSongs.bind(this)}
+                  members={this.props.user.partMembers}
+               />
+            </section>
+            <section className="active-check-off-member">
+               <ActiveCheckOffMember
+                  activeMember={this.state.activeCheckOffMember}
+               />
             </section>
          </div>
       );
