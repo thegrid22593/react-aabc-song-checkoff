@@ -10,21 +10,25 @@ class CheckOffMembers extends React.Component {
    }
 
    render() {
-      return (
-         <div className="part-members">
-            {this.props.members.map((member, index) => {
-               return (
-                  <CheckOffMember
-                     key={index}
-                     member={member}
-                     showMemberSongs={() => {
-                        this.props.showMemberSongs(member);
-                     }}
-                  />
-               );
-            })}
-         </div>
-      );
+      if (this.props.members.length !== 0) {
+         return (
+            <div className="part-members">
+               {this.props.members.map((member, index) => {
+                  return (
+                     <CheckOffMember
+                        key={index}
+                        member={member}
+                        showMemberSongs={() => {
+                           this.props.showMemberSongs(member);
+                        }}
+                     />
+                  );
+               })}
+            </div>
+         );
+      } else {
+         return <h1>no part members currently available</h1>;
+      }
    }
 }
 
