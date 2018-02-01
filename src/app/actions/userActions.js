@@ -122,6 +122,24 @@ export function getAllMembersByPartName(singingPart) {
    };
 }
 
+export function userSignOut() {
+   return function(dispatch) {
+      dispatch({ type: 'USER_SIGN_OUT_PENDING', payload: { loading: true } });
+      firebase
+         .auth()
+         .signOut()
+         .then(() => {
+            dispatch({
+               type: 'USER_SIGN_OUT_SUCCESSFUL',
+               payload: { loading: false },
+            });
+         })
+         .catch(error => {
+            dispatch({ type: 'USER_SIGN_OUT_ERROR', payload: error });
+         });
+   };
+}
+
 export function setUserName(name) {
    return {
       type: 'SET_USER_NAME',

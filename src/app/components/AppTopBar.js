@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import fire from '../../fire';
+import firebase from 'firebase';
 require('../scss/style.scss');
 
 class AppTopBar extends React.Component {
@@ -11,6 +11,19 @@ class AppTopBar extends React.Component {
 
    componentWillMount() {}
 
+   signOut() {
+      firebase
+         .auth()
+         .signOut()
+         .then(() => {
+            localStorage.clear('state');
+            this.context.router.history.push('/sign-in');
+         })
+         .catch(error => {
+            console.log('could not sign out', error);
+         });
+   }
+
    render() {
       return (
          <nav className="main-nav">
@@ -18,7 +31,7 @@ class AppTopBar extends React.Component {
                Music Library
             </a>
             <ul className="nav-links">
-               <li>
+               <li onClick={this.signOut}>
                   <i className="fa fa-sign-out" aria-hidden="true" />Sign Out
                </li>
                <li>
@@ -38,5 +51,9 @@ class AppTopBar extends React.Component {
       );
    }
 }
+
+AppTopBar.contextTypes = {
+   router: React.PropTypes.object.isRequired,
+};
 
 module.exports = AppTopBar;

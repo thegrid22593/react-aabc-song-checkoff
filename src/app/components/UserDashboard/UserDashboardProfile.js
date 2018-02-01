@@ -6,6 +6,7 @@ require('../../scss/style.scss');
 class UserDashboardProfile extends React.Component {
    constructor(props) {
       super(props);
+      console.log('profile', props);
    }
 
    render() {
@@ -28,7 +29,11 @@ class UserDashboardProfile extends React.Component {
                </div>
                <div className="member-songs-completed">
                   <h5>Songs Completed</h5>
-                  <p>{this.props.user.completedSongs}/{this.props.user.songs.length}</p>
+                  <p>
+                     {this.props.user.completedSongs}/{
+                        this.props.user.songs.length
+                     }
+                  </p>
                </div>
 
                <div className="member-songs-percentage">

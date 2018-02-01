@@ -92,6 +92,21 @@ export default function reducer(
       case 'UPDATE_USER_MESSAGES': {
       }
 
+      case 'USER_SIGN_OUT_PENDING': {
+         state = { ...state, loading: action.payload };
+         return state;
+      }
+
+      case 'USER_SIGN_OUT_SUCCESSFULL': {
+         state = { ...state, userAuth: null, loading: false };
+         return state;
+      }
+
+      case 'USER_SIGN_OUT_ERROR': {
+         state = { ...state, error: action.payload };
+         return state;
+      }
+
       default: {
          return state;
       }

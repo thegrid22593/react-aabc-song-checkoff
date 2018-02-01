@@ -14,10 +14,14 @@ import UserDashboardPartComparison from './UserDashboardPartComparison';
 import UserDashboardProfile from './UserDashboardProfile';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import { fetchUser } from '../../actions/userActions';
 
 class UserDashboardPage extends React.Component {
-   constructor() {
-      super();
+   constructor(props) {
+      super(props);
+      console.log(props);
+
+      this.props.dispatch(fetchUser(this.props.userAuth.uid));
    }
 
    render() {
@@ -57,6 +61,7 @@ UserDashboardPage = withRouter(
    connect(store => {
       return {
          user: store.user.user,
+         userAuth: store.user.userAuth,
          userFetched: store.user.fetched,
       };
    })(UserDashboardPage)
