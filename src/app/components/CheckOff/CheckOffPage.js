@@ -36,25 +36,27 @@ class CheckOffPage extends React.Component {
 
    render() {
       return (
-         <div>
+         <div className="app-row">
             <AppTopBar />
             <div className="user-dashboard-sidebar-container">
                <AppSidebar user={this.props.user.user} />
             </div>
-            <section className="checkoff-part-leader-bar">
-               <CheckOffPartLeaderProfile user={this.props.user.user} />
-            </section>
-            <section className="checkoff-members">
-               <CheckOffMembers
-                  showMemberSongs={this.showMemberSongs.bind(this)}
-                  members={this.props.user.partMembers}
-               />
-               <section className="active-check-off-member">
-                  <ActiveCheckOffMember
-                     activeMember={this.state.activeCheckOffMember}
-                  />
+            <div className="app-content-container">
+               <section className="checkoff-part-leader-bar">
+                  <CheckOffPartLeaderProfile user={this.props.user.user} />
                </section>
-            </section>
+               <section className="checkoff-members">
+                  <CheckOffMembers
+                     showMemberSongs={this.showMemberSongs.bind(this)}
+                     members={this.props.user.partMembers}
+                  />
+                  <section className="active-check-off-member">
+                     <ActiveCheckOffMember
+                        activeMember={this.state.activeCheckOffMember}
+                     />
+                  </section>
+               </section>
+            </div>
          </div>
       );
    }

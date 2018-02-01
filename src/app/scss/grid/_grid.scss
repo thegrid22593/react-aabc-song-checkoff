@@ -13,4 +13,5 @@
    @include make-col-ready();
    @include make-col(10);
    @include float-left();
+   padding: 0;
 }

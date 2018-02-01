@@ -18,12 +18,14 @@ class UserSettingsPage extends React.Component {
 
    render() {
       return (
-         <div>
+         <div className="app-row">
             <AppTopBar />
             <div className="user-dashboard-sidebar-container">
                <AppSidebar user={this.props.user} />
             </div>
-            <UserSettings user={this.props.user} />
+            <div className="app-content-container">
+               <UserSettings user={this.props.user} />
+            </div>
          </div>
       );
    }

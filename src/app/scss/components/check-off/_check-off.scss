@@ -1,10 +1,7 @@
 .checkoff-part-leader-bar {
-   @include make-row();
    .checkoff-menu-bar {
       background: $aabc-light-grey;
       padding: 1rem;
-      @include make-col(12);
-      float: right;
       .part-info {
          width: 100%;
          .part-leader-avatar,
@@ -28,7 +25,6 @@
 }
 
 .checkoff-members {
-   @include make-row();
    margin: 2rem;
    .part-members {
       margin: 2rem 0;
