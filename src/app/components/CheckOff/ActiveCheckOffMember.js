@@ -20,7 +20,35 @@ class ActiveCheckOffMember extends React.Component {
       if (this.state.activeMember) {
          return (
             <div className="active-member-container">
-               <h1>{this.props.activeMember.firstName}</h1>
+               <h1>
+                  {this.state.activeMember.firstName}{' '}
+                  {this.state.activeMember.lastName}
+               </h1>
+               <ul className="active-member-songs">
+                  {this.state.activeMember.songs.map((song, index) => {
+                     if (song.completed) {
+                        return (
+                           <li key={index}>
+                              <i
+                                 className="fas fa-check-square completed"
+                                 aria-hidden="true"
+                              />
+                              {song.name}
+                           </li>
+                        );
+                     } else {
+                        return (
+                           <li key={index}>
+                              <i
+                                 className="far fa-check-square"
+                                 aria-hidden="true"
+                              />
+                              {song.name}
+                           </li>
+                        );
+                     }
+                  })}
+               </ul>
             </div>
          );
       } else {
