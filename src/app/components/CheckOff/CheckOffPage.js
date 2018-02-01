@@ -12,6 +12,7 @@ import ActiveCheckOffMember from './ActiveCheckOffMember';
 import SelectedCheckOffSong from './SelectedCheckOffSong';
 import AppTopBar from '../AppTopBar';
 import AppSidebar from '../AppSidebar';
+import { updateOtherUserData } from '../../actions/userActions';
 
 class CheckOffPage extends React.Component {
    constructor(props) {
@@ -43,9 +44,41 @@ class CheckOffPage extends React.Component {
       });
    }
 
-   sendFeedback(feedback, song) {
+   sendFeedback(e, feedback, song) {
+      console.log(e);
       console.log(feedback);
       console.log(song);
+      console.log(this.state.activeCheckOffMember);
+      if (this.state.activeCheckOffMember !== undefined) {
+         let newFeedback = {
+            ...feedback,
+            read: false,
+         };
+
+         let songName = song.name;
+         let newSongs = this.state.activeCheckOffMember.songs.map(song => {
+            if (song.name === songName) {
+               if (!song.notes) {
+                  song.notes = [];
+                  song.notes.push(newFeedback);
+               } else {
+                  song.notes.push(newFeedback);
+               }
+               return song;
+            } else {
+               return song;
+            }
+         });
+
+         let newActiveMemberData = {
+            ...this.state.activeCheckOffMember,
+            songs: newSongs,
+         };
+
+         console.log('new active member', newActiveMemberData);
+
+         this.props.dispatch(updateOtherUserData(newActiveMemberData));
+      }
    }
 
    render() {

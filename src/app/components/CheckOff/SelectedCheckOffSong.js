@@ -34,7 +34,13 @@ class SelectedCheckOffSong extends React.Component {
                </div>
                <div className="active-song-content">
                   <ActiveSongFeedbackForm
-                     sendFeedback={() => this.props.sendFeedback}
+                     sendFeedback={(e, feedback) =>
+                        this.props.sendFeedback(
+                           e,
+                           feedback,
+                           this.props.activeSong
+                        )
+                     }
                   />
                </div>
             </div>

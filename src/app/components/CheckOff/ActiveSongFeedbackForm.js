@@ -33,12 +33,9 @@ class ActiveSongFeedbackForm extends React.Component {
                onChange={this.handleChange.bind(this)}
                value={this.state.message}
             />
-            <button
-               type="submit"
-               onClick={() => this.props.sendFeedBack(this.state)}
-            >
+            <div onClick={e => this.props.sendFeedback(e, this.state)}>
                Send Feedback
-            </button>
+            </div>
          </form>
       );
    }

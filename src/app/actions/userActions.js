@@ -101,6 +101,24 @@ export function updateUserData(user) {
    };
 }
 
+export function updateOtherUserData(data) {
+   console.log('user data', data);
+   return function(dispatch) {
+      dispatch({ type: 'UPDATE_USER_PENDING', payload: { loading: true } });
+      firebase
+         .firestore()
+         .collection('users')
+         .doc(data.uid)
+         .update(data)
+         .then(() => {
+            dispatch({
+               type: 'UPDATE_USER_SUCCESS',
+               payload: { loading: false },
+            });
+         });
+   };
+}
+
 export function getAllMembersByPartName(singingPart) {
    return function(dispatch) {
       dispatch({ type: 'FETCH_PART_MEMBERS_PENDING', payload: true });
