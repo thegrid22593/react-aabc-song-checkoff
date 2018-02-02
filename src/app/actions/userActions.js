@@ -2,7 +2,7 @@ import firebase from 'firebase';
 
 export function userSignIn(email, password) {
    return function(dispatch) {
-      firebase
+      return firebase
          .auth()
          .signInWithEmailAndPassword(email, password)
          .then(user => {
@@ -21,7 +21,6 @@ export function userSignIn(email, password) {
                      type: 'USER_DATA_RECEIVED',
                      payload: user.data(),
                   });
-                  return true;
                });
          })
          .catch(error => {
@@ -33,7 +32,7 @@ export function userSignIn(email, password) {
 export function fetchUser(userid) {
    return function(dispatch) {
       dispatch({ type: 'FETCHING_USER_PENDING', payload: { loading: true } });
-      firebase
+      return firebase
          .firestore()
          .collection('users')
          .doc(userid)
