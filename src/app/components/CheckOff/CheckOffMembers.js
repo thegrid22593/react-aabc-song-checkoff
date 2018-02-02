@@ -10,7 +10,7 @@ class CheckOffMembers extends React.Component {
    }
 
    render() {
-      if (this.props.members.length !== 0) {
+      if (this.props.members) {
          return (
             <div className="part-members">
                {this.props.members.map((member, index) => {
