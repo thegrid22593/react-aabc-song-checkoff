@@ -21,10 +21,12 @@ class UserDashboardFeedback extends React.Component {
    componentWillMount() {}
 
    showFeedback(song) {
+      console.log(song.notes);
       let notes = song.notes;
       this.setState({
          activeFeedback: notes,
       });
+      console.log('feedback', this.state.activeFeedback);
    }
 
    render() {

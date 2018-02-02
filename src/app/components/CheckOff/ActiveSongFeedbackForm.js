@@ -6,8 +6,8 @@ class ActiveSongFeedbackForm extends React.Component {
       super(props);
 
       this.state = {
-         feedbackTitle: '',
-         feedbackMessage: '',
+         title: '',
+         message: '',
       };
    }
 
@@ -23,13 +23,13 @@ class ActiveSongFeedbackForm extends React.Component {
       return (
          <form className="active-song-feedback-form">
             <input
-               name="feedbackTitle"
+               name="title"
                onChange={this.handleChange.bind(this)}
                type="text"
                value={this.state.title}
             />
             <textarea
-               name="feedbackMessage"
+               name="message"
                onChange={this.handleChange.bind(this)}
                value={this.state.message}
             />

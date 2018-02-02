@@ -6,28 +6,16 @@ require('../../scss/style.scss');
 class UserDashboardSingleFeedback extends React.Component {
    constructor(props) {
       super(props);
-
       this.state = {
          user: {},
-         activeFeedback: [],
       };
-
-      console.log('feedback', props);
-   }
-
-   componentWillMount() {}
-
-   showFeedback(song) {
-      let notes = song.notes;
-      this.setState({
-         activeFeedback: notes,
-      });
    }
 
    render() {
       return (
          <div className="single-feedback col-lg-6 columns">
             {this.props.feedback.map((feedback, index) => {
+               console.log('single', feedback);
                return <h2 key={index}>{feedback.title}</h2>;
             })}
          </div>
