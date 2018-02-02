@@ -2,9 +2,6 @@ import firebase from 'firebase';
 
 export default function reducer(
    state = {
-      userID: null,
-      fetching: false,
-      fetched: false,
       error: null,
       userAuth: {},
       user: {
@@ -28,12 +25,17 @@ export default function reducer(
          return state;
       }
 
+      case 'USER_SIGNED_IN_PENDING': {
+         state = { ...state, loading: action.payload };
+         console.log('STATE', state);
+      }
+
       case 'USER_SIGNED_IN_SUCCESS': {
-         state = { ...state, userAuth: action.payload, fetched: true };
+         state = { ...state, userAuth: action.payload, loading: false };
          return state;
       }
       case 'USER_SIGNED_IN_ERROR': {
-         state = { ...state, error: action.payload, fetched: true };
+         state = { ...state, error: action.payload, loading: false };
          return state;
       }
 

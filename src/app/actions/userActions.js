@@ -2,6 +2,7 @@ import firebase from 'firebase';
 
 export function userSignIn(email, password) {
    return function(dispatch) {
+      dispatch({ type: 'USER_SIGNED_IN_PENDING', payload: { loading: true } });
       return firebase
          .auth()
          .signInWithEmailAndPassword(email, password)
@@ -10,18 +11,6 @@ export function userSignIn(email, password) {
                type: 'USER_SIGNED_IN_SUCCESS',
                payload: user,
             });
-
-            firebase
-               .firestore()
-               .collection('users')
-               .doc(user.uid)
-               .get()
-               .then(user => {
-                  dispatch({
-                     type: 'USER_DATA_RECEIVED',
-                     payload: user.data(),
-                  });
-               });
          })
          .catch(error => {
             dispatch({ type: 'USER_SIGN_IN_ERROR', payload: error });
@@ -154,19 +143,5 @@ export function userSignOut() {
          .catch(error => {
             dispatch({ type: 'USER_SIGN_OUT_ERROR', payload: error });
          });
-   };
-}
-
-export function setUserName(name) {
-   return {
-      type: 'SET_USER_NAME',
-      payload: name,
-   };
-}
-
-export function setUserAge(age) {
-   return {
-      type: 'SET_USER_AGE',
-      payload: age,
    };
 }

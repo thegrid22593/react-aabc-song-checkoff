@@ -15,14 +15,9 @@ class SignInForm extends React.Component {
          loginEmail: '',
          loginPassword: '',
       };
-   }
 
-   // componentDidUpdate() {
-   //     console.log('updated', this.props.user);
-   //     if(this.props.userFetched) {
-   //         this.context.router.history.push('/dashboard');
-   //     }
-   // }
+      console.log('SignIn Props', this.props);
+   }
 
    signIn(e) {
       e.preventDefault();
@@ -30,9 +25,10 @@ class SignInForm extends React.Component {
          .dispatch(userSignIn(this.state.loginEmail, this.state.loginPassword))
          .then(() => {
             console.log('SIGNED IN', this.props.userAuth.uid);
-            // this.props.dispatch(fetchUser(this.props.user.uid)).then(() => {
-            //    //    this.context.router.history.push('/dashboard');
-            // });
+            this.props.dispatch(fetchUser(this.props.userAuth.uid)).then(() => {
+               console.log('DATA RECEIVED', this.props.user);
+               this.context.router.history.push('/dashboard');
+            });
          });
    }
 
@@ -70,6 +66,12 @@ class SignInForm extends React.Component {
                   <button type="submit" onClick={this.signIn.bind(this)}>
                      Sign In
                   </button>
+                  <div
+                     className={
+                        'sign-in-loading ' +
+                        (this.props.userAuth.loading ? 'loading' : '')
+                     }
+                  />
                </form>
             </div>
          </div>
