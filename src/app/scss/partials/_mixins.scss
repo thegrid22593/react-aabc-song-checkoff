@@ -11,6 +11,10 @@
       font-size: 16px !important;
     }
   }
+
+  @function fn-transparent-color($color, $opacity) {
+  @return rgba(red($color), green($color), blue($color), $opacity);
+}
   
   // General Transitions
   @mixin transition($args) {

@@ -68,10 +68,18 @@ $pulse-duration: 750ms;
       }
 
       .part-member {
-         margin: 0.5rem 0;
-         padding: 0.5rem 0;
-         border-bottom: 1px solid $aabc-light-grey;
+         margin: 0.75rem 0;
+         padding: 1.5rem;
+         background: $aabc-white;
+         border-radius: 5px;
+         @include box-shadow(0px 0px 10px fn-transparent-color(#ececec, 1));
          @include clearfix();
+         @include transition(0.2s all ease-in-out);
+
+         &:hover {
+             background: darken($aabc-white, 1%);
+             cursor: pointer;
+         }
 
          .part-member-avatar {
             border-radius: 50%;

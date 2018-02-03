@@ -46,7 +46,7 @@ class MusicLibraySongDetail extends React.Component {
                   onClick={e => {
                      this.props.toggleSongDetail(e, null);
                   }}
-                  className="fa fa-close"
+                  className="far fa-times-circle"
                   aria-hidden="true"
                />
             </div>
@@ -64,14 +64,11 @@ class MusicLibraySongDetail extends React.Component {
                         <div key={index} className="song-parts">
                            <div className="part-name">{part.name}</div>
                            <ul>
-                              <SongURL song={part} index={index} />
+                              <SongURL playSong={(e, songUrl) => this.props.playSong(e, songUrl)} song={part} index={index} />
                            </ul>
                         </div>
                      );
                   })}
-                  {/* <li (click)="playSong(part.urls.pianoSolfa, activeSong, 'Piano Solfa')" *ngIf="part.urls.pianoSolfa"><i className="fa fa-play-circle-o" aria-hidden="true"></i>Piano Solfa</li>
-                  <li (click)="playSong(part.urls.pianoWords, activeSong, 'Piano Words') "*ngIf="part.urls.pianoWords"><i className="fa fa-play-circle-o" aria-hidden="true"></i>Piano Words</li>
-                  <li (click)="playSong(part.urls.trackWords, activeSong, 'Track Words') "*ngIf="part.urls.trackWords"><i className="fa fa-play-circle-o" aria-hidden="true"></i>Track Words</li> */}
                </ul>
             </div>
             <button

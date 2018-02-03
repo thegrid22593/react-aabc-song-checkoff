@@ -8,11 +8,28 @@ class SongURL extends React.Component {
    }
 
    render() {
-      return (
-         <li>
-            <i className="fa fa-play-circle-o" aria-hidden="true" />Song
+
+    if(this.props.song.urls.trackWords !== undefined) {
+        return (
+         <li onClick={(e) => this.props.playSong(e, this.props.song.urls.trackWords)}>
+            <i className="fas fa-play-circle" aria-hidden="true" />Track Words
          </li>
-      );
+        )
+    } else if (this.props.song.urls.pianoWords !== undefined) {
+        return (
+         <li onClick={(e) => this.props.playSong(e, this.props.song.urls.pianoWords)}>    
+            <i className="fas fa-play-circle" aria-hidden="true" />Piano Words
+         </li>
+        )
+    } else if (this.props.song.urls.pianoSolfa !== undefined) {
+        return (
+         <li onClick={(e) => this.props.playSong(e, this.props.song.urls.pianoSplfa)}>
+            <i className="fas fa-play-circle" aria-hidden="true" />Piano Solfa
+         </li>
+        )
+    } else {
+        return;
+    }
    }
 }
 

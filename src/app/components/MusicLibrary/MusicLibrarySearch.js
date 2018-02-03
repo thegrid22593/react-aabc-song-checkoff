@@ -15,12 +15,13 @@ class MusicLibrarySearch extends React.Component {
                         id="search-box"
                         onKeyUp={this.props.searchLibrary}
                         type="text"
+                        placeholder="Search Songs..."
                     />
                 </form>
                 <div className="filter-bar">
                     <div className="results-found">
                         {this.props.songs.length} Results found
-               </div>
+                    </div>
                     <select onChange={this.props.handleSelectChange}>
                         <option disabled defaultValue="selected">
                             Filter
@@ -36,6 +37,7 @@ class MusicLibrarySearch extends React.Component {
                         <option value="completed">Completed</option>
                         <option value="not-completed">Not Completed</option>
                     </select>
+                    
                 </div>
             </section>
         );

@@ -1,6 +1,6 @@
 section.search-bar {
-   @include make-col(10);
-   padding: 2rem;
+   @include make-col(12);
+   padding: 2rem 3rem;
    form.search-bar-input {
       width: 100%;
       input {
@@ -12,6 +12,7 @@ section.search-bar {
          font-weight: 800;
          font-size: 2rem;
          color: $aabc-light-grey;
+         background: transparent;
 
          &:focus {
             outline: none;
@@ -24,4 +25,20 @@ section.search-bar {
    .form-control {
       width: 100% !important;
    }
+}
+
+.filter-bar {
+    margin-top: 1rem;
+    .results-found {
+        font-family: $aabc-pt-sans-narrow;
+        font-size: 1.25rem;
+        color: $aabc-cool-grey;
+        @include make-col(6);
+    @include float-left();
+    }
+
+    select {
+        @include make-col(6);
+        @include float-right();
+    }
 }

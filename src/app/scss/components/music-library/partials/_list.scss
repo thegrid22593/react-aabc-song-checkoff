@@ -1,11 +1,16 @@
 .music-library {
    section.songs {
-      background: #eee;
+      background: #f9f9f9;
       padding: 3rem;
       .songs-list {
          background: white;
          padding: 3rem;
          table {
+             tbody {
+                 tr {
+                     font-size: 1.125rem;
+                 }
+             }
             tbody.completed {
                tr {
                   color: $aabc-light-grey;

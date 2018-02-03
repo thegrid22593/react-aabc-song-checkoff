@@ -16,12 +16,12 @@ class UserDashboardMenu extends React.Component {
             <ul>
                <li>
                   <NavLink to="/dashboard/summary" activeClassName="active">
-                     <i className="fa fa-pie-chart" aria-hidden="true" />Summary
+                     <i className="fas fa-chart-pie" aria-hidden="true" />Summary
                   </NavLink>
                </li>
                <li>
                   <NavLink to="/dashboard/feedback" activeClassName="active">
-                     <i className="fa fa-comment-o" aria-hidden="true" />Feedback
+                     <i className="far fa-comments" aria-hidden="true" />Feedback
                   </NavLink>
                </li>
                <li>
@@ -29,7 +29,7 @@ class UserDashboardMenu extends React.Component {
                      to="/dashboard/part-comparison"
                      activeClassName="active"
                   >
-                     <i className="fa fa-bar-chart" aria-hidden="true" />Part
+                     <i className="far fa-chart-bar" aria-hidden="true" />Part
                      Comparison
                   </NavLink>
                </li>

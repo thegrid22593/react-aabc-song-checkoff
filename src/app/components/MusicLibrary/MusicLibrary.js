@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import MusicLibrarySongDetail from './MusicLibrarySongDetail';
 import MusicLibrarySearch from './MusicLibrarySearch';
+import AudioPlayer from './AudioPlayer';
 
 class MusicLibrary extends React.Component {
    constructor(props) {
@@ -13,6 +14,7 @@ class MusicLibrary extends React.Component {
             parts: [],
          },
          songs: this.props.songs,
+         activeSongUrl: null,
       };
    }
 
@@ -99,6 +101,15 @@ class MusicLibrary extends React.Component {
       this.setState({ songs: sortedSongs });
    }
 
+   playSong(e, songUrl) {
+       e.preventDefault();
+       console.log(e);
+       console.log(songUrl);
+       this.setState({
+           activeSongUrl: songUrl
+       })
+   }
+
    render() {
       return (
          <div className="music-library">
@@ -172,11 +183,14 @@ class MusicLibrary extends React.Component {
                </div>
             </section>
             <MusicLibrarySongDetail
+               playSong={this.playSong.bind(this)}
                isActive={this.state.songDetailIsActive}
                toggleSongDetail={this.toggleSongDetail.bind(this)}
                activeSong={this.state.activeSong}
                completedSong={this.completedSong.bind(this)}
             />
+
+            <AudioPlayer songUrl={this.state.activeSongUrl} activeSong={this.state.activeSong}/>
          </div>
       );
    }

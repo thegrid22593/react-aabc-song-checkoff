@@ -66,19 +66,28 @@
             text-transform: uppercase;
             letter-spacing: 0.2rem;
             font-size: 0.8rem;
-            margin-bottom: 0.5rem;
+            margin: 0.5rem 0;
             padding: 0.3rem;
          }
 
          li {
             @include transition(0.1s all ease-in-out);
+            padding: 0.5rem;
+            border-radius: 5px;
+            background: $aabc-white;
+            @include box-shadow(0 1px 10px fn-transparent-color(#ccc, 0.4));
 
             &:hover {
                color: $aabc-red;
                cursor: pointer;
+               @include box-shadow(0 3px 10px fn-transparent-color(#ccc, 0.5));
                i {
                   color: $aabc-red;
                }
+            }
+
+            &:active {
+                background: darken($aabc-white, 1%);
             }
             i {
                color: #ddd;
