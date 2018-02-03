@@ -63,7 +63,10 @@ class SignInForm extends React.Component {
                      placeholder="password"
                   />
                   <a href="#">Forgot Password?</a>
-                  <button type="submit" onClick={this.signIn.bind(this)}>
+                  <button 
+                  className={(this.props.userAuth.loading ? 'loading' : '')}
+                  type="submit" 
+                  onClick={this.signIn.bind(this)}>
                      Sign In
                   </button>
                   <div
