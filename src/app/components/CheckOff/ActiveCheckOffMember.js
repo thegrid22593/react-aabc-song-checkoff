@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 class ActiveCheckOffMember extends React.Component {
    constructor(props) {
@@ -11,7 +12,7 @@ class ActiveCheckOffMember extends React.Component {
    }
 
    componentWillReceiveProps(nextProps) {
-      if (nextProps != undefined) {
+      if (typeof nextProps !== undefined) {
          this.setState({
             activeMember: nextProps.activeMember,
          });
@@ -67,5 +68,10 @@ class ActiveCheckOffMember extends React.Component {
       }
    }
 }
+
+ActiveCheckOffMember.propTypes = {
+   activeMember: React.PropTypes.object,
+   selectCheckOffSong: React.PropTypes.func.isRequired,
+};
 
 module.exports = ActiveCheckOffMember;
