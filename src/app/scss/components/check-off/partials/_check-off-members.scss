@@ -1,0 +1,46 @@
+.checkoff-members {
+   .part-members {
+      margin: 0 1rem;
+      @include make-col(3);
+      @include float-left();
+      .member {
+         text-align: center;
+         border-radius: 5px;
+         padding: 2rem;
+         margin: 1rem 0;
+         box-shadow: 0px 0px 5px $aabc-light-grey;
+
+         img {
+            max-width: 100px;
+            border-radius: 50%;
+         }
+      }
+   }
+
+   .active-check-off-member {
+      @include make-col(3);
+      @include float-left();
+      padding: 2rem;
+
+      ul.active-member-songs {
+         li {
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            &:hover {
+               background: #efefef;
+               cursor: pointer;
+               i {
+                  color: $aabc-white;
+               }
+            }
+            i {
+               color: $aabc-light-grey;
+               margin-right: 0.5rem;
+               &.completed {
+                  color: $aabc-completed-green;
+               }
+            }
+         }
+      }
+   }
+}

@@ -8,6 +8,7 @@ class ActiveSongFeedbackForm extends React.Component {
       this.state = {
          title: '',
          message: '',
+         loading: false,
       };
    }
 
@@ -22,20 +23,30 @@ class ActiveSongFeedbackForm extends React.Component {
    render() {
       return (
          <form className="active-song-feedback-form">
+            <label for="title">Title</label>
             <input
                name="title"
                onChange={this.handleChange.bind(this)}
                type="text"
                value={this.state.title}
             />
+            <label for="message">Message</label>
             <textarea
                name="message"
                onChange={this.handleChange.bind(this)}
                value={this.state.message}
             />
-            <div onClick={e => this.props.sendFeedback(e, this.state)}>
+            <div
+               className="send-feedback-button"
+               onClick={e => this.props.sendFeedback(e, this.state)}
+            >
                Send Feedback
             </div>
+            <div
+               className={
+                  'form-loading ' + (this.state.loading ? 'loading' : '')
+               }
+            />
          </form>
       );
    }
