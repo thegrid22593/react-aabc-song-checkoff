@@ -50,43 +50,40 @@ class CheckOffPage extends React.Component {
       console.log(song);
       console.log(this.state.activeCheckOffMember);
 
-        if(feedback.message !== '' && feedback.title !== '') {
-            if (this.state.activeCheckOffMember !== undefined ) {
-                    let newFeedback = {
-                        ...feedback,
-                        read: false,
-                        
-                    };
+      if (feedback.message !== '' && feedback.title !== '') {
+         if (this.state.activeCheckOffMember !== undefined) {
+            let newFeedback = {
+               ...feedback,
+               read: false,
+            };
 
-                    let songName = song.name;
-                    let newSongs = this.state.activeCheckOffMember.songs.map(song => {
-                        if (song.name === songName) {
-                        if (!song.notes) {
-                            song.notes = [];
-                            newFeedback.id = 1;
-                            song.notes.push(newFeedback);
-                        } else {
-                            newFeedback.id = song.notes.length + 1;
-                            song.notes.push(newFeedback);
-                        }
-                        return song;
-                        } else {
-                        return song;
-                        }
-                    });
+            let songName = song.name;
+            let newSongs = this.state.activeCheckOffMember.songs.map(song => {
+               if (song.name === songName) {
+                  if (!song.notes) {
+                     song.notes = [];
+                     newFeedback.id = 1;
+                     song.notes.push(newFeedback);
+                  } else {
+                     newFeedback.id = song.notes.length + 1;
+                     song.notes.push(newFeedback);
+                  }
+                  return song;
+               } else {
+                  return song;
+               }
+            });
 
-                    let newActiveMemberData = {
-                        ...this.state.activeCheckOffMember,
-                        songs: newSongs,
-                    };
+            let newActiveMemberData = {
+               ...this.state.activeCheckOffMember,
+               songs: newSongs,
+            };
 
-                    console.log('new active member', newActiveMemberData);
+            console.log('new active member', newActiveMemberData);
 
-                    this.props.dispatch(updateOtherUserData(newActiveMemberData));
-                }
-        }
-
-      
+            this.props.dispatch(updateOtherUserData(newActiveMemberData));
+         }
+      }
    }
 
    render() {
@@ -123,6 +120,10 @@ class CheckOffPage extends React.Component {
       );
    }
 }
+
+CheckOffPage.contextTypes = {
+   router: React.PropTypes.object.isRequired,
+};
 
 CheckOffPage = withRouter(
    connect(store => {

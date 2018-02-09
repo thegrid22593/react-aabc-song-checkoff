@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 require('../../scss/style.scss');
+import { Switch, Route } from 'react-router-dom';
+import ActiveCheckOffMember from './ActiveCheckOffMember';
 
 class CheckOffMember extends React.Component {
    constructor(props) {

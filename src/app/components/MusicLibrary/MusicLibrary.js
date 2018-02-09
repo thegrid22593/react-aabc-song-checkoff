@@ -202,7 +202,7 @@ class MusicLibrary extends React.Component {
 
 MusicLibrary.propTypes = {
    songs: React.PropTypes.arrayOf(PropTypes.object).isRequired,
-   updateUserSongs: React.propTypes.func.isRequired,
+   updateUserSongs: React.PropTypes.func.isRequired,
 };
 
 module.exports = MusicLibrary;
