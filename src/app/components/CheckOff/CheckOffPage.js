@@ -13,6 +13,7 @@ import SelectedCheckOffSong from './SelectedCheckOffSong';
 import AppTopBar from '../AppTopBar';
 import AppSidebar from '../AppSidebar';
 import { updateOtherUserData } from '../../actions/userActions';
+import { Switch, Route } from 'react-router-dom';
 
 class CheckOffPage extends React.Component {
    constructor(props) {
@@ -35,6 +36,7 @@ class CheckOffPage extends React.Component {
       this.setState({
          activeCheckOffMember: member,
       });
+      this.context.router.history.push('/checkoff/' + member.uid);
    }
 
    selectActiveSong(song) {
@@ -103,10 +105,21 @@ class CheckOffPage extends React.Component {
                      members={this.props.user.partMembers}
                   />
                   <section className="active-check-off-member">
-                     <ActiveCheckOffMember
-                        activeMember={this.state.activeCheckOffMember}
-                        selectCheckOffSong={this.selectActiveSong.bind(this)}
-                     />
+                     <Switch>
+                        <Route
+                           path="/checkoff/:user"
+                           exact
+                           render={props => (
+                              <ActiveCheckOffMember
+                                 activeMember={this.state.activeCheckOffMember}
+                                 selectCheckOffSong={this.selectActiveSong.bind(
+                                    this
+                                 )}
+                                 {...props}
+                              />
+                           )}
+                        />
+                     </Switch>
                   </section>
                   <section className="selected-check-off-song">
                      <SelectedCheckOffSong
