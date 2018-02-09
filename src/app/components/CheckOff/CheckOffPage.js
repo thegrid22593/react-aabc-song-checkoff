@@ -49,36 +49,44 @@ class CheckOffPage extends React.Component {
       console.log(feedback);
       console.log(song);
       console.log(this.state.activeCheckOffMember);
-      if (this.state.activeCheckOffMember !== undefined) {
-         let newFeedback = {
-            ...feedback,
-            read: false,
-         };
 
-         let songName = song.name;
-         let newSongs = this.state.activeCheckOffMember.songs.map(song => {
-            if (song.name === songName) {
-               if (!song.notes) {
-                  song.notes = [];
-                  song.notes.push(newFeedback);
-               } else {
-                  song.notes.push(newFeedback);
-               }
-               return song;
-            } else {
-               return song;
-            }
-         });
+        if(feedback.message !== '' && feedback.title !== '') {
+            if (this.state.activeCheckOffMember !== undefined ) {
+                    let newFeedback = {
+                        ...feedback,
+                        read: false,
+                        
+                    };
 
-         let newActiveMemberData = {
-            ...this.state.activeCheckOffMember,
-            songs: newSongs,
-         };
+                    let songName = song.name;
+                    let newSongs = this.state.activeCheckOffMember.songs.map(song => {
+                        if (song.name === songName) {
+                        if (!song.notes) {
+                            song.notes = [];
+                            newFeedback.id = 1;
+                            song.notes.push(newFeedback);
+                        } else {
+                            newFeedback.id = song.notes.length + 1;
+                            song.notes.push(newFeedback);
+                        }
+                        return song;
+                        } else {
+                        return song;
+                        }
+                    });
 
-         console.log('new active member', newActiveMemberData);
+                    let newActiveMemberData = {
+                        ...this.state.activeCheckOffMember,
+                        songs: newSongs,
+                    };
 
-         this.props.dispatch(updateOtherUserData(newActiveMemberData));
-      }
+                    console.log('new active member', newActiveMemberData);
+
+                    this.props.dispatch(updateOtherUserData(newActiveMemberData));
+                }
+        }
+
+      
    }
 
    render() {

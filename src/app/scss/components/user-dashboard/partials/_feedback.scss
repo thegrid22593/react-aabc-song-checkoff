@@ -3,11 +3,28 @@
    background: $aabc-white;
    border-radius: 8px;
    border: 1px solid $aabc-light-grey;
+   @include clearfix();
+
+   .songs-with-feedback {
+       @include make-col-ready();
+       @include make-col(6);
+       @include float-left();
+       padding: 2rem;
+
+       h5 {
+           margin-bottom: 1rem;
+           font-family: $aabc-pt-sans-narrow;
+           font-weight: 800;
+           font-size: 1.25rem;
+       }
+   }
 
    .feedback-list {
       li {
          padding: 0.5rem;
          border-bottom: 1px solid lighten($aabc-light-grey, 10%);
+         font-family: $aabc-pt-sans-narrow;
+         font-weight: 700;
          @include transition(0.2s all ease-in-out);
          &:hover {
             cursor: pointer;
@@ -17,7 +34,84 @@
    }
 }
 
-.feedback-message {
-   width: 30%;
-   float: right;
+.single-feedback {
+  @include make-col(6);
+  @include float-left();
+
+  .single-feedback-message {
+      margin: 2rem 0;
+      padding: 1rem;
+      @include transition(0.2s all ease-in-out);
+      @include box-shadow(0px 5px 10px rgba(#ccc, 0.2));
+      background: #fefefe;
+
+      &:first-child {
+      }
+
+      i {
+          color: $aabc-red;
+          font-size: 1.25rem;
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 0.5rem;
+          margin-top: -0.2rem;
+      }
+
+      h2 {
+          font-weight: 800;
+          font-size: 1.75rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          color: $aabc-light-grey;
+          font-family: $aabc-pt-sans-narrow;
+          display: inline-block;
+          vertical-align: middle;
+      }
+
+      p {
+          color: $aabc-cold-grey;
+          font-size: 1.25rem;
+          font-family: $aabc-pt-sans-narrow;
+          font-weight: 300;
+      }
+
+      button.mark-as-read-btn {
+          text-align: right;
+          float: right;
+          border: 1px solid $aabc-light-grey;
+          background: transparent;
+          @include box-shadow(0 2px 10px rgba(#ccc, 0.2));
+          border-radius: 50px;
+          color: $aabc-cool-grey;
+          padding: 0.5rem 1.25rem;
+          font-size: 0.8rem;
+          text-transform: uppercase;
+          font-family: $aabc-pt-sans-narrow;
+          @include transition(0.2s all ease-in-out);
+
+          &:hover {
+              background: $aabc-red;
+              color: $aabc-white;
+              border: 1px solid $aabc-red;
+              cursor: pointer;
+              i {
+                  color: $aabc-white;
+              }
+          }
+
+          i {
+              color: $aabc-light-grey;
+              font-size: 0.8rem;
+          }
+          
+      }
+
+      &:hover {
+        background: white;
+        @include box-shadow(0px 9px 10px rgba(#ccc, 0.3));
+        border-bottom: none;
+        cursor: pointer;
+      }
+  }
 }
+

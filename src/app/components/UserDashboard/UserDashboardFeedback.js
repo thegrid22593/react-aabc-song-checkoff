@@ -32,8 +32,8 @@ class UserDashboardFeedback extends React.Component {
    render() {
       return (
          <section className="feedback">
-            <div className="col-lg-4 columns">
                <div className="songs-with-feedback">
+                  <h5>Feedback Messages</h5>
                   <ul className="feedback-list">
                      {this.props.user.songs.map((song, index) => {
                         if (song.notes !== undefined) {
@@ -53,7 +53,6 @@ class UserDashboardFeedback extends React.Component {
                <UserDashboardSingleFeedback
                   feedback={this.state.activeFeedback}
                />
-            </div>
          </section>
       );
    }
