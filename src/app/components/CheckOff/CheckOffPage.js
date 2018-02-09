@@ -39,11 +39,14 @@ class CheckOffPage extends React.Component {
       this.context.router.history.push('/checkoff/' + member.uid);
    }
 
-   selectActiveSong(song) {
+   selectActiveSong(song, member) {
       console.log('song', song);
       this.setState({
          activeCheckOffSong: song,
       });
+      this.context.router.history.push(
+         '/checkoff/' + member.uid + '/' + song.name
+      );
    }
 
    sendFeedback(e, feedback, song) {
@@ -108,7 +111,6 @@ class CheckOffPage extends React.Component {
                      <Switch>
                         <Route
                            path="/checkoff/:user"
-                           exact
                            render={props => (
                               <ActiveCheckOffMember
                                  activeMember={this.state.activeCheckOffMember}
@@ -122,10 +124,18 @@ class CheckOffPage extends React.Component {
                      </Switch>
                   </section>
                   <section className="selected-check-off-song">
-                     <SelectedCheckOffSong
-                        activeSong={this.state.activeCheckOffSong}
-                        sendFeedback={this.sendFeedback.bind(this)}
-                     />
+                     <Switch>
+                        <Route
+                           path="/checkoff/:user/:songName"
+                           render={props => (
+                              <SelectedCheckOffSong
+                                 activeSong={this.state.activeCheckOffSong}
+                                 sendFeedback={this.sendFeedback.bind(this)}
+                                 {...props}
+                              />
+                           )}
+                        />
+                     </Switch>
                   </section>
                </section>
             </div>

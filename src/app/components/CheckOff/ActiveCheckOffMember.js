@@ -46,7 +46,10 @@ class ActiveCheckOffMember extends React.Component {
                            <li
                               key={index}
                               onClick={() =>
-                                 this.props.selectCheckOffSong(song)
+                                 this.props.selectCheckOffSong(
+                                    song,
+                                    this.state.activeMember
+                                 )
                               }
                            >
                               <i
