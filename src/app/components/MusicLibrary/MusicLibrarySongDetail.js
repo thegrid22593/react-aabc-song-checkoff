@@ -27,9 +27,9 @@ class MusicLibraySongDetail extends React.Component {
       console.log('values', urls);
    }
 
-//    songCompleted(songName) {
-//       console.log('completed', songName);
-//    }
+   //    songCompleted(songName) {
+   //       console.log('completed', songName);
+   //    }
 
    playSong(url) {}
 
@@ -64,7 +64,13 @@ class MusicLibraySongDetail extends React.Component {
                         <div key={index} className="song-parts">
                            <div className="part-name">{part.name}</div>
                            <ul>
-                              <SongURL playSong={(e, songUrl) => this.props.playSong(e, songUrl)} song={part} index={index} />
+                              <SongURL
+                                 playSong={(e, songUrl) =>
+                                    this.props.playSong(e, songUrl)
+                                 }
+                                 song={part}
+                                 index={index}
+                              />
                            </ul>
                         </div>
                      );
@@ -80,21 +86,15 @@ class MusicLibraySongDetail extends React.Component {
                Checked Off
             </button>
          </section>
-
-         // <section className="audio-player">
-         //     <ul className="current-song">
-         //         <li><span>Current Song:</span> {{currentSong.name}} | {{currentSongType}}</li>
-         //     </ul>
-         //     <audio src="" autoplay controls="controls">
-         //         Your browser does not support the <code>audio</code> element.
-         //     </audio>
-         // </section>
       );
    }
 }
 
-// MusicLibraySongDetail.propTypes = {
-//     toggleSongDetail: React.PropTypes.object.isRequired,
-// }
+MusicLibraySongDetail.propTypes = {
+   isActive: React.PropTypes.object.isRequired,
+   toggleSongDetail: React.PropTypes.func.isRequired,
+   activeSong: React.PropTypes.object,
+   completedSong: React.PropTypes.func.isRequired,
+};
 
 module.exports = MusicLibraySongDetail;

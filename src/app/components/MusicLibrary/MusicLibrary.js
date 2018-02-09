@@ -3,6 +3,7 @@ import React from 'react';
 import MusicLibrarySongDetail from './MusicLibrarySongDetail';
 import MusicLibrarySearch from './MusicLibrarySearch';
 import AudioPlayer from './AudioPlayer';
+import PropTypes from 'prop-types';
 
 class MusicLibrary extends React.Component {
    constructor(props) {
@@ -102,12 +103,12 @@ class MusicLibrary extends React.Component {
    }
 
    playSong(e, songUrl) {
-       e.preventDefault();
-       console.log(e);
-       console.log(songUrl);
-       this.setState({
-           activeSongUrl: songUrl
-       })
+      e.preventDefault();
+      console.log(e);
+      console.log(songUrl);
+      this.setState({
+         activeSongUrl: songUrl,
+      });
    }
 
    render() {
@@ -190,10 +191,18 @@ class MusicLibrary extends React.Component {
                completedSong={this.completedSong.bind(this)}
             />
 
-            <AudioPlayer songUrl={this.state.activeSongUrl} activeSong={this.state.activeSong}/>
+            <AudioPlayer
+               songUrl={this.state.activeSongUrl}
+               activeSong={this.state.activeSong}
+            />
          </div>
       );
    }
 }
+
+MusicLibrary.propTypes = {
+   songs: React.PropTypes.arrayOf(PropTypes.object).isRequired,
+   updateUserSongs: React.propTypes.func.isRequired,
+};
 
 module.exports = MusicLibrary;
