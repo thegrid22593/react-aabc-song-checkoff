@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-require('../../scss/style.scss');
 import CheckOffMember from './CheckOffMember';
+import PropTypes from 'prop-types';
+require('../../scss/style.scss');
 
 class CheckOffMembers extends React.Component {
    constructor(props) {
@@ -31,5 +32,10 @@ class CheckOffMembers extends React.Component {
       }
    }
 }
+
+CheckOffMember.propTypes = {
+   showMemberSongs: React.PropTypes.func.isRequired,
+   members: React.PropTypes.arrayOf(PropTypes.object),
+};
 
 module.exports = CheckOffMembers;

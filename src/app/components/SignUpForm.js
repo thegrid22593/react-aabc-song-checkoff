@@ -1,7 +1,4 @@
 import React from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
-import firebase from 'firebase';
-import SignInForm from './SignInForm';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { userSignUp } from '../actions/userActions';
@@ -14,6 +11,9 @@ class SignUpForm extends React.Component {
          signUpEmail: '',
          signUpPassword: '',
       };
+
+      this.handleChange.bind(this);
+      this.signUp.bind(this);
 
       console.log(props);
    }
@@ -33,7 +33,7 @@ class SignUpForm extends React.Component {
    }
 
    handleChange(e) {
-      let change = {};
+      const change = {};
       change[e.target.name] = e.target.value;
       this.setState(change);
    }
@@ -41,16 +41,14 @@ class SignUpForm extends React.Component {
    render() {
       return (
          <div
-            className={
-               'sign-up-form ' + (this.props.active ? 'active' : 'false')
-            }
+            className={`sign-up-form ${this.props.active ? 'active' : 'false'}`}
          >
             <div className="sign-up-form-content">
                <h3>Sign Up</h3>
                <form action="" className="sign-up">
                   <input
                      type="email"
-                     onChange={this.handleChange.bind(this)}
+                     onChange={this.handleChange}
                      name="signUpEmail"
                      id="signUpEmail"
                      placeholder="email"
@@ -58,12 +56,12 @@ class SignUpForm extends React.Component {
                   <span className="error-message">Email already in use.</span>
                   <input
                      type="password"
-                     onChange={this.handleChange.bind(this)}
+                     onChange={this.handleChange}
                      name="signUpPassword"
                      id="signUpPassword"
                      placeholder="password"
                   />
-                  <button onClick={this.signUp.bind(this)} type="submit">
+                  <button onClick={this.signUp} type="submit">
                      Sign Up
                   </button>
                </form>

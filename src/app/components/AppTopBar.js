@@ -1,10 +1,9 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-require('../scss/style.scss');
+import PropTypes from 'prop-types';
+import '../scss/style.scss';
 
 class AppTopBar extends React.Component {
    constructor(props) {
@@ -13,6 +12,18 @@ class AppTopBar extends React.Component {
       this.state = {
          notifications: null,
       };
+   }
+
+   componentWillMount() {
+      let notifications = 0;
+      console.log('loop', this.props);
+      this.props.user.songs.forEach(song => {
+         if (song.notes) {
+            notifications += song.notes.length;
+         }
+      });
+      console.log('notification', notifications);
+      this.setState({ notifications });
    }
 
    signOut() {
@@ -28,27 +39,17 @@ class AppTopBar extends React.Component {
          });
    }
 
-   componentWillMount() {
-      let notifications = 0;
-      console.log('loop', this.props);
-      this.props.user.songs.forEach(song => {
-         if (song.notes) {
-            notifications += song.notes.length;
-         }
-      });
-      console.log('notification', notifications);
-      this.setState({ notifications });
-   }
-
    render() {
       return (
          <nav className="main-nav">
-            <a className="nav-branding" href="#">
+            <a className="nav-branding" href="">
                Music Library
             </a>
             <ul className="nav-links">
-               <li onClick={this.signOut}>
-                  <i className="fa fa-sign-out" aria-hidden="true" />Sign Out
+               <li>
+                  <a onClick={this.signOut} href="">
+                     <i className="fa fa-sign-out" aria-hidden="true" />Sign Out
+                  </a>
                </li>
                <li>
                   <div className="notifications">
@@ -78,7 +79,11 @@ class AppTopBar extends React.Component {
 }
 
 AppTopBar.contextTypes = {
-   router: React.PropTypes.object.isRequired,
+   router: PropTypes.object.isRequired,
+};
+
+AppTopBar.propTypes = {
+   user: PropTypes.obj.isRequired,
 };
 
 AppTopBar = connect(store => {

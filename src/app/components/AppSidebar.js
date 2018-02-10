@@ -1,7 +1,7 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-require('../scss/style.scss');
+import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import '../scss/style.scss';
 
 class AppSidebar extends React.Component {
    constructor(props) {
@@ -9,8 +9,8 @@ class AppSidebar extends React.Component {
       console.log('sidebar props', props);
    }
 
-   checkIfPartleader(user) {
-      if (user.partLeader) {
+   checkIfPartleader() {
+      if (this.props.user.partLeader) {
          return (
             <li>
                <NavLink to="/checkoff" activeClassName="active">
@@ -19,13 +19,12 @@ class AppSidebar extends React.Component {
                </NavLink>
             </li>
          );
-      } else {
-         return;
       }
+      return false;
    }
 
    render() {
-    //    const songsRemaining = this.props.user.songs.length - this.props.user.completedSongs;
+      //    const songsRemaining = this.props.user.songs.length - this.props.user.completedSongs;
       return (
          <nav className="sidebar-nav">
             <ul className="nav-links">
@@ -40,7 +39,7 @@ class AppSidebar extends React.Component {
                      Library
                   </NavLink>
                </li>
-               {this.checkIfPartleader(this.props.user)}
+               {this.checkIfPartleader()}
                <li>
                   <NavLink to="/solo-songs" activeClassName="active">
                      <i className="fa fa-microphone" aria-hidden="true" />Solo
@@ -61,13 +60,24 @@ class AppSidebar extends React.Component {
             </ul>
 
             <ul className="user-details">
-                <div className="completion-percentage"><span>Completion</span> { this.props.user.percentage }%</div>
-                <div className="completion-percentage-bar"><div className="completion" style={{width: this.props.user.percentage+"%"}}></div></div>
-                {/* <div className="songs-remaining"><span>Songs Remaining</span> { songsRemaining }</div> */}
+               <div className="completion-percentage">
+                  <span>Completion</span> {this.props.user.percentage}%
+               </div>
+               <div className="completion-percentage-bar">
+                  <div
+                     className="completion"
+                     style={{ width: `${this.props.user.percentage}%` }}
+                  />
+               </div>
+               {/* <div className="songs-remaining"><span>Songs Remaining</span> { songsRemaining }</div> */}
             </ul>
          </nav>
       );
    }
 }
+
+AppSidebar.propTypes = {
+   user: PropTypes.obj.isRequired,
+};
 
 module.exports = AppSidebar;

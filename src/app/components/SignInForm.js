@@ -1,11 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
-import { Redirect } from 'react-router';
-import firebase from 'firebase';
-import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import { userSignIn } from '../actions/userActions';
-import { fetchUser } from '../actions/userActions';
+import { userSignIn, fetchUser } from '../actions/userActions';
+import PropTypes from 'prop-types';
 
 class SignInForm extends React.Component {
    constructor(props) {
@@ -17,6 +13,9 @@ class SignInForm extends React.Component {
       };
 
       console.log('SignIn Props', this.props);
+
+      this.handleChange.bind(this);
+      this.signIn.bind(this);
    }
 
    signIn(e) {
@@ -33,7 +32,7 @@ class SignInForm extends React.Component {
    }
 
    handleChange(e) {
-      let change = {};
+      const change = {};
       change[e.target.name] = e.target.value;
       this.setState(change);
    }
@@ -41,14 +40,14 @@ class SignInForm extends React.Component {
    render() {
       return (
          <div
-            className={'login-form ' + (this.props.active ? 'active' : 'false')}
+            className={`login-form ${this.props.active ? 'active' : 'false'}`}
          >
             <div className="login-form-content">
                <h3>Login</h3>
                <form action="" className="login">
                   <input
                      type="email"
-                     onChange={this.handleChange.bind(this)}
+                     onChange={this.handleChange}
                      value={this.state.email}
                      name="loginEmail"
                      id="loginEmail"
@@ -56,24 +55,24 @@ class SignInForm extends React.Component {
                   />
                   <input
                      type="password"
-                     onChange={this.handleChange.bind(this)}
+                     onChange={this.handleChange}
                      value={this.state.password}
                      name="loginPassword"
                      id="loginPassword"
                      placeholder="password"
                   />
-                  <a href="#">Forgot Password?</a>
-                  <button 
-                  className={(this.props.userAuth.loading ? 'loading' : '')}
-                  type="submit" 
-                  onClick={this.signIn.bind(this)}>
+                  <a href="">Forgot Password?</a>
+                  <button
+                     className={this.props.userAuth.loading ? 'loading' : ''}
+                     type="submit"
+                     onClick={this.signIn}
+                  >
                      Sign In
                   </button>
                   <div
-                     className={
-                        'sign-in-loading ' +
-                        (this.props.userAuth.loading ? 'loading' : '')
-                     }
+                     className={`sign-in-loading ${
+                        this.props.userAuth.loading ? 'loading' : ''
+                     }`}
                   />
                </form>
             </div>
@@ -84,6 +83,13 @@ class SignInForm extends React.Component {
 
 SignInForm.contextTypes = {
    router: React.PropTypes.object.isRequired,
+};
+
+SignInForm.proptypes = {
+   dispatch: PropTypes.func.isRequired,
+   userAuth: PropTypes.obj.isRequired,
+   user: PropTypes.obj.isRequired,
+   active: PropTypes.bool.isRequired,
 };
 
 SignInForm = connect(store => {

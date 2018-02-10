@@ -1,20 +1,13 @@
-import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import React from 'react';
+import PropTypes from 'prop-types';
 import Header from './Header';
 import Footer from './Footer';
-import SignInPage from './SignInPage';
-import fire from '../../fire';
 import Main from './Main';
-import { connect } from 'react-redux';
-import { userSignIn } from '../actions/userActions';
-import { withRouter } from 'react-router';
-require('../scss/style.scss');
+import '../scss/style.scss';
 
 class App extends React.Component {
-   constructor() {
-      super();
-   }
-
    componentWillMount() {
       if (this.props.user.uid) {
          this.context.router.history.push('/dashboard');
@@ -36,6 +29,10 @@ class App extends React.Component {
 
 App.contextTypes = {
    router: React.PropTypes.object.isRequired,
+};
+
+App.propTypes = {
+   user: PropTypes.obj.isRequired,
 };
 
 App = withRouter(

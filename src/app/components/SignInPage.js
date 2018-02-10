@@ -1,11 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
 import Background from '../images/main-bg.jpg';
 import Logo from '../images/logo-icon.png';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 
 class SignInPage extends React.Component {
    constructor(props) {
@@ -33,17 +32,19 @@ class SignInPage extends React.Component {
       });
    }
 
+   `header ${ isLargeScreen() ? '' :
+    (item.isCollapsed ? 'icon-expander' : 'icon-collapser') }`
+
    render() {
       return (
          <section
             className="main-bg"
-            style={{ backgroundImage: 'url(' + Background + ')' }}
+            style={{ backgroundImage: `url(${Background})` }}
          >
             <section className="login-sign-up-forms">
                <div
                   className={
-                     'dont-have-account ' +
-                     (!this.state.signUpFormActive ? 'active' : 'false')
+                     `dont-have-account ${!this.state.signUpFormActive ? 'active' : 'false'}`
                   }
                >
                   <div className="dont-have-account-content">
