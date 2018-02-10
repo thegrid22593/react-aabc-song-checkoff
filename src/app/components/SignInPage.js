@@ -32,9 +32,6 @@ class SignInPage extends React.Component {
       });
    }
 
-   `header ${ isLargeScreen() ? '' :
-    (item.isCollapsed ? 'icon-expander' : 'icon-collapser') }`
-
    render() {
       return (
          <section

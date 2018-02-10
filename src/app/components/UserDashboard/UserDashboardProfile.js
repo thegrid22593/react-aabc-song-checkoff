@@ -1,7 +1,7 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
-import { Switch, Route, Router } from 'react-router-dom';
-require('../../scss/style.scss');
+import PropTypes from 'prop-types';
+
+import '../../scss/style.scss';
 
 class UserDashboardProfile extends React.Component {
    constructor(props) {
@@ -49,6 +49,11 @@ class UserDashboardProfile extends React.Component {
          </section>
       );
    }
+}
+
+UserDashboardProfile.propTypes = {
+    user: PropTypes.obj.isRequired,
+    
 }
 
 module.exports = UserDashboardProfile;
