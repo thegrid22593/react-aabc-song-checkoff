@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 class ActiveSongFeedbackForm extends React.Component {
    constructor(props) {
@@ -10,11 +10,13 @@ class ActiveSongFeedbackForm extends React.Component {
          message: '',
          loading: false,
       };
+
+      this.handleChange.bind(this);
    }
 
    handleChange(e) {
       console.log(e);
-      let change = {};
+      const change = {};
       change[e.target.name] = e.target.value;
       console.log(change);
       this.setState(change);
@@ -23,33 +25,35 @@ class ActiveSongFeedbackForm extends React.Component {
    render() {
       return (
          <form className="active-song-feedback-form">
-            <label for="title">Title</label>
+            <label htmlFor="title">Title</label>
             <input
                name="title"
-               onChange={this.handleChange.bind(this)}
+               onChange={this.handleChange}
                type="text"
                value={this.state.title}
             />
-            <label for="message">Message</label>
+            <label htmlFor="message">Message</label>
             <textarea
                name="message"
-               onChange={this.handleChange.bind(this)}
+               onChange={this.handleChange}
                value={this.state.message}
             />
-            <div
+            <button
                className="send-feedback-button"
                onClick={e => this.props.sendFeedback(e, this.state)}
             >
                Send Feedback
-            </div>
+            </button>
             <div
-               className={
-                  'form-loading ' + (this.state.loading ? 'loading' : '')
-               }
+               className={`form-loading ${this.state.loading ? 'loading' : ''}`}
             />
          </form>
       );
    }
 }
+
+ActiveSongFeedbackForm.propTypes = {
+   sendFeedback: PropTypes.func.isRequired,
+};
 
 module.exports = ActiveSongFeedbackForm;
