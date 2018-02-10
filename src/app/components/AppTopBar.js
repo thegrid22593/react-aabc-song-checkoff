@@ -78,12 +78,12 @@ class AppTopBar extends React.Component {
    }
 }
 
-AppTopBar.contextTypes = {
-   router: PropTypes.object.isRequired,
-};
+// AppTopBar.contextTypes = {
+//    router: PropTypes.object.isRequired,
+// };
 
 AppTopBar.propTypes = {
-   user: PropTypes.obj.isRequired,
+//    user: PropTypes.obj.isRequired,
 };
 
 AppTopBar = connect(store => {

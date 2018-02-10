@@ -86,7 +86,7 @@ MusicLibraryPage = withRouter(
 );
 
 MusicLibraryPage.propTypes = {
-    user: PropTypes.obj.isRequired,
+    user: PropTypes.shape().isRequired,
     dispatch: PropTypes.func.isRequired,
 }
 

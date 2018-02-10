@@ -51,8 +51,8 @@ class SelectedCheckOffSong extends React.Component {
 }
 
 SelectedCheckOffSong.propTypes = {
-    song: PropTypes.obj.isRequired,
-    activeSong: PropTypes.obj,
+    song: PropTypes.shape().isRequired,
+    activeSong: PropTypes.shape(),
     sendFeedback: PropTypes.func.isRequired,
 }
 

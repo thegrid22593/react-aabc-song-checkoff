@@ -62,7 +62,7 @@ UserDashboardFeedback = withRouter(
 );
 
 UserDashboardFeedback.propTypes = {
-      user: PropTypes.obj.isRequired
+      user: PropTypes.shape().isRequired
 }
 
 module.exports = UserDashboardFeedback;

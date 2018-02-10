@@ -25,7 +25,7 @@ class CheckOffPartLeaderProfile extends React.Component {
 }
 
 CheckOffPartLeaderProfile.propTypes = {
-    user: PropTypes.obj.isRequired
+    user: PropTypes.shape().isRequired
 }
 
 module.exports = CheckOffPartLeaderProfile;

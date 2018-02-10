@@ -77,7 +77,7 @@ class AppSidebar extends React.Component {
 }
 
 AppSidebar.propTypes = {
-   user: PropTypes.obj.isRequired,
+//    user: PropTypes.obj.isRequired,
 };
 
 module.exports = AppSidebar;

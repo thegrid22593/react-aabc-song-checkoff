@@ -52,8 +52,8 @@ class UserDashboardProfile extends React.Component {
 }
 
 UserDashboardProfile.propTypes = {
-    user: PropTypes.obj.isRequired,
-    
+    user: PropTypes.shape().isRequired,
+
 }
 
 module.exports = UserDashboardProfile;

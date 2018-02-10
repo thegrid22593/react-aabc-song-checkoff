@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { userSignIn, fetchUser } from '../actions/userActions';
-import PropTypes from 'prop-types';
+
 
 class SignInForm extends React.Component {
    constructor(props) {
@@ -85,10 +86,10 @@ SignInForm.contextTypes = {
    router: React.PropTypes.object.isRequired,
 };
 
-SignInForm.proptypes = {
+SignInForm.propTypes = {
    dispatch: PropTypes.func.isRequired,
-   userAuth: PropTypes.obj.isRequired,
-   user: PropTypes.obj.isRequired,
+//    userAuth: PropTypes.obj.isRequired,
+//    user: PropTypes.obj.isRequired,
    active: PropTypes.bool.isRequired,
 };
 

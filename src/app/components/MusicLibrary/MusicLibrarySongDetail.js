@@ -89,9 +89,9 @@ class MusicLibraySongDetail extends React.Component {
 }
 
 MusicLibraySongDetail.propTypes = {
-   isActive: PropTypes.obj.isRequired,
+   isActive: PropTypes.shape().isRequired,
    toggleSongDetail: PropTypes.func.isRequired,
-   activeSong: PropTypes.obj.isRequired,
+   activeSong: PropTypes.shape().isRequired,
    completedSong: PropTypes.func.isRequired,
    playSong: PropTypes.func.isRequired
 };

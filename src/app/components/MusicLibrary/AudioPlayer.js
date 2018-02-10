@@ -41,7 +41,7 @@ class AudioPlayer extends React.Component {
 
 AudioPlayer.propTypes = {
    songUrl: PropTypes.string.isRequired,
-   activeSong: PropTypes.obj.isRequired,
+   activeSong: PropTypes.shape().isRequired,
 };
 
 module.exports = AudioPlayer;

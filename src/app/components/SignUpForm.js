@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { userSignUp } from '../actions/userActions';
@@ -72,7 +73,7 @@ class SignUpForm extends React.Component {
 }
 
 SignUpForm.propTypes = {
-   dispatch: PropTypes,
+   dispatch: PropTypes.func.isRequired
 };
 
 SignUpForm = withRouter(

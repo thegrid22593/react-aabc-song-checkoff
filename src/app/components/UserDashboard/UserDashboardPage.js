@@ -66,9 +66,15 @@ UserDashboardPage = withRouter(
 );
 
 UserDashboardPage.propTypes = {
-    user: PropTypes.obj.isRequired,
-    userAuth: PropTypes.obj.isRequired,
-    dispatch: PropTypes.func.isRequired
+    user: PropTypes.shape(),
+    userAuth: PropTypes.shape(),
+    dispatch: PropTypes.func
+}
+
+UserDashboardPage.defaultProps ={
+    dispatch: false,
+    user: false,
+    userAuth: false,
 }
 
 module.exports = UserDashboardPage;

@@ -147,7 +147,7 @@ CheckOffPage.contextTypes = {
 
 CheckOffPage.propTypes = {
     dispatch: PropTypes.func.isRequired,
-    user: PropTypes.obj.isRequired,
+    user: PropTypes.shape().isRequired,
 }
 
 CheckOffPage = withRouter(

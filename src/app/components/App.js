@@ -32,7 +32,7 @@ App.contextTypes = {
 };
 
 App.propTypes = {
-   user: PropTypes.obj.isRequired,
+   user: PropTypes.shape().isRequired,
 };
 
 App = withRouter(
