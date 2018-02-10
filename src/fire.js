@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 
-var config = {
+const config = {
     apiKey: "AIzaSyAYThpdcu3zb4ll_q6BJkpaWYS8XTVVz4Y",
     authDomain: "aabc-checkoff.firebaseapp.com",
     databaseURL: "https://aabc-checkoff.firebaseio.com",
@@ -9,6 +9,6 @@ var config = {
     messagingSenderId: "920421563150"
 };
 
-var fire = firebase.initializeApp(config);
+const fire = firebase.initializeApp(config);
 
 export default fire;

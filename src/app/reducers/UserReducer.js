@@ -1,5 +1,3 @@
-import firebase from 'firebase';
-
 export default function reducer(
    state = {
       error: null,
@@ -12,12 +10,13 @@ export default function reducer(
 ) {
    switch (action.type) {
       case 'USER_SIGNED_UP_PENDING': {
-         state = { ...state, loading: true };
-         return state;
+         const newState = { ...state, loading: true };
+         return newState;
       }
 
       case 'USER_SIGNED_UP_SUCCESS': {
-         state = { ...state, userAuth: action.payload, loading: false };
+         const newState = { ...state, userAuth: action.payload, loading: false };
+         return newState;
       }
 
       case 'USER_SIGNED_UP_ERROR': {

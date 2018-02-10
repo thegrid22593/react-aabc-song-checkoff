@@ -66,9 +66,9 @@ UserDashboardPage = withRouter(
 );
 
 UserDashboardPage.propTypes = {
-    user: PropTypes.shape(),
-    userAuth: PropTypes.shape(),
-    dispatch: PropTypes.func
+    // user: PropTypes.shape(),
+    // userAuth: PropTypes.shape(),
+    // dispatch: PropTypes.func
 }
 
 UserDashboardPage.defaultProps ={

@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import 'firebase/firestore';
 
 export function userSignIn(email, password) {
    return function(dispatch) {
