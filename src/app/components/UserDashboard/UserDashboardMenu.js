@@ -1,12 +1,8 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-require('../../scss/style.scss');
+import { NavLink } from 'react-router-dom';
+import '../../scss/style.scss';
 
 class UserDashboardMenu extends React.Component {
-   constructor() {
-      super();
-   }
 
    componentWillMount() {}
 

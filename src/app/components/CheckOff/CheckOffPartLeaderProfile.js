@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-require('../../scss/style.scss');
+import PropTypes from 'prop-types';
+import '../../scss/style.scss';
 
 
 class CheckOffPartLeaderProfile extends React.Component {
@@ -22,6 +22,10 @@ class CheckOffPartLeaderProfile extends React.Component {
             </div>
         )
     }
+}
+
+CheckOffPartLeaderProfile.propTypes = {
+    user: PropTypes.obj.isRequired
 }
 
 module.exports = CheckOffPartLeaderProfile;

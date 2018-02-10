@@ -1,10 +1,10 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
-import { Switch, Route, Router } from 'react-router-dom';
+import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-require('../../scss/style.scss');
-import firebase from 'firebase';
+import PropTypes from 'prop-types';
+
+import '../../scss/style.scss';
 import UserDashboardPartPercentageBar from './UserDashboardPartPercentageBar';
 
 class UserDashboardPartComparison extends React.Component {
@@ -21,7 +21,7 @@ class UserDashboardPartComparison extends React.Component {
    }
 
    componentWillMount() {
-      let users = [];
+      const users = [];
       firebase
          .firestore()
          .collection('users')
@@ -62,19 +62,19 @@ class UserDashboardPartComparison extends React.Component {
          }
       });
 
-      let bassAvgPercentage = this.calculatePercentage(
+      const bassAvgPercentage = this.calculatePercentage(
          bassCompletedSongs,
          bassTotalSongs
       );
-      let baritoneAvgPercentage = this.calculatePercentage(
+      const baritoneAvgPercentage = this.calculatePercentage(
          baritoneCompletedSongs,
          baritoneTotalSongs
       );
-      let firstTenorAvgPercentage = this.calculatePercentage(
+      const firstTenorAvgPercentage = this.calculatePercentage(
          firstTenorCompletedSongs,
          firstTenorTotalSongs
       );
-      let secondTenorAvgPercentage = this.calculatePercentage(
+      const secondTenorAvgPercentage = this.calculatePercentage(
          secondTenorCompletedSongs,
          secondTenorTotalSongs
       );
@@ -138,5 +138,9 @@ UserDashboardPartComparison = withRouter(
       };
    })(UserDashboardPartComparison)
 );
+
+UserDashboardPartComparison.propTypes = {
+      
+}
 
 module.exports = UserDashboardPartComparison;

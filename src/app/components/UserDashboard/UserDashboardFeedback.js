@@ -1,10 +1,9 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
-import { Switch, Route, Router } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import UserDashboardSingleFeedback from './UserDashboardSingleFeedback';
-require('../../scss/style.scss');
+import UserDashboardSingleFeedback from './UserDashboardSingleFeedback'
+import '../../scss/style.scss';
 
 class UserDashboardFeedback extends React.Component {
    constructor(props) {
@@ -22,7 +21,7 @@ class UserDashboardFeedback extends React.Component {
 
    showFeedback(song) {
       console.log(song.notes);
-      let notes = song.notes;
+      const notes = song.notes;
       this.setState({
          activeFeedback: notes,
       });
@@ -38,12 +37,8 @@ class UserDashboardFeedback extends React.Component {
                      {this.props.user.songs.map((song, index) => {
                         if (song.notes !== undefined) {
                            return (
-                              <li
-                                 key={index}
-                                 onClick={() => this.showFeedback(song)}
-                                 className="feedback-song"
-                              >
-                                 {song.name}
+                              <li className="feedback-song">
+                                    <a href="" onClick={() => this.showFeedback(song)}>{song.name}</a>
                               </li>
                            );
                         }
@@ -65,5 +60,9 @@ UserDashboardFeedback = withRouter(
       };
    })(UserDashboardFeedback)
 );
+
+UserDashboardFeedback.propTypes = {
+      user: PropTypes.obj.isRequired
+}
 
 module.exports = UserDashboardFeedback;

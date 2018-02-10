@@ -1,19 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-require('../../scss/style.scss');
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import CheckOffSong from './CheckOffSong';
+import { Switch, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import CheckOffMembers from './CheckOffMembers';
-import CheckOffFeedback from './CheckOffFeedback';
 import CheckOffPartLeaderProfile from './CheckOffPartLeaderProfile';
-import { getAllMembersByPartName } from '../../actions/userActions';
+import { getAllMembersByPartName, updateOtherUserData } from '../../actions/userActions';
 import ActiveCheckOffMember from './ActiveCheckOffMember';
 import SelectedCheckOffSong from './SelectedCheckOffSong';
 import AppTopBar from '../AppTopBar';
 import AppSidebar from '../AppSidebar';
-import { updateOtherUserData } from '../../actions/userActions';
-import { Switch, Route } from 'react-router-dom';
+import '../../scss/style.scss';
 
 class CheckOffPage extends React.Component {
    constructor(props) {
@@ -24,10 +22,14 @@ class CheckOffPage extends React.Component {
          activeCheckOffMember: null,
          activeCheckOffSong: null,
       };
+
+      this.showMemberSongs.bind(this);
+      this.selectActiveSong.bind(this);
+      this.sendFeedback.bind(this);
    }
 
    componentWillMount() {
-      let userSingingPart = this.props.user.user.singingPart;
+      const userSingingPart = this.props.user.user.singingPart;
       this.props.dispatch(getAllMembersByPartName(userSingingPart));
    }
 
@@ -36,7 +38,7 @@ class CheckOffPage extends React.Component {
       this.setState({
          activeCheckOffMember: member,
       });
-      this.context.router.history.push('/checkoff/' + member.uid);
+      this.context.router.history.push(`/checkoff/${member.uid}`);
    }
 
    selectActiveSong(song, member) {
@@ -44,26 +46,24 @@ class CheckOffPage extends React.Component {
       this.setState({
          activeCheckOffSong: song,
       });
-      this.context.router.history.push(
-         '/checkoff/' + member.uid + '/' + song.name
-      );
+      this.context.router.history.push(`/checkoff/${member.uid}/${song.name}`);
    }
 
-   sendFeedback(e, feedback, song) {
+   sendFeedback(e, feedback, songWithFeedback) {
       console.log(e);
       console.log(feedback);
-      console.log(song);
+      console.log(songWithFeedback);
       console.log(this.state.activeCheckOffMember);
 
       if (feedback.message !== '' && feedback.title !== '') {
          if (this.state.activeCheckOffMember !== undefined) {
-            let newFeedback = {
+            const newFeedback = {
                ...feedback,
                read: false,
             };
 
-            let songName = song.name;
-            let newSongs = this.state.activeCheckOffMember.songs.map(song => {
+            const songName = songWithFeedback.name;
+            const newSongs = this.state.activeCheckOffMember.songs.map(song => {
                if (song.name === songName) {
                   if (!song.notes) {
                      song.notes = [];
@@ -74,12 +74,11 @@ class CheckOffPage extends React.Component {
                      song.notes.push(newFeedback);
                   }
                   return song;
-               } else {
-                  return song;
                }
+               return song;
             });
 
-            let newActiveMemberData = {
+            const newActiveMemberData = {
                ...this.state.activeCheckOffMember,
                songs: newSongs,
             };
@@ -104,7 +103,7 @@ class CheckOffPage extends React.Component {
                </section>
                <section className="checkoff-members">
                   <CheckOffMembers
-                     showMemberSongs={this.showMemberSongs.bind(this)}
+                     showMemberSongs={this.showMemberSongs}
                      members={this.props.user.partMembers}
                   />
                   <section className="active-check-off-member">
@@ -114,9 +113,7 @@ class CheckOffPage extends React.Component {
                            render={props => (
                               <ActiveCheckOffMember
                                  activeMember={this.state.activeCheckOffMember}
-                                 selectCheckOffSong={this.selectActiveSong.bind(
-                                    this
-                                 )}
+                                 selectCheckOffSong={this.selectActiveSong}
                                  {...props}
                               />
                            )}
@@ -130,7 +127,7 @@ class CheckOffPage extends React.Component {
                            render={props => (
                               <SelectedCheckOffSong
                                  activeSong={this.state.activeCheckOffSong}
-                                 sendFeedback={this.sendFeedback.bind(this)}
+                                 sendFeedback={this.sendFeedback}
                                  {...props}
                               />
                            )}
@@ -147,6 +144,11 @@ class CheckOffPage extends React.Component {
 CheckOffPage.contextTypes = {
    router: React.PropTypes.object.isRequired,
 };
+
+CheckOffPage.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    user: PropTypes.obj.isRequired,
+}
 
 CheckOffPage = withRouter(
    connect(store => {

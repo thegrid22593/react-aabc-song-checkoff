@@ -1,19 +1,17 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
-import firebase from 'firebase';
-require('firebase/firestore');
-require('../../scss/style.scss');
-import { Switch, Route, Router } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
+
+import { Switch, Route } from 'react-router-dom';
+import '../../scss/style.scss';
 import AppTopBar from '../AppTopBar';
 import AppSidebar from '../AppSidebar';
-import UserDashboard from './UserDashboard';
 import UserDashboardMenu from './UserDashboardMenu';
 import UserDashboardSummary from './UserDashboardSummary';
 import UserDashboardFeedback from './UserDashboardFeedback';
 import UserDashboardPartComparison from './UserDashboardPartComparison';
 import UserDashboardProfile from './UserDashboardProfile';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 import { fetchUser } from '../../actions/userActions';
 
 class UserDashboardPage extends React.Component {
@@ -66,5 +64,11 @@ UserDashboardPage = withRouter(
       };
    })(UserDashboardPage)
 );
+
+UserDashboardPage.propTypes = {
+    user: PropTypes.obj.isRequired,
+    userAuth: PropTypes.obj.isRequired,
+    dispatch: PropTypes.func.isRequired
+}
 
 module.exports = UserDashboardPage;

@@ -1,9 +1,9 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
+import PropTypes from 'prop-types';
 import MusicLibrarySongDetail from './MusicLibrarySongDetail';
 import MusicLibrarySearch from './MusicLibrarySearch';
 import AudioPlayer from './AudioPlayer';
-import PropTypes from 'prop-types';
+
 
 class MusicLibrary extends React.Component {
    constructor(props) {
@@ -17,6 +17,10 @@ class MusicLibrary extends React.Component {
          songs: this.props.songs,
          activeSongUrl: null,
       };
+
+      this.playSong.bind(this);
+      this.toggleSongDetail.bind(this);
+      this.completedSong.bind(this);
    }
 
    componentWillReceiveProps(nextProps) {
@@ -29,12 +33,12 @@ class MusicLibrary extends React.Component {
       console.log('index', index);
       console.log('this', this);
       if (index !== null) {
-         let activeSong = {
-            index: index,
+         const activeSong = {
+            index,
             ...this.props.songs[index],
          };
          this.setState({
-            activeSong: activeSong,
+            activeSong,
             songDetailIsActive: true,
          });
       } else {
@@ -46,15 +50,15 @@ class MusicLibrary extends React.Component {
 
    completedSong() {
       console.log('fired');
-      let index = this.state.activeSong.index;
+      const index = this.state.activeSong.index;
       this.props.songs[index].completed = true;
       this.props.updateUserSongs(this.props.songs[index]);
    }
 
    searchLibrary(e) {
       console.log('working', e.target.value);
-      let searchValue = e.target.value.toLowerCase();
-      let searchedSongs = this.props.songs.filter(song => {
+      const searchValue = e.target.value.toLowerCase();
+      const searchedSongs = this.props.songs.filter(song => {
          return song.name.toLowerCase().includes(searchValue);
       });
       this.setState({ songs: searchedSongs });
@@ -62,42 +66,38 @@ class MusicLibrary extends React.Component {
 
    handleSelectChange(e) {
       console.log('working', e.target.value);
-      let sortValue = e.target.value;
-      let songsToSort = this.props.songs;
+      const sortValue = e.target.value;
+      const songsToSort = this.props.songs;
       let sortedSongs;
       if (sortValue === 'difficulty-ascending') {
          sortedSongs = songsToSort.sort((a, b) => {
-            let x = a.difficulty;
-            let y = b.difficulty;
+            const x = a.difficulty;
+            const y = b.difficulty;
             return x < y ? -1 : x > y ? 1 : 0;
          });
       } else if (sortValue === 'difficulty-descending') {
          sortedSongs = songsToSort.sort((a, b) => {
-            let x = a.difficulty;
-            let y = b.difficulty;
+            const x = a.difficulty;
+            const y = b.difficulty;
             return x > y ? -1 : x < y ? 1 : 0;
          });
       } else if (sortValue === 'time-ascending') {
          sortedSongs = songsToSort.sort((a, b) => {
-            let x = parseFloat(a.time.replace(':', ''));
-            let y = parseFloat(b.time.replace(':', ''));
+            const x = parseFloat(a.time.replace(':', ''));
+            const y = parseFloat(b.time.replace(':', ''));
             return x > y ? -1 : x < y ? 1 : 0;
          });
       } else if (sortValue === 'time-descending') {
          sortedSongs = songsToSort.sort((a, b) => {
-            let x = parseFloat(a.time.replace(':', ''));
-            let y = parseFloat(b.time.replace(':', ''));
+            const x = parseFloat(a.time.replace(':', ''));
+            const y = parseFloat(b.time.replace(':', ''));
             return x < y ? -1 : x > y ? 1 : 0;
          });
          // We need to get a new set of songs with this
       } else if (sortValue === 'completed') {
-         sortedSongs = songsToSort.filter(song => {
-            return song.completed === true;
-         });
+         sortedSongs = songsToSort.filter(song => song.completed === true);
       } else if (sortValue === 'not-completed') {
-         sortedSongs = songsToSort.filter(song => {
-            return song.completed === false;
-         });
+         sortedSongs = songsToSort.filter(song => song.completed === false);
       }
       this.setState({ songs: sortedSongs });
    }
@@ -184,11 +184,11 @@ class MusicLibrary extends React.Component {
                </div>
             </section>
             <MusicLibrarySongDetail
-               playSong={this.playSong.bind(this)}
+               playSong={this.playSong}
                isActive={this.state.songDetailIsActive}
-               toggleSongDetail={this.toggleSongDetail.bind(this)}
+               toggleSongDetail={this.toggleSongDetail}
                activeSong={this.state.activeSong}
-               completedSong={this.completedSong.bind(this)}
+               completedSong={this.completedSong}
             />
 
             <AudioPlayer

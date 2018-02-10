@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 class AudioPlayer extends React.Component {
@@ -35,15 +34,14 @@ class AudioPlayer extends React.Component {
                </audio>
             </section>
          );
-      } else {
-         return false;
-      }
+      } 
+      return false;
    }
 }
 
 AudioPlayer.propTypes = {
-   songUrl: React.PropTypes.string,
-   activeSong: React.PropTypes.object,
+   songUrl: PropTypes.string.isRequired,
+   activeSong: PropTypes.obj.isRequired,
 };
 
 module.exports = AudioPlayer;

@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import CheckOffMember from './CheckOffMember';
 import PropTypes from 'prop-types';
-require('../../scss/style.scss');
+import CheckOffMember from './CheckOffMember';
+import '../../scss/style.scss';
 
 class CheckOffMembers extends React.Component {
    constructor(props) {
@@ -27,15 +26,14 @@ class CheckOffMembers extends React.Component {
                })}
             </div>
          );
-      } else {
-         return <h1>no part members currently available</h1>;
       }
+    return <h1>no part members currently available</h1>;
    }
 }
 
 CheckOffMember.propTypes = {
-   showMemberSongs: React.PropTypes.func.isRequired,
-   members: React.PropTypes.arrayOf(PropTypes.object),
-};
+    showMemberSongs: PropTypes.func.isRequired,
+    members: PropTypes.arrayOf(PropTypes.object),
+ };
 
 module.exports = CheckOffMembers;

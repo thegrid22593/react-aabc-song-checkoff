@@ -1,12 +1,13 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
-require('../../scss/style.scss');
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
+
 import AppTopBar from '../AppTopBar';
 import AppSidebar from '../AppSidebar';
 import MusicLibrary from './MusicLibrary';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import { updateUserData } from '../../actions/userActions.js';
+import { updateUserData } from '../../actions/userActions';
+import '../../scss/style.scss';
 
 class MusicLibraryPage extends React.Component {
    constructor(props) {
@@ -17,6 +18,8 @@ class MusicLibraryPage extends React.Component {
       this.state = {
          user: {},
       };
+
+      this.updateUserSongs.bind(this);
    }
 
    componentWillMount() {}
@@ -24,7 +27,7 @@ class MusicLibraryPage extends React.Component {
    updateUserSongs(song) {
       // console.log('song', song);
       // console.log('update props', this.props);
-      let updatedSongs = this.props.user.songs;
+      const updatedSongs = this.props.user.songs;
       // console.log('new songs', updatedSongs);
       let userData = this.props.user;
       console.log(userData);
@@ -36,9 +39,9 @@ class MusicLibraryPage extends React.Component {
    }
 
    updateUserPercentage(user) {
-      let songsLength = user.songs.length;
-      let songsCompleted = user.completedSongs;
-      let newPercentage = Math.floor(songsCompleted / songsLength * 100);
+      const songsLength = this.props.user.songs.length;
+      const songsCompleted = this.props.user.completedSongs;
+      const newPercentage = Math.floor(songsCompleted / songsLength * 100);
       user.percentage = newPercentage;
       return user;
    }
@@ -65,7 +68,7 @@ class MusicLibraryPage extends React.Component {
             </div>
             <div className="app-content-container">
                <MusicLibrary
-                  updateUserSongs={this.updateUserSongs.bind(this)}
+                  updateUserSongs={this.updateUserSongs}
                   songs={this.props.user.songs}
                />
             </div>
@@ -81,5 +84,10 @@ MusicLibraryPage = withRouter(
       };
    })(MusicLibraryPage)
 );
+
+MusicLibraryPage.propTypes = {
+    user: PropTypes.obj.isRequired,
+    dispatch: PropTypes.func.isRequired,
+}
 
 module.exports = MusicLibraryPage;

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import PropTypes from 'prop-types';
 import ActiveSongFeedbackForm from './ActiveSongFeedbackForm';
 
 class SelectedCheckOffSong extends React.Component {
@@ -45,10 +45,19 @@ class SelectedCheckOffSong extends React.Component {
                </div>
             </div>
          );
-      } else {
-         return <h1>Select a song</h1>;
       }
+         return <h1>Select a song</h1>;
    }
+}
+
+SelectedCheckOffSong.propTypes = {
+    song: PropTypes.obj.isRequired,
+    activeSong: PropTypes.obj,
+    sendFeedback: PropTypes.func.isRequired,
+}
+
+SelectedCheckOffSong.defaultProps = {
+    activeSong: false
 }
 
 module.exports = SelectedCheckOffSong;

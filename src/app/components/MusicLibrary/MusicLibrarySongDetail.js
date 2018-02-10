@@ -1,6 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import SongURL from './SongURL';
+
 
 class MusicLibraySongDetail extends React.Component {
    constructor(props) {
@@ -19,27 +20,24 @@ class MusicLibraySongDetail extends React.Component {
       console.log(this.state);
    }
 
-   renderSongUrlList(part, index) {
-      console.log('part', part);
-      let urls = Object.values(part.urls);
-      let keys = Object.keys(part.urls);
-      console.log('keys', keys);
-      console.log('values', urls);
-   }
 
    //    songCompleted(songName) {
    //       console.log('completed', songName);
    //    }
 
-   playSong(url) {}
+//    playSong(url) {}
+
+//    renderSongUrlList(part, index) {
+//     console.log('part', part);
+//     let urls = Object.values(part.urls);
+//     let keys = Object.keys(part.urls);
+//     console.log('keys', keys);
+//     console.log('values', urls);
+//  }
 
    render() {
       return (
-         <section
-            className={
-               'song-detail-panel ' + (this.props.isActive ? 'active' : '')
-            }
-         >
+         <section className={`song-detail-panel ${this.props.isActive ? 'active' : ''}`}>
             <div className="crop-height">
                <img src="" alt="The All-American Boys Chorus" />
                <i
@@ -91,10 +89,11 @@ class MusicLibraySongDetail extends React.Component {
 }
 
 MusicLibraySongDetail.propTypes = {
-   isActive: React.PropTypes.object.isRequired,
-   toggleSongDetail: React.PropTypes.func.isRequired,
-   activeSong: React.PropTypes.object,
-   completedSong: React.PropTypes.func.isRequired,
+   isActive: PropTypes.obj.isRequired,
+   toggleSongDetail: PropTypes.func.isRequired,
+   activeSong: PropTypes.obj.isRequired,
+   completedSong: PropTypes.func.isRequired,
+   playSong: PropTypes.func.isRequired
 };
 
 module.exports = MusicLibraySongDetail;
