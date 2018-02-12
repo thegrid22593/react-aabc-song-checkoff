@@ -20,7 +20,6 @@ class MusicLibrary extends React.Component {
     this.playSong.bind(this);
     this.toggleSongDetail.bind(this);
     this.completedSong.bind(this);
-    this.searchLibrary.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
