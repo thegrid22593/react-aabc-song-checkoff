@@ -7,6 +7,12 @@ import Footer from './Footer';
 import Main from './Main';
 import '../scss/style.scss';
 
+const mapStateToProps = state => ({
+   user: state.user.user,
+   userFetched: state.user.fetched,
+   songs: state.songs.songs,
+});
+
 class App extends React.Component {
    componentWillMount() {
       if (this.props.user.uid) {
@@ -35,14 +41,4 @@ App.propTypes = {
    user: PropTypes.shape().isRequired,
 };
 
-App = withRouter(
-   connect(store => {
-      return {
-         user: store.user.user,
-         userFetched: store.user.fetched,
-         songs: store.songs.songs,
-      };
-   })(App)
-);
-
-module.exports = App;
+module.exports = withRouter(connect(mapStateToProps)(App));

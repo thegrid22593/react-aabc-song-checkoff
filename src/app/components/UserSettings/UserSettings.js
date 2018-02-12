@@ -1,9 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
 import { updateUserData } from '../../actions/userActions';
+
+const mapStateToProps = state => ({
+   user: state.user.user,
+});
 
 class UserSettings extends React.Component {
    constructor(props) {
@@ -17,16 +20,18 @@ class UserSettings extends React.Component {
          singingPart: this.props.user.singingPart || '',
          partLeader: this.props.user.partLeader || null,
       };
+
+      this.handleChange = this.handleChange.bind(this);
    }
 
    handleChange(e) {
-      let change = {};
+      const change = {};
       change[e.target.name] = e.target.value;
       this.setState(change);
    }
 
    updateSettings() {
-      let newUser = {
+      const newUser = {
          ...this.props.user,
          ...this.state,
       };
@@ -63,63 +68,60 @@ class UserSettings extends React.Component {
 
                <form action="" className="user-settings">
                   <div>
-                     <label for="firstName">First Name</label>
+                     <label htmlFor="firstName">First Name</label>
                      <input
                         type="text"
-                        onChange={this.handleChange.bind(this)}
+                        onChange={this.handleChange}
                         name="firstName"
                         value={this.state.firstName}
                      />
                   </div>
                   <div>
-                     <label for="lastName">Last Name</label>
+                     <label htmlFor="lastName">Last Name</label>
                      <input
                         type="text"
-                        onChange={this.handleChange.bind(this)}
+                        onChange={this.handleChange}
                         name="lastName"
                         value={this.state.lastName}
                      />
                   </div>
                   <div>
-                     <label for="startDate">Start Date</label>
+                     <label htmlFor="startDate">Start Date</label>
                      <input
                         type="text"
-                        onChange={this.handleChange.bind(this)}
+                        onChange={this.handleChange}
                         name="startDate"
                         value={this.state.startDate}
                      />
                   </div>
                   <div>
-                     <label for="singingPart">Part</label>
+                     <label htmlFor="singingPart">Part</label>
                      <input
                         type="text"
-                        onChange={this.handleChange.bind(this)}
+                        onChange={this.handleChange}
                         name="singingPart"
                         value={this.state.singingPart}
                      />
                   </div>
                   <div>
-                     <label for="partLeader">Partleader?</label>
+                     <label htmlFor="partLeader">Partleader?</label>
                      <input
                         type="radio"
-                        onChange={this.handleChange.bind(this)}
+                        onChange={this.handleChange}
                         name="partLeader"
                         value="true"
                      />{' '}
                      Yes <br />
                      <input
                         type="radio"
-                        onChange={this.handleChange.bind(this)}
+                        onChange={this.handleChange}
                         name="partLeader"
                         value="false"
                      />{' '}
                      No
                   </div>
                   <div>
-                     <button
-                        onClick={this.updateSettings.bind(this)}
-                        type="button"
-                     >
+                     <button onClick={this.updateSettings} type="button">
                         Save Settings
                      </button>
                   </div>
@@ -130,12 +132,9 @@ class UserSettings extends React.Component {
    }
 }
 
-UserSettings = withRouter(
-   connect(store => {
-      return {
-         user: store.user.user,
-      };
-   })(UserSettings)
-);
+UserSettings.propTypes = {
+   user: PropTypes.shape().isRequired,
+   dispatch: PropTypes.func.isRequired,
+};
 
-module.exports = UserSettings;
+module.exports = withRouter(connect(mapStateToProps)(UserSettings));

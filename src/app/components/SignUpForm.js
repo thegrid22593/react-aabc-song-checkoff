@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { userSignUp } from '../actions/userActions';
 
+const mapStateToProps = state => ({});
+
 class SignUpForm extends React.Component {
    constructor(props) {
       super(props);
@@ -73,13 +75,8 @@ class SignUpForm extends React.Component {
 }
 
 SignUpForm.propTypes = {
-   dispatch: PropTypes.func.isRequired
+   dispatch: PropTypes.func.isRequired,
+   active: PropTypes.bool.isRequired,
 };
 
-SignUpForm = withRouter(
-   connect(store => {
-      return {};
-   })(SignUpForm)
-);
-
-export default SignUpForm;
+module.exports = withRouter(connect(mapStateToProps)(SignUpForm));

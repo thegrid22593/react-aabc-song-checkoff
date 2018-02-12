@@ -1,11 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-require('../../scss/style.scss');
-import { updateUserData } from '../../actions/userActions';
+import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
+
+import { updateUserData } from '../../actions/userActions';
 import { fetchSongs } from '../../actions/songActions';
-import firebase from 'firebase';
+import '../../scss/style.scss';
+
+const mapStateToProps = state => ({
+   user: state.user,
+   songs: state.songs.songs,
+});
 
 class UserSignUpContinued extends React.Component {
    constructor(props) {
@@ -14,7 +20,7 @@ class UserSignUpContinued extends React.Component {
       this.storage = firebase.storage().ref();
 
       let date = new Date();
-      date = date.getMonth() + ' ' + date.getDay() + ' ' + date.getFullYear();
+      date = `${date.getMonth()} ${date.getDay()} ${date.getFullYear()}`;
 
       this.state = {
          firstName: '',
@@ -27,10 +33,28 @@ class UserSignUpContinued extends React.Component {
          profilePicURL: '',
          startDate: date,
       };
+
+      this.handleChange = this.handleChange.bind(this);
+      this.updateUserInfo = this.updateUserInfo.bind(this);
+   }
+
+   componentDidMount() {
+      this.getCheckOffSongs();
+   }
+
+   getCheckOffSongs() {
+      // If user does not have a song library go and grab the songs and attach them to the userData
+      if (this.props.user.songs === undefined) {
+         try {
+            this.props.dispatch(fetchSongs());
+         } catch (error) {
+            console.log('could not fetch the songs');
+         }
+      }
    }
 
    handleChange(e) {
-      let change = {};
+      const change = {};
       if (e.target.name === 'partLeader' && e.target.value === 'true') {
          change[e.target.name] = true;
       } else if (
@@ -45,21 +69,10 @@ class UserSignUpContinued extends React.Component {
       this.setState(change);
    }
 
-   getCheckOffSongs() {
-      // If user does not have a song library go and grab the songs and attach them to the userData
-      if (this.props.user.songs === undefined) {
-         try {
-            this.props.dispatch(fetchSongs());
-         } catch (error) {
-            console.log('could not fetch the songs');
-         }
-      }
-   }
-
    updateUserInfo() {
       console.log('working', this.props);
-      let songsArr = this.props.songs;
-      let user = {
+      const songsArr = this.props.songs;
+      const user = {
          uid: this.props.user.userAuth.uid,
          songs: songsArr,
          ...this.props.user.user,
@@ -75,18 +88,14 @@ class UserSignUpContinued extends React.Component {
       }
    }
 
-   componentDidMount() {
-      this.getCheckOffSongs();
-   }
-
    filebuttoni(event) {
       console.log(event);
-      let files = event.target.files[0];
-      let self = this;
-      let uploader = document.getElementById('uploader');
-      let path = 'user-profile-pics/' + files.name;
-      let storageref = this.storage.child(path);
-      let uploadTask = storageref.put(files);
+      const files = event.target.files[0];
+      // const self = this;
+      // const uploader = document.getElementById('uploader');
+      const path = `user-profile-pics/${files.name}`;
+      const storageref = this.storage.child(path);
+      const uploadTask = storageref.put(files);
 
       uploadTask.on(
          firebase.storage.TaskEvent.STATE_CHANGED,
@@ -97,7 +106,7 @@ class UserSignUpContinued extends React.Component {
             this.uploadProgress =
                snapshot.bytesTransferred / snapshot.totalBytes * 100;
 
-            console.log('Upload is ' + this.uploadProgress + '% done!');
+            console.log(`Upload is${this.uploadProgress}% done!`);
 
             switch (snapshot.state) {
                case firebase.storage.TaskState.PAUSED:
@@ -105,6 +114,8 @@ class UserSignUpContinued extends React.Component {
                   break;
                case firebase.storage.TaskState.RUNNING:
                   console.log('Upload is running');
+                  break;
+               default:
                   break;
             }
          },
@@ -118,11 +129,12 @@ class UserSignUpContinued extends React.Component {
 
                case 'storage/unknown':
                   break;
+               default:
+                  break;
             }
          },
          () => {
-            console.log('THIS', this);
-            let downloadURL = uploadTask.snapshot.downloadURL;
+            // const downloadURL = uploadTask.snapshot.downloadURL;
             console.log('Upload done!');
             storageref.getDownloadURL().then(url => {
                this.setState({ profilePicURL: url });
@@ -133,67 +145,69 @@ class UserSignUpContinued extends React.Component {
 
    render() {
       return (
-         <div class="user-sign-up-more-info-form">
+         <div className="user-sign-up-more-info-form">
             <h2>Please Fill In More Information About Yourself.</h2>
             <form>
-               <label for="filebutton">Upload a Profile Picture</label>
+               <label htmlFor="filebutton">Upload a Profile Picture</label>
                <input
                   type="file"
                   id="filebutton"
                   onChange={e => this.filebuttoni(e)}
                />
-               <label for="first-name">First Name</label>
+               <label htmlFor="first-name">First Name</label>
                <input
                   type="text"
-                  onChange={this.handleChange.bind(this)}
+                  onChange={this.handleChange}
                   id="first-name"
                   name="firstName"
                />
-               <label for="last-name">Last Name</label>
+               <label htmlFor="last-name">Last Name</label>
                <input
                   type="text"
-                  onChange={this.handleChange.bind(this)}
+                  onChange={this.handleChange}
                   id="last-name"
                   name="lastName"
                />
-               <label class="singing-part-label">Singing Part</label>
+               <label htmlFor="singingPart" className="singing-part-label">
+                  Singing Part
+               </label>
                <input
                   type="radio"
-                  onChange={this.handleChange.bind(this)}
+                  onChange={this.handleChange}
                   name="singingPart"
                   value="First Tenor"
                />
                <span>First Tenor</span>
                <input
                   type="radio"
-                  onChange={this.handleChange.bind(this)}
+                  onChange={this.handleChange}
                   name="singingPart"
                   value="Second Tenor"
                />
                <span>Second Tenor</span>
                <input
                   type="radio"
-                  onChange={this.handleChange.bind(this)}
+                  onChange={this.handleChange}
                   name="singingPart"
                   value="Baritone"
                />
                <span>Baritone</span>
                <input
                   type="radio"
-                  onChange={this.handleChange.bind(this)}
+                  onChange={this.handleChange}
                   name="singingPart"
                   value="Bass"
                />
                <span>Bass</span>
-               <label for="is-partleader">Partleader?</label>
+               <label htmlFor="is-partleader">Partleader?</label>
                <input
                   type="radio"
-                  onChange={this.handleChange.bind(this)}
+                  onChange={this.handleChange}
                   value="true"
                   name="partLeader"
                />{' '}
                Yes
-               <button type="button" onClick={this.updateUserInfo.bind(this)}>
+               <button type="button" onClick={this.updateUserInfo}>
                   Save
                </button>
             </form>
@@ -202,13 +216,10 @@ class UserSignUpContinued extends React.Component {
    }
 }
 
-UserSignUpContinued = withRouter(
-   connect(store => {
-      return {
-         user: store.user,
-         songs: store.songs.songs,
-      };
-   })(UserSignUpContinued)
-);
+UserSignUpContinued.propTypes = {
+   dispatch: PropTypes.func.isRequired,
+   user: PropTypes.shape().isRequired,
+   songs: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+};
 
-module.exports = UserSignUpContinued;
+module.exports = withRouter(connect(mapStateToProps)(UserSignUpContinued));

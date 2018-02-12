@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import '../scss/style.scss';
 
+const mapStateToProps = state => ({
+   user: state.user.user,
+});
+
 class AppTopBar extends React.Component {
    constructor(props) {
       super(props);
@@ -83,13 +87,7 @@ class AppTopBar extends React.Component {
 // };
 
 AppTopBar.propTypes = {
-//    user: PropTypes.obj.isRequired,
+   user: PropTypes.shape().isRequired,
 };
 
-AppTopBar = connect(store => {
-   return {
-      user: store.user.user,
-   };
-})(AppTopBar);
-
-module.exports = AppTopBar;
+module.exports = connect(mapStateToProps)(AppTopBar);
