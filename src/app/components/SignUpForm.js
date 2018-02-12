@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 import { userSignUp } from '../actions/userActions';
-
-const mapStateToProps = state => ({});
 
 class SignUpForm extends React.Component {
    constructor(props) {
@@ -17,8 +13,6 @@ class SignUpForm extends React.Component {
 
       this.handleChange.bind(this);
       this.signUp.bind(this);
-
-      console.log(props);
    }
 
    signUp(e) {
@@ -30,7 +24,6 @@ class SignUpForm extends React.Component {
       } catch (error) {
          console.log('error', error);
       } finally {
-         console.log('worked');
          this.context.router.history.push('/user-sign-up');
       }
    }
@@ -79,4 +72,4 @@ SignUpForm.propTypes = {
    active: PropTypes.bool.isRequired,
 };
 
-module.exports = withRouter(connect(mapStateToProps)(SignUpForm));
+module.exports = SignUpForm;

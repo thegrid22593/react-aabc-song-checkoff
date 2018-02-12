@@ -65,12 +65,10 @@ class UserSignUpContinued extends React.Component {
       } else {
          change[e.target.name] = e.target.value;
       }
-      console.log('change', change);
       this.setState(change);
    }
 
    updateUserInfo() {
-      console.log('working', this.props);
       const songsArr = this.props.songs;
       const user = {
          uid: this.props.user.userAuth.uid,
@@ -78,18 +76,14 @@ class UserSignUpContinued extends React.Component {
          ...this.props.user.user,
          ...this.state,
       };
-      console.log('user', user);
       try {
          this.props.dispatch(updateUserData(user));
       } catch (error) {
          console.log('could not update the user');
-      } finally {
-         console.log('all updated');
       }
    }
 
    filebuttoni(event) {
-      console.log(event);
       const files = event.target.files[0];
       // const self = this;
       // const uploader = document.getElementById('uploader');

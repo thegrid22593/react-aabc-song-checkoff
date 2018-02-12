@@ -4,11 +4,6 @@ import PropTypes from 'prop-types';
 import '../scss/style.scss';
 
 class AppSidebar extends React.Component {
-   constructor(props) {
-      super(props);
-      console.log('sidebar props', props);
-   }
-
    checkIfPartleader() {
       if (this.props.user.partLeader) {
          return (

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import PropTypes from 'prop-types';
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
 import Background from '../images/main-bg.jpg';
@@ -84,7 +83,5 @@ class SignInPage extends React.Component {
       );
    }
 }
-
-SignInPage.propTypes = {};
 
 module.exports = withRouter(connect(mapStateToProps)(SignInPage));

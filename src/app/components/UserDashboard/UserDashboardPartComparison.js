@@ -1,11 +1,15 @@
 import React from 'react';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import PropTypes from 'prop-types';
-
 import '../../scss/style.scss';
 import UserDashboardPartPercentageBar from './UserDashboardPartPercentageBar';
+
+const mapStateToProps = state => ({
+   user: state.user.user,
+});
+
+const calculatePercentage = (totalCompletedSongs, totalSongs) =>
+   Math.floor(totalCompletedSongs / totalSongs * 100);
 
 class UserDashboardPartComparison extends React.Component {
    constructor(props) {
@@ -62,19 +66,19 @@ class UserDashboardPartComparison extends React.Component {
          }
       });
 
-      const bassAvgPercentage = this.calculatePercentage(
+      const bassAvgPercentage = calculatePercentage(
          bassCompletedSongs,
          bassTotalSongs
       );
-      const baritoneAvgPercentage = this.calculatePercentage(
+      const baritoneAvgPercentage = calculatePercentage(
          baritoneCompletedSongs,
          baritoneTotalSongs
       );
-      const firstTenorAvgPercentage = this.calculatePercentage(
+      const firstTenorAvgPercentage = calculatePercentage(
          firstTenorCompletedSongs,
          firstTenorTotalSongs
       );
-      const secondTenorAvgPercentage = this.calculatePercentage(
+      const secondTenorAvgPercentage = calculatePercentage(
          secondTenorCompletedSongs,
          secondTenorTotalSongs
       );
@@ -89,9 +93,9 @@ class UserDashboardPartComparison extends React.Component {
       console.log('state', this.state);
    }
 
-   calculatePercentage(totalCompletedSongs, totalSongs) {
-      return Math.floor(totalCompletedSongs / totalSongs * 100);
-   }
+   //    calculatePercentage(totalCompletedSongs, totalSongs) {
+   //       return Math.floor(totalCompletedSongs / totalSongs * 100);
+   //    }
 
    render() {
       return (
@@ -131,16 +135,6 @@ class UserDashboardPartComparison extends React.Component {
    }
 }
 
-UserDashboardPartComparison = 
-   connect(store => {
-      return {
-         user: store.user.user,
-      };
-   })(UserDashboardPartComparison)
-;
+UserDashboardPartComparison.propTypes = {};
 
-UserDashboardPartComparison.propTypes = {
-
-}
-
-module.exports = UserDashboardPartComparison;
+module.exports = connect(mapStateToProps)(UserDashboardPartComparison);

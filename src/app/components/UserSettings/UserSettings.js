@@ -35,7 +35,6 @@ class UserSettings extends React.Component {
          ...this.props.user,
          ...this.state,
       };
-      console.log('newUser', newUser);
       this.props.dispatch(updateUserData(newUser));
    }
 
