@@ -20,13 +20,11 @@ class AppTopBar extends React.Component {
 
    componentWillMount() {
       let notifications = 0;
-      console.log('loop', this.props);
       this.props.user.songs.forEach(song => {
          if (song.notes) {
             notifications += song.notes.length;
          }
       });
-      console.log('notification', notifications);
       this.setState({ notifications });
    }
 
