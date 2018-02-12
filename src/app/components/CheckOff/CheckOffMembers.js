@@ -27,13 +27,13 @@ class CheckOffMembers extends React.Component {
             </div>
          );
       }
-    return <h1>no part members currently available</h1>;
+      return <h1>no part members currently available</h1>;
    }
 }
 
-CheckOffMember.propTypes = {
-    showMemberSongs: PropTypes.func.isRequired,
-    members: PropTypes.arrayOf(PropTypes.object),
- };
+CheckOffMembers.propTypes = {
+   showMemberSongs: PropTypes.func.isRequired,
+   members: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+};
 
 module.exports = CheckOffMembers;
