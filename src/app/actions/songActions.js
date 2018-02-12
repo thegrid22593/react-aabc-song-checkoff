@@ -1,14 +1,14 @@
 import firebase from 'firebase';
 
-export function fetchSongs(email, password) {
-   return function(dispatch) {
+export default function fetchSongs() {
+   return (dispatch) => {
       dispatch({ type: 'FETCHING_SONGS', payload: { loading: true } });
       firebase
          .firestore()
          .collection('songs')
          .get()
          .then(songs => {
-            let songArr = [];
+            const songArr = [];
             songs.forEach(song => {
                songArr.push(song.data());
             });

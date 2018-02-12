@@ -1,15 +1,15 @@
-import ReactDOM from 'react-dom';
-import React from 'react';
-require('../../scss/style.scss');
+import ReactDOM from "react-dom";
+import React from "react";
+require("../../scss/style.scss");
 
 class UserDashboardSummaryPartMember extends React.Component {
-   constructor(props) {
-      super(props);
-   }
+  constructor(props) {
+    super(props);
+  }
 
-   render() {
-      return <div className="container" />;
-   }
+  render() {
+    return <div className="container" />;
+  }
 }
 
 module.exports = UserDashboardSummaryPartMember;

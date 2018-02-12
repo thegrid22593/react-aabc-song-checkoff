@@ -2,7 +2,7 @@ import firebase from 'firebase';
 import 'firebase/firestore';
 
 export function userSignIn(email, password) {
-   return function(dispatch) {
+   return (dispatch) => {
       dispatch({ type: 'USER_SIGNED_IN_PENDING', payload: { loading: true } });
       return firebase
          .auth()
@@ -20,7 +20,7 @@ export function userSignIn(email, password) {
 }
 
 export function fetchUser(userid) {
-   return function(dispatch) {
+   return (dispatch) => {
       dispatch({ type: 'FETCHING_USER_PENDING', payload: { loading: true } });
       return firebase
          .firestore()
@@ -38,7 +38,7 @@ export function fetchUser(userid) {
 }
 
 export function userSignUp(email, password) {
-   return function(dispatch) {
+   return (dispatch) => {
       dispatch({ type: 'USER_SIGNED_UP_PENDING', payload: { loading: true } });
       firebase
          .auth()
@@ -57,7 +57,7 @@ export function userSignUp(email, password) {
 
 export function updateUserData(user) {
    console.log('user action', user);
-   return function(dispatch) {
+   return (dispatch) => {
       dispatch({ type: 'UPDATE_USER_PENDING', payload: { loading: true } });
       firebase
          .firestore()
@@ -92,7 +92,7 @@ export function updateUserData(user) {
 
 export function updateOtherUserData(data) {
    console.log('user data', data);
-   return function(dispatch) {
+   return (dispatch) => {
       dispatch({ type: 'UPDATE_USER_PENDING', payload: { loading: true } });
       firebase
          .firestore()
@@ -109,7 +109,7 @@ export function updateOtherUserData(data) {
 }
 
 export function getAllMembersByPartName(singingPart) {
-   return function(dispatch) {
+   return (dispatch) => {
       dispatch({ type: 'FETCH_PART_MEMBERS_PENDING', payload: true });
       firebase
          .firestore()
@@ -117,7 +117,7 @@ export function getAllMembersByPartName(singingPart) {
          .where('singingPart', '==', singingPart)
          .get()
          .then(snapshot => {
-            let members = [];
+            const members = [];
             snapshot.forEach(doc => {
                members.push(doc.data());
             });
@@ -130,7 +130,7 @@ export function getAllMembersByPartName(singingPart) {
 }
 
 export function userSignOut() {
-   return function(dispatch) {
+   return (dispatch) => {
       dispatch({ type: 'USER_SIGN_OUT_PENDING', payload: { loading: true } });
       firebase
          .auth()

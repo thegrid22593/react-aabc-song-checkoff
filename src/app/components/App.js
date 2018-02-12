@@ -28,7 +28,7 @@ class App extends React.Component {
 }
 
 App.contextTypes = {
-   router: React.PropTypes.object.isRequired,
+   router: React.PropTypes.shape().isRequired,
 };
 
 App.propTypes = {

@@ -131,16 +131,16 @@ class UserDashboardPartComparison extends React.Component {
    }
 }
 
-UserDashboardPartComparison = withRouter(
+UserDashboardPartComparison = 
    connect(store => {
       return {
          user: store.user.user,
       };
    })(UserDashboardPartComparison)
-);
+;
 
 UserDashboardPartComparison.propTypes = {
-      
+
 }
 
 module.exports = UserDashboardPartComparison;
