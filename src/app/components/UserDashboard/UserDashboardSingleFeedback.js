@@ -32,12 +32,12 @@ class UserDashboardSingleFeedback extends React.Component {
       }
       return (
          <div className="single-feedback">
-            {this.props.feedback.map((feedback, index) => {
+            {this.props.feedback.map(feedback => {
                console.log('single', feedback);
                return (
                   <div className="single-feedback-message">
                      <i className="far fa-envelope" />
-                     <h2 key={index}>{feedback.title}</h2>
+                     <h2 key={feedback.id}>{feedback.title}</h2>
                      <button
                         onClick={e => markAsRead(e, feedback)}
                         className="mark-as-read-btn"

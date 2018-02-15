@@ -71,10 +71,10 @@ class UserDashboardFeedback extends React.Component {
             <div className="songs-with-feedback">
                <h5>Feedback Messages</h5>
                <ul className="feedback-list">
-                  {this.props.user.songs.map((song, index) => {
+                  {this.props.user.songs.map(song => {
                      if (song.notes !== undefined && song.notes.length > 0) {
                         return (
-                           <li className="feedback-song">
+                           <li className="feedback-song" key={song.id}>
                               <a
                                  href=""
                                  onClick={e => this.showFeedback(e, song)}
@@ -90,6 +90,7 @@ class UserDashboardFeedback extends React.Component {
                            </li>
                         );
                      }
+                     return false;
                   })}
                </ul>
             </div>
