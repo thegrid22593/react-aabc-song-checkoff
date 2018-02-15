@@ -14,7 +14,7 @@ class ActiveCheckOffMember extends React.Component {
    }
 
    componentWillReceiveProps(nextProps) {
-      if (typeof nextProps !== undefined) {
+      if (typeof nextProps !== 'undefined') {
          this.setState({
             activeMember: nextProps.activeMember,
          });
@@ -41,25 +41,24 @@ class ActiveCheckOffMember extends React.Component {
                               {song.name}
                            </li>
                         );
-                     } else {
-                        return (
-                           <li
-                              key={index}
-                              onClick={() =>
-                                 this.props.selectCheckOffSong(
-                                    song,
-                                    this.state.activeMember
-                                 )
-                              }
-                           >
-                              <i
-                                 className="far fa-check-square"
-                                 aria-hidden="true"
-                              />
-                              {song.name}
-                           </li>
-                        );
                      }
+                     return (
+                        <li
+                           key={index}
+                           onClick={() =>
+                              this.props.selectCheckOffSong(
+                                 song,
+                                 this.state.activeMember
+                              )
+                           }
+                        >
+                           <i
+                              className="far fa-check-square"
+                              aria-hidden="true"
+                           />
+                           {song.name}
+                        </li>
+                     );
                   })}
                </ul>
             </div>
