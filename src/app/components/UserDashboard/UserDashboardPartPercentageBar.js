@@ -9,7 +9,7 @@ const UserDashboardPartPercentageBar = props => (
             width: `${
                props.averagePercentage ? props.averagePercentage : '0'
             }%`,
-            backgroundColor: this.props.color,
+            backgroundColor: props.color,
          }}
       >
          <div className="percentage-container">
@@ -23,10 +23,12 @@ const UserDashboardPartPercentageBar = props => (
 
 UserDashboardPartPercentageBar.propTypes = {
    averagePercentage: PropTypes.number,
+   color: PropTypes.string,
 };
 
 UserDashboardPartPercentageBar.defaultProps = {
    averagePercentage: false,
+   color: false,
 };
 
 module.exports = UserDashboardPartPercentageBar;
