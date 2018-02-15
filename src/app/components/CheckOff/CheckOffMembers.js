@@ -13,13 +13,13 @@ class CheckOffMembers extends React.Component {
       if (this.props.members) {
          return (
             <div className="part-members">
-               {this.props.members.map((member, index) => {
+               {this.props.members.map(member => {
                   return (
                      <CheckOffMember
-                        key={index}
+                        key={member.uid}
                         member={member}
-                        showMemberSongs={() => {
-                           this.props.showMemberSongs(member);
+                        showMemberSongs={e => {
+                           this.props.showMemberSongs(e, member);
                         }}
                      />
                   );

@@ -1,23 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../../scss/style.scss';
 
-const CheckOffMember = () => (
+const CheckOffMember = props => (
    <div className="member">
-      <a href="" onClick={() => this.props.showMemberSongs(this.props.member)}>
-         <img src={this.props.member.profilePicURL} alt="user-avatar" />
+      <a href="" onClick={e => props.showMemberSongs(e, props.member)}>
+         <img src={props.member.profilePicURL} alt="user-avatar" />
          <h4>
-            {this.props.member.firstName} {this.props.member.lastName}
+            {props.member.firstName} {props.member.lastName}
          </h4>
-         <span className="member-percentage">
-            {this.props.member.percentage}%
-         </span>
+         <span className="member-percentage">{props.member.percentage}%</span>
          <span className="song-completed">
-            {this.props.member.completedSongs} /{' '}
-            {this.props.member.songs.length}
+            {props.member.completedSongs} / {props.member.songs.length}
          </span>
-         <span className="start-date">{this.props.member.startDate}</span>
+         <span className="start-date">{props.member.startDate}</span>
       </a>
    </div>
 );
+
+CheckOffMember.propTypes = {
+   showMemberSongs: PropTypes.func.isRequired,
+   member: PropTypes.shape(),
+};
+
+CheckOffMember.defaultProps = {
+   member: false,
+};
 
 module.exports = CheckOffMember;

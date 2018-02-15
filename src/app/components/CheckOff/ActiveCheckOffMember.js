@@ -45,8 +45,9 @@ class ActiveCheckOffMember extends React.Component {
                         <li key={song.id}>
                            <a
                               href=""
-                              onClick={() =>
+                              onClick={e =>
                                  this.props.selectCheckOffSong(
+                                    e,
                                     song,
                                     this.state.activeMember
                                  )

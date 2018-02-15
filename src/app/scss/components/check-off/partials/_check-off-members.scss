@@ -30,7 +30,13 @@
                background: #efefef;
                cursor: pointer;
                i {
-                  color: $aabc-white;
+                  color: $aabc-cool-grey;
+               }
+            }
+            a {
+               color: $aabc-cold-grey;
+               &:hover {
+                  text-decoration: none;
                }
             }
             i {

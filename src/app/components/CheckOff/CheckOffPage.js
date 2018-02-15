@@ -6,7 +6,10 @@ import PropTypes from 'prop-types';
 
 import CheckOffMembers from './CheckOffMembers';
 import CheckOffPartLeaderProfile from './CheckOffPartLeaderProfile';
-import { getAllMembersByPartName, updateOtherUserData } from '../../actions/userActions';
+import {
+   getAllMembersByPartName,
+   updateOtherUserData,
+} from '../../actions/userActions';
 import ActiveCheckOffMember from './ActiveCheckOffMember';
 import SelectedCheckOffSong from './SelectedCheckOffSong';
 import AppTopBar from '../AppTopBar';
@@ -23,9 +26,9 @@ class CheckOffPage extends React.Component {
          activeCheckOffSong: null,
       };
 
-      this.showMemberSongs.bind(this);
-      this.selectActiveSong.bind(this);
-      this.sendFeedback.bind(this);
+      this.showMemberSongs = this.showMemberSongs.bind(this);
+      this.selectActiveSong = this.selectActiveSong.bind(this);
+      this.sendFeedback = this.sendFeedback.bind(this);
    }
 
    componentWillMount() {
@@ -33,7 +36,8 @@ class CheckOffPage extends React.Component {
       this.props.dispatch(getAllMembersByPartName(userSingingPart));
    }
 
-   showMemberSongs(member) {
+   showMemberSongs(e, member) {
+      e.preventDefault();
       console.log('member', member);
       this.setState({
          activeCheckOffMember: member,
@@ -41,7 +45,8 @@ class CheckOffPage extends React.Component {
       this.context.router.history.push(`/checkoff/${member.uid}`);
    }
 
-   selectActiveSong(song, member) {
+   selectActiveSong(e, song, member) {
+      e.preventDefault();
       console.log('song', song);
       this.setState({
          activeCheckOffSong: song,
@@ -146,9 +151,9 @@ CheckOffPage.contextTypes = {
 };
 
 CheckOffPage.propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    user: PropTypes.shape().isRequired,
-}
+   dispatch: PropTypes.func.isRequired,
+   user: PropTypes.shape().isRequired,
+};
 
 CheckOffPage = withRouter(
    connect(store => {

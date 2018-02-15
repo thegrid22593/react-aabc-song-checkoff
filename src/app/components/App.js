@@ -40,41 +40,40 @@ const giveID = () => {
    //             j++;
    //          });
    //       });
-
-   firebase
-      .firestore()
-      .collection('users')
-      .get()
-      .then(userSnapshot => {
-         userSnapshot.forEach(user => {
-            let userData = user.data();
-            let i = 1;
-            let j = 0;
-            let k = 1;
-            let songs = [];
-            userData.songs.forEach(song => {
-               song.id = i;
-               if (song.notes !== undefined && song.notes.length > 0) {
-                  song.notes.forEach(note => {
-                     note.id = k;
-                     k++;
-                  });
-               }
-               songs.push(song);
-               i++;
-            });
-            userData.songs = songs;
-            console.log(userData);
-            firebase
-               .firestore()
-               .collection('users')
-               .doc(userData.uid)
-               .update(userData)
-               .then(result => {
-                  console.log('user updated');
-               });
-         });
-      });
+   //    firebase
+   //       .firestore()
+   //       .collection('users')
+   //       .get()
+   //       .then(userSnapshot => {
+   //          userSnapshot.forEach(user => {
+   //             let userData = user.data();
+   //             let i = 1;
+   //             let j = 0;
+   //             let k = 1;
+   //             let songs = [];
+   //             userData.songs.forEach(song => {
+   //                song.id = i;
+   //                if (song.notes !== undefined && song.notes.length > 0) {
+   //                   song.notes.forEach(note => {
+   //                      note.id = k;
+   //                      k++;
+   //                   });
+   //                }
+   //                songs.push(song);
+   //                i++;
+   //             });
+   //             userData.songs = songs;
+   //             console.log(userData);
+   //             firebase
+   //                .firestore()
+   //                .collection('users')
+   //                .doc(userData.uid)
+   //                .update(userData)
+   //                .then(result => {
+   //                   console.log('user updated');
+   //                });
+   //          });
+   //       });
 };
 
 class App extends React.Component {
