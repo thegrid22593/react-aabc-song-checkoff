@@ -46,18 +46,19 @@ class SelectedCheckOffSong extends React.Component {
             </div>
          );
       }
-         return <h1>Select a song</h1>;
+      return <h1>Select a song</h1>;
    }
 }
 
 SelectedCheckOffSong.propTypes = {
-    song: PropTypes.shape().isRequired,
-    activeSong: PropTypes.shape(),
-    sendFeedback: PropTypes.func.isRequired,
-}
+   song: PropTypes.shape(),
+   activeSong: PropTypes.shape(),
+   sendFeedback: PropTypes.func.isRequired,
+};
 
 SelectedCheckOffSong.defaultProps = {
-    activeSong: false
-}
+   activeSong: false,
+   song: false,
+};
 
 module.exports = SelectedCheckOffSong;

@@ -9,10 +9,20 @@
          padding: 2rem;
          margin: 1rem 0;
          box-shadow: 0px 0px 5px $aabc-light-grey;
+         background: $aabc-white;
+
+         a {
+            color: $aabc-cold-grey;
+            text-decoration: none;
+         }
 
          img {
             max-width: 100px;
             border-radius: 50%;
+         }
+
+         &.active {
+            background: $aabc-light-grey;
          }
       }
    }
@@ -21,6 +31,7 @@
       @include make-col(3);
       @include float-left();
       padding: 2rem;
+      background: #fefefe;
 
       ul.active-member-songs {
          li {

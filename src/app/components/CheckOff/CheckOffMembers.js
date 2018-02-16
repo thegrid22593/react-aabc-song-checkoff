@@ -6,24 +6,36 @@ import '../../scss/style.scss';
 class CheckOffMembers extends React.Component {
    constructor(props) {
       super(props);
-      console.log('props', props);
+
+      this.state = {
+         activeMemberIndex: 0,
+      };
+   }
+
+   showMemberSongs(e, member) {
+      this.setState({ activeMemberIndex: member.uid });
+      this.props.showMemberSongs(e, member);
    }
 
    render() {
       if (this.props.members) {
          return (
             <div className="part-members">
-               {this.props.members.map(member => {
-                  return (
-                     <CheckOffMember
-                        key={member.uid}
-                        member={member}
-                        showMemberSongs={e => {
-                           this.props.showMemberSongs(e, member);
-                        }}
-                     />
-                  );
-               })}
+               {this.props.members.map(member => (
+                  <CheckOffMember
+                     active={
+                        member.uid === this.state.activeMemberIndex
+                           ? true
+                           : false
+                     }
+                     key={member.uid}
+                     member={member}
+                     activeIndex={this.state.activeMemberIndex}
+                     showMemberSongs={e => {
+                        this.showMemberSongs(e, member);
+                     }}
+                  />
+               ))}
             </div>
          );
       }

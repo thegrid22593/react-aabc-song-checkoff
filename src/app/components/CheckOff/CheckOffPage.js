@@ -16,6 +16,10 @@ import AppTopBar from '../AppTopBar';
 import AppSidebar from '../AppSidebar';
 import '../../scss/style.scss';
 
+const mapStateToProps = state => ({
+   user: state.user,
+});
+
 class CheckOffPage extends React.Component {
    constructor(props) {
       super(props);
@@ -38,7 +42,7 @@ class CheckOffPage extends React.Component {
 
    showMemberSongs(e, member) {
       e.preventDefault();
-      console.log('member', member);
+      //   console.log('member', member);
       this.setState({
          activeCheckOffMember: member,
       });
@@ -47,7 +51,7 @@ class CheckOffPage extends React.Component {
 
    selectActiveSong(e, song, member) {
       e.preventDefault();
-      console.log('song', song);
+      //   console.log('song', song);
       this.setState({
          activeCheckOffSong: song,
       });
@@ -55,10 +59,10 @@ class CheckOffPage extends React.Component {
    }
 
    sendFeedback(e, feedback, songWithFeedback) {
-      console.log(e);
-      console.log(feedback);
-      console.log(songWithFeedback);
-      console.log(this.state.activeCheckOffMember);
+      //   console.log(e);
+      //   console.log(feedback);
+      //   console.log(songWithFeedback);
+      //   console.log(this.state.activeCheckOffMember);
 
       if (feedback.message !== '' && feedback.title !== '') {
          if (this.state.activeCheckOffMember !== undefined) {
@@ -88,7 +92,7 @@ class CheckOffPage extends React.Component {
                songs: newSongs,
             };
 
-            console.log('new active member', newActiveMemberData);
+            // console.log('new active member', newActiveMemberData);
 
             this.props.dispatch(updateOtherUserData(newActiveMemberData));
          }
@@ -155,12 +159,4 @@ CheckOffPage.propTypes = {
    user: PropTypes.shape().isRequired,
 };
 
-CheckOffPage = withRouter(
-   connect(store => {
-      return {
-         user: store.user,
-      };
-   })(CheckOffPage)
-);
-
-module.exports = CheckOffPage;
+module.exports = withRouter(connect(mapStateToProps)(CheckOffPage));
