@@ -167,7 +167,7 @@ class MusicLibrary extends React.Component {
                         return (
                            <tbody className={song.completed ? 'completed' : ''}>
                               <tr
-                                 key={index}
+                                 key={song.id}
                                  onClick={e => {
                                     this.toggleSongDetail(e, index);
                                  }}
