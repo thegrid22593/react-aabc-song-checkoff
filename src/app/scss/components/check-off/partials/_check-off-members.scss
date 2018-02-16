@@ -22,7 +22,8 @@
          }
 
          &.active {
-            background: $aabc-light-grey;
+            background: #f2f2f2;
+            box-shadow: inset 0px 0px 5px $aabc-light-grey;
          }
       }
    }
@@ -56,6 +57,10 @@
                &.completed {
                   color: $aabc-completed-green;
                }
+            }
+
+            &.active {
+               background: #efefef;
             }
          }
       }

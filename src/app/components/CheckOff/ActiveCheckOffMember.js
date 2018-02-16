@@ -9,6 +9,7 @@ class ActiveCheckOffMember extends React.Component {
 
       this.state = {
          activeMember: this.props.activeMember,
+         activeSongIndex: 0,
       };
    }
 
@@ -18,6 +19,11 @@ class ActiveCheckOffMember extends React.Component {
             activeMember: nextProps.activeMember,
          });
       }
+   }
+
+   selectCheckOffSong(e, song) {
+      this.setState({ activeSongIndex: song.id });
+      this.props.selectCheckOffSong(e, song, this.state.activeMember);
    }
 
    render() {
@@ -42,16 +48,17 @@ class ActiveCheckOffMember extends React.Component {
                         );
                      }
                      return (
-                        <li key={song.id}>
+                        <li
+                           key={song.id}
+                           className={`${
+                              this.state.activeSongIndex === song.id
+                                 ? 'active'
+                                 : ''
+                           }`}
+                        >
                            <a
                               href=""
-                              onClick={e =>
-                                 this.props.selectCheckOffSong(
-                                    e,
-                                    song,
-                                    this.state.activeMember
-                                 )
-                              }
+                              onClick={e => this.selectCheckOffSong(e, song)}
                            >
                               <i
                                  className="far fa-check-square"
