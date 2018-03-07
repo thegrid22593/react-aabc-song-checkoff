@@ -8,18 +8,15 @@ export default function reducer(
 ) {
    switch (action.type) {
       case 'FETCHING_SONGS_PENDING': {
-         state = { ...state, loading: action.payload };
-         return state;
+         return { ...state, loading: action.payload };
       }
 
       case 'FETCHING_SONGS_SUCCESS': {
-         state = { ...state, songs: action.payload, loading: false };
-         return state;
+         return { ...state, songs: action.payload, loading: false };
       }
 
       case 'FETCHING_SONGS_ERROR': {
-         state = { ...state, error: action.payload, loading: false };
-         return state;
+         return { ...state, error: action.payload, loading: false };
       }
 
       default: {
