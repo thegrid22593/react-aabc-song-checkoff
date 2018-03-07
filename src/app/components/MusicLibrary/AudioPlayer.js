@@ -9,6 +9,8 @@ class AudioPlayer extends React.Component {
          activeSong: null,
          songUrl: null,
       };
+
+      {activeSong, songUrl} = this.state;
    }
 
    componentWillReceiveProps(nextProps) {

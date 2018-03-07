@@ -1,6 +1,8 @@
 {
-    "presets": [
-        "es2015"
-    ],
-    "plugins": ["transform-object-rest-spread", "transform-decorators"]
+   "presets": ["es2015"],
+   "plugins": [
+      "transform-object-rest-spread",
+      "transform-decorators",
+      "transform-es2015-destructuring"
+   ]
 }
