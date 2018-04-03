@@ -108,7 +108,7 @@ class UserDashboardFeedback extends React.Component {
 }
 
 UserDashboardFeedback.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: PropTypes.object.isRequired
 };
 
 UserDashboardFeedback.propTypes = {

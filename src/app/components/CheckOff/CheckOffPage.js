@@ -160,7 +160,7 @@ class CheckOffPage extends React.Component {
 }
 
 CheckOffPage.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: PropTypes.object.isRequired
 };
 
 CheckOffPage.propTypes = {
