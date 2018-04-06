@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
    user: state.user.user,
 });
 
-class MusicLibraryPage extends React.Component {
+class MusicLibraryPage extends Component {
    constructor(props) {
       super(props);
 

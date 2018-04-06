@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ActiveSongFeedbackForm from './ActiveSongFeedbackForm';
 
-class SelectedCheckOffSong extends React.Component {
+class SelectedCheckOffSong extends Component {
    constructor(props) {
       super(props);
 

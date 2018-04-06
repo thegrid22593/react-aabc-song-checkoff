@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CheckOffMember from './CheckOffMember';
 import '../../scss/style.scss';
 
-class CheckOffMembers extends React.Component {
+class CheckOffMembers extends Component {
    constructor(props) {
       super(props);
 

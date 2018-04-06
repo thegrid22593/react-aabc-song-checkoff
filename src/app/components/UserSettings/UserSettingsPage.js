@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import AppTopBar from '../AppTopBar';
@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
    userFetched: state.user.fetched,
 });
 
-class UserSettingsPage extends React.Component {
+class UserSettingsPage extends Component {
    render() {
       return (
          <div className="app-row">

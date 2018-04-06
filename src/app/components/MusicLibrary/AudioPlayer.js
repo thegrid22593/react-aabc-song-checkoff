@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class AudioPlayer extends React.Component {
+class AudioPlayer extends Component {
    constructor(props) {
       super(props);
 
@@ -9,7 +9,6 @@ class AudioPlayer extends React.Component {
          activeSong: null,
          songUrl: null,
       };
-
    }
 
    componentWillReceiveProps(nextProps) {

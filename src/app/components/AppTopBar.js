@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
    user: state.user.user,
 });
 
-class AppTopBar extends React.Component {
+class AppTopBar extends Component {
    constructor(props) {
       super(props);
 

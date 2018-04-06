@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import SignInForm from './SignInForm';
@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
    user: state.user.user,
 });
 
-class SignInPage extends React.Component {
+class SignInPage extends Component {
    constructor(props) {
       super(props);
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
 import '../../scss/style.scss';
@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 const calculatePercentage = (totalCompletedSongs, totalSongs) =>
    Math.floor(totalCompletedSongs / totalSongs * 100);
 
-class UserDashboardPartComparison extends React.Component {
+class UserDashboardPartComparison extends Component {
    constructor(props) {
       super(props);
       console.log('part-comparison', props);

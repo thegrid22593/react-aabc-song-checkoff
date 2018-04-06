@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
    songs: state.songs.songs,
 });
 
-class UserSignUpContinued extends React.Component {
+class UserSignUpContinued extends Component {
    constructor(props) {
       super(props);
 

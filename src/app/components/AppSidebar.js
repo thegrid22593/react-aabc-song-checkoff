@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../scss/style.scss';
 
-class AppSidebar extends React.Component {
+class AppSidebar extends Component {
    checkIfPartleader() {
       if (this.props.user.partLeader) {
          return (

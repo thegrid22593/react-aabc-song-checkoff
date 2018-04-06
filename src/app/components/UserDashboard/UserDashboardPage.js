@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -19,7 +19,7 @@ const mapStateToProps = state => ({
    userFetched: state.user.fetched,
 });
 
-class UserDashboardPage extends React.Component {
+class UserDashboardPage extends Component {
    constructor(props) {
       super(props);
       console.log('user-dashboard-page', props);

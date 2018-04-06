@@ -1,12 +1,12 @@
 import firebase from 'firebase';
-import React from 'react';
+import React, { Component } from 'react';
 import '../../scss/style.scss';
 
 function calculatePercentage(totalCompletedSongs, totalSongs) {
    return Math.floor(totalCompletedSongs / totalSongs * 100);
 }
 
-class UserDashboardSummary extends React.Component {
+class UserDashboardSummary extends Component {
    constructor(props) {
       super(props);
       this.state = {

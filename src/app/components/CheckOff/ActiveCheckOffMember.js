@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class ActiveCheckOffMember extends React.Component {
+class ActiveCheckOffMember extends Component {
    constructor(props) {
       super(props);
 

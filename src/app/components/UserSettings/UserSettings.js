@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
    user: state.user.user,
 });
 
-class UserSettings extends React.Component {
+class UserSettings extends Component {
    constructor(props) {
       super(props);
 

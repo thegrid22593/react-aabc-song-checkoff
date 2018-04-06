@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { userSignUp } from '../actions/userActions';
@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
    userFetched: state.user.fetched,
 });
 
-class SignUpForm extends React.Component {
+class SignUpForm extends Component {
    constructor(props) {
       super(props);
 
