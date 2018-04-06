@@ -93,8 +93,6 @@ class CheckOffPage extends Component {
                songs: newSongs,
             };
 
-            // console.log('new active member', newActiveMemberData);
-
             this.props.dispatch(updateOtherUserData(newActiveMemberData));
          }
       }
