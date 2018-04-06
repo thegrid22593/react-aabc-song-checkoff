@@ -1,6 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { userSignUp } from '../actions/userActions';
+
+const mapStateToProps = state => ({
+   user: state.user.user,
+   loading: state.user.loading,
+   userAuth: state.user.userAuth,
+   userFetched: state.user.fetched,
+});
 
 class SignUpForm extends React.Component {
    constructor(props) {
@@ -68,8 +76,13 @@ class SignUpForm extends React.Component {
 }
 
 SignUpForm.propTypes = {
-   dispatch: PropTypes.func.isRequired,
+   dispatch: PropTypes.func,
    active: PropTypes.bool.isRequired,
 };
 
+SignUpForm.defaultProps = {
+   dispatch: false,
+};
+
 module.exports = SignUpForm;
+module.exports = connect(mapStateToProps)(SignUpForm);
