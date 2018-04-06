@@ -62,7 +62,7 @@ class SignInPage extends React.Component {
                </div>
                <SignUpForm active={this.state.signUpFormActive} />
                <div
-                  className={`have-an-account${
+                  className={`have-an-account ${
                      !this.state.signInFormActive ? 'active' : 'false'
                   }`}
                >
