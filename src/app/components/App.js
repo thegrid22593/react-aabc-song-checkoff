@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import firebase from 'firebase';
+// import firebase from 'firebase';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from './Header';

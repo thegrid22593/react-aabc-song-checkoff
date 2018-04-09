@@ -5,8 +5,6 @@ class ActiveCheckOffMember extends Component {
    constructor(props) {
       super(props);
 
-      console.log('props', props);
-
       this.state = {
          activeMember: this.props.activeMember,
          activeSongIndex: 0,

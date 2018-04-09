@@ -8,6 +8,7 @@ class ActiveSongFeedbackForm extends Component {
       this.state = {
          title: '',
          message: '',
+         errors: [],
          loading: false,
       };
 
@@ -16,10 +17,8 @@ class ActiveSongFeedbackForm extends Component {
    }
 
    handleChange(e) {
-      console.log(e);
       const change = {};
       change[e.target.name] = e.target.value;
-      console.log(change);
       this.setState(change);
    }
 
@@ -37,16 +36,21 @@ class ActiveSongFeedbackForm extends Component {
                loading: false,
             });
          } catch (error) {
-            console.log('error', error);
+            const { errors } = this.state;
+            errors.push(error);
+            this.setState({ errors });
+            // console.log('error', error);
          }
       } else {
-         console.log('fill out the form');
+         const errors = ['Please fill out the required fields'];
+         this.setState({ errors });
       }
    }
 
    render() {
       return (
          <form className="active-song-feedback-form">
+            <div className="error">{this.state.errors}</div>
             <label htmlFor="title">Title</label>
             <input
                name="title"

@@ -23,7 +23,6 @@ const mapStateToProps = state => ({
 class CheckOffPage extends Component {
    constructor(props) {
       super(props);
-      console.log('checkoff page', props);
 
       this.state = {
          activeCheckOffMember: null,
@@ -42,7 +41,6 @@ class CheckOffPage extends Component {
 
    showMemberSongs(e, member) {
       e.preventDefault();
-      //   console.log('member', member);
       this.setState({
          activeCheckOffMember: member,
       });
@@ -51,7 +49,6 @@ class CheckOffPage extends Component {
 
    selectActiveSong(e, song, member) {
       e.preventDefault();
-      //   console.log('song', song);
       this.setState({
          activeCheckOffSong: song,
       });
@@ -59,10 +56,6 @@ class CheckOffPage extends Component {
    }
 
    sendFeedback(e, feedback, songWithFeedback) {
-      //   console.log(e);
-      //   console.log(feedback);
-      //   console.log(songWithFeedback);
-      //   console.log(this.state.activeCheckOffMember);
       e.preventDefault();
 
       if (feedback.message !== '' && feedback.title !== '') {

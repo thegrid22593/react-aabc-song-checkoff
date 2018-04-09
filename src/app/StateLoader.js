@@ -1,7 +1,7 @@
 class StateLoader {
    loadState() {
       try {
-         let serializedState = localStorage.getItem('state');
+         const serializedState = localStorage.getItem('state');
 
          if (serializedState === null) {
             return this.initializeState();
@@ -15,15 +15,15 @@ class StateLoader {
 
    saveState(state) {
       try {
-         let serializedState = JSON.stringify(state);
+         const serializedState = JSON.stringify(state);
          localStorage.setItem('state', serializedState);
-      } catch (err) {}
+      } catch (err) {
+         print(err);
+      }
    }
 
    initializeState() {
-      return {
-         //state object
-      };
+      return {};
    }
 }
 
