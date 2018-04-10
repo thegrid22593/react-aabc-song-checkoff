@@ -3,6 +3,7 @@ nav.main-nav {
    min-height: 51px;
    @include clearfix();
    @include make-col(12);
+   padding: 0 1rem;
 
    a.nav-branding {
       float: left;
@@ -33,7 +34,7 @@ nav.main-nav {
 
          i {
             color: $aabc-light-grey;
-            margin-right: 5px;
+            // margin-right: 5px;
             @include transition(0.2s all ease-in-out);
          }
 
@@ -44,7 +45,7 @@ nav.main-nav {
 
             i {
                color: $aabc-white;
-               margin-right: 2px;
+               //    margin-right: 2px;
             }
          }
 

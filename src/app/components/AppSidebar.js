@@ -35,18 +35,18 @@ class AppSidebar extends Component {
                   </NavLink>
                </li>
                {this.checkIfPartleader()}
-               <li>
+               {/* <li>
                   <NavLink to="/solo-songs" activeClassName="active">
                      <i className="fa fa-microphone" aria-hidden="true" />Solo
                      Songs
                   </NavLink>
-               </li>
-               <li>
+               </li> */}
+               {/* <li>
                   <NavLink to="/white-shirt-songs" activeClassName="active">
                      <i className="fa fa-music" aria-hidden="true" />White Shirt
                      Songs
                   </NavLink>
-               </li>
+               </li> */}
                <li>
                   <NavLink to="/user-settings" activeClassName="active">
                      <i className="fa fa-cog" aria-hidden="true" />Settings

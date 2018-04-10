@@ -49,11 +49,6 @@ class AppTopBar extends Component {
             </a>
             <ul className="nav-links">
                <li>
-                  <a onClick={this.signOut} href="">
-                     <i className="fa fa-sign-out" aria-hidden="true" />Sign Out
-                  </a>
-               </li>
-               <li>
                   <div className="notifications">
                      <i className="fa fa-inbox" aria-hidden="true" />
                      <div className="notification-number">
@@ -65,15 +60,23 @@ class AppTopBar extends Component {
                      </div>
                   </div>
                </li>
+               <li>
+                  <Link to="/user-settings">
+                     <i className="fa fa-cog" aria-hidden="true" />
+                  </Link>
+               </li>
+
+               <li>
+                  <a onClick={this.signOut} href="">
+                     <i className="fa fa-sign-out-alt" aria-hidden="true" />
+                  </a>
+               </li>
             </ul>
             <ul className="user-info">
                <li>
                   <i className="fa fa-user-circle-o" aria-hidden="true" />
                </li>
                {/* <li>Hello {{displayName}}!</li> */}
-               <Link to="/user-settings">
-                  <i className="fa fa-cog" aria-hidden="true" />
-               </Link>
             </ul>
          </nav>
       );
