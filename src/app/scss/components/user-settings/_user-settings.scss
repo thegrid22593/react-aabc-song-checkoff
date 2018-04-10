@@ -59,9 +59,21 @@ form.user-settings {
    }
 
    form.user-settings {
-      div {
-         padding: 1rem;
+      .form-section {
+         @include make-row();
+         .field-input {
+            @include make-col-ready();
+            @include make-col(6);
+            label {
+               padding-top: 0.5rem;
+            }
+
+            input[type='radio'] {
+               @include make-col(6);
+            }
+         }
       }
+
       input {
          padding: 1rem;
          font-family: $aabc-pt-sans-narrow;

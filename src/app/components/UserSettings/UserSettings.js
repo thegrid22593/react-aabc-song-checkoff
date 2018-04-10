@@ -66,60 +66,64 @@ class UserSettings extends Component {
                </form>
 
                <form action="" className="user-settings">
-                  <div>
-                     <label htmlFor="firstName">First Name</label>
-                     <input
-                        type="text"
-                        onChange={this.handleChange}
-                        name="firstName"
-                        value={this.state.firstName}
-                     />
+                  <div className="form-section">
+                     <div className="field-input">
+                        <label htmlFor="firstName">First Name</label>
+                        <input
+                           type="text"
+                           onChange={this.handleChange}
+                           name="firstName"
+                           value={this.state.firstName}
+                        />
+                     </div>
+                     <div className="field-input">
+                        <label htmlFor="lastName">Last Name</label>
+                        <input
+                           type="text"
+                           onChange={this.handleChange}
+                           name="lastName"
+                           value={this.state.lastName}
+                        />
+                     </div>
                   </div>
-                  <div>
-                     <label htmlFor="lastName">Last Name</label>
-                     <input
-                        type="text"
-                        onChange={this.handleChange}
-                        name="lastName"
-                        value={this.state.lastName}
-                     />
+                  <div className="form-section">
+                     <div className="field-input">
+                        <label htmlFor="startDate">Start Date</label>
+                        <input
+                           type="text"
+                           onChange={this.handleChange}
+                           name="startDate"
+                           value={this.state.startDate}
+                        />
+                     </div>
+                     <div className="field-input">
+                        <label htmlFor="singingPart">Part</label>
+                        <input
+                           type="text"
+                           onChange={this.handleChange}
+                           name="singingPart"
+                           value={this.state.singingPart}
+                        />
+                     </div>
+                     <div className="field-input">
+                        <label htmlFor="partLeader">Partleader?</label>
+                        <input
+                           type="radio"
+                           onChange={this.handleChange}
+                           name="partLeader"
+                           value="true"
+                        />
+                        Yes
+                        <input
+                           type="radio"
+                           onChange={this.handleChange}
+                           name="partLeader"
+                           value="false"
+                        />
+                        No
+                     </div>
                   </div>
-                  <div>
-                     <label htmlFor="startDate">Start Date</label>
-                     <input
-                        type="text"
-                        onChange={this.handleChange}
-                        name="startDate"
-                        value={this.state.startDate}
-                     />
-                  </div>
-                  <div>
-                     <label htmlFor="singingPart">Part</label>
-                     <input
-                        type="text"
-                        onChange={this.handleChange}
-                        name="singingPart"
-                        value={this.state.singingPart}
-                     />
-                  </div>
-                  <div>
-                     <label htmlFor="partLeader">Partleader?</label>
-                     <input
-                        type="radio"
-                        onChange={this.handleChange}
-                        name="partLeader"
-                        value="true"
-                     />{' '}
-                     Yes <br />
-                     <input
-                        type="radio"
-                        onChange={this.handleChange}
-                        name="partLeader"
-                        value="false"
-                     />{' '}
-                     No
-                  </div>
-                  <div>
+                  <div className="form-section">
                      <button onClick={this.updateSettings} type="button">
                         Save Settings
                      </button>

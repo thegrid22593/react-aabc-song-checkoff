@@ -2,8 +2,8 @@ nav.main-nav {
    background: lighten($aabc-dark-blue, 5%);
    min-height: 51px;
    @include clearfix();
+   @include make-col-ready();
    @include make-col(12);
-   padding: 0 1rem;
 
    a.nav-branding {
       float: left;
