@@ -14,7 +14,6 @@ const calculatePercentage = (totalCompletedSongs, totalSongs) =>
 class UserDashboardPartComparison extends Component {
    constructor(props) {
       super(props);
-      console.log('part-comparison', props);
       this.state = {
          users: [],
          secondTenorAvgPercentage: null,
@@ -36,7 +35,6 @@ class UserDashboardPartComparison extends Component {
             });
             this.setState({ users });
             this.getAveragePercentage();
-            console.log('state', this.state);
          });
    }
 

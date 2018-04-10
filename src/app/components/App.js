@@ -79,7 +79,7 @@ const giveID = () => {
 class App extends Component {
    componentWillMount() {
       if (this.props.user.uid) {
-         this.context.router.history.push('/dashboard');
+         this.context.router.history.push('/dashboard/summary');
       } else {
          this.context.router.history.push('/sign-in');
       }

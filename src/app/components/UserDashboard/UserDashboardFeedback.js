@@ -18,27 +18,20 @@ class UserDashboardFeedback extends Component {
          user: {},
          activeFeedback: [],
       };
-
-      console.log('feedback', props);
    }
 
    componentWillMount() {}
 
    showFeedback(e, song) {
       e.preventDefault();
-      console.log('FEEDBACK', song.notes);
       this.setState({
          activeFeedback: song.notes,
       });
-      console.log('STATE', this.state);
-      console.log('feedback', this.state.activeFeedback);
       this.context.router.history.push(`/dashboard/feedback/${song.name}`);
    }
 
    deleteFeedback(e, songToDelete) {
       e.preventDefault();
-
-      console.log('song to delete', songToDelete);
 
       const songs = this.props.user.songs;
 
@@ -48,12 +41,9 @@ class UserDashboardFeedback extends Component {
          }
          return song;
       });
-      console.log('new songs', newSongs);
       const userData = this.props.user;
 
       userData.songs = newSongs;
-
-      console.log('new user', userData);
 
       firebase
          .firestore()

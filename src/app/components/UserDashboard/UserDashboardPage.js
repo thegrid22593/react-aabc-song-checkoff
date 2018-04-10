@@ -22,7 +22,6 @@ const mapStateToProps = state => ({
 class UserDashboardPage extends Component {
    constructor(props) {
       super(props);
-      console.log('user-dashboard-page', props);
       if (typeof props.user === 'undefined') {
          this.props.dispatch(fetchUser(this.props.userAuth.uid));
       }
@@ -40,8 +39,7 @@ class UserDashboardPage extends Component {
                <UserDashboardMenu />
                <Switch>
                   <Route
-                     path="/dashboard"
-                     exact
+                     path="/dashboard/summary"
                      component={UserDashboardSummary}
                   />
                   <Route
@@ -50,7 +48,6 @@ class UserDashboardPage extends Component {
                   />
                   <Route
                      path="/dashboard/part-comparison"
-                     exact
                      component={UserDashboardPartComparison}
                   />
                </Switch>

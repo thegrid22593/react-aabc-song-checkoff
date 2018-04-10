@@ -24,7 +24,7 @@ class AppSidebar extends Component {
          <nav className="sidebar-nav">
             <ul className="nav-links">
                <li>
-                  <NavLink to="/dashboard" activeClassName="active">
+                  <NavLink to="/dashboard/summary" activeClassName="active">
                      <i className="fa fa-signal" aria-hidden="true" />Dashboard
                   </NavLink>
                </li>
