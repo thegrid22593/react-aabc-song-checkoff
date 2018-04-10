@@ -35,30 +35,35 @@ $pulse-duration: 750ms;
         border-width: 0.5rem;
       }
     }
-    .part-container-header {
-      background: lighten($aabc-light-grey, 10%);
-      padding: 0.5rem;
-      margin-bottom: 0.25rem;
 
-      h3.part-name {
-        font-size: 0.9rem;
-        color: $aabc-cold-grey;
-        font-family: $aabc-pt-sans-narrow;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 0;
-        @include make-col(6);
-        float: left;
-      }
+    .part-content {
+      background: $aabc-white;
+      padding: 1rem;
+      .part-content-header {
+        background: lighten($aabc-light-grey, 10%);
+        padding: 0.5rem;
+        margin-bottom: 0.25rem;
 
-      h5.part-average-percentage {
-        color: $aabc-cold-grey;
-        padding-top: 0;
-        margin-bottom: 0;
-        font-size: 0.9rem;
-        @include make-col(6);
-        float: right;
+        h3.part-name {
+          font-size: 0.9rem;
+          color: $aabc-cold-grey;
+          font-family: $aabc-pt-sans-narrow;
+          font-weight: bold;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 0;
+          @include make-col(6);
+          float: left;
+        }
+
+        h5.part-average-percentage {
+          color: $aabc-cold-grey;
+          padding-top: 0;
+          margin-bottom: 0;
+          font-size: 0.9rem;
+          @include make-col(6);
+          float: right;
+        }
       }
     }
 
@@ -78,8 +83,9 @@ $pulse-duration: 750ms;
       margin: 0.75rem 0;
       padding: 1.5rem;
       background: $aabc-white;
-      border-radius: 5px;
-      @include box-shadow(0px 0px 10px fn-transparent-color(#ececec, 1));
+      //   @include box-shadow(0px 0px 10px fn-transparent-color(#ececec, 1));
+      border-bottom: 1px solid $aabc-light-grey;
+      border-radius: 0;
       @include clearfix();
       @include transition(0.2s all ease-in-out);
 
@@ -98,12 +104,12 @@ $pulse-duration: 750ms;
       .part-member-name {
         @include make-col(4);
         float: left;
-        margin-top: 1.4rem;
+        margin-top: 0.5rem;
       }
       .part-member-percentage {
         @include make-col(6);
         float: right;
-        margin-top: 1.4rem;
+        margin-top: 0.5rem;
       }
     }
   }

@@ -19,15 +19,12 @@ class UserDashboardSummaryPartCard extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    console.log(newProps);
     if (newProps.users.length > 0) {
       const partMembers = newProps.users.filter(user => {
         if (user.singingPart === this.props.singingPart) {
           return user;
         }
       });
-      console.log("partmembers", partMembers);
-      console.log("STATE", this.state);
       this.setState({ partMembers });
       this.getAveragePercentage(partMembers);
     }
@@ -50,19 +47,21 @@ class UserDashboardSummaryPartCard extends Component {
   render() {
     return (
       <div className="part-container">
-        <div className="part-container-header clearfix">
-          <h3 className="part-name">{this.state.partName}</h3>
-          <h5 className="part-average-percentage">
-            {this.state.averagePercentage}%
-          </h5>
+        <div className="part-content">
+          <div className="part-content-header clearfix">
+            <h3 className="part-name">{this.state.partName}</h3>
+            <h5 className="part-average-percentage">
+              {this.state.averagePercentage}%
+            </h5>
+          </div>
+          <div className="part-table">
+            <div className="part-table-name">Name</div>
+            <div className="part-table-percentage">Percentage</div>
+          </div>
+          {this.state.partMembers.map(member => (
+            <UserDashboardSummaryPartMember member={member} key={member.uid} />
+          ))}
         </div>
-        <div className="part-table">
-          <div className="part-table-name">Name</div>
-          <div className="part-table-percentage">Percentage</div>
-        </div>
-        {this.state.partMembers.map(member => (
-          <UserDashboardSummaryPartMember member={member} key={member.uid} />
-        ))}
       </div>
     );
   }
