@@ -69,7 +69,6 @@ class UserSettings extends Component {
                         Upload Photo
                      </span>
                   </div>
-
                   {/* <input type="text" name="name" /> */}
                   {/* <input type="file" id="filebutton"/> */}
                   {/* <div>{{uploadProgress}}</div> */}
