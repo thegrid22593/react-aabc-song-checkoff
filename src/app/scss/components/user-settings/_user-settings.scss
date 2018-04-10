@@ -69,7 +69,9 @@ form.user-settings {
             }
 
             input[type='radio'] {
-               @include make-col(6);
+               display: inline;
+               width: auto;
+               margin: 0 0.75rem;
             }
          }
       }

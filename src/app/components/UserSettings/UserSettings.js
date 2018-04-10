@@ -25,8 +25,19 @@ class UserSettings extends Component {
    }
 
    handleChange(e) {
+      e.persist();
       const change = {};
-      change[e.target.name] = e.target.value;
+
+      if (e.target.name === 'partLeader') {
+         if (e.target.value === 'true') {
+            change[e.target.name] = true;
+         } else if (e.target.value === 'false') {
+            change[e.target.name] = false;
+         }
+      } else {
+         change[e.target.name] = e.target.value;
+      }
+
       this.setState(change);
    }
 
@@ -111,14 +122,16 @@ class UserSettings extends Component {
                            type="radio"
                            onChange={this.handleChange}
                            name="partLeader"
-                           value="true"
+                           value={true}
+                           checked={this.state.partLeader}
                         />
                         Yes
                         <input
                            type="radio"
                            onChange={this.handleChange}
                            name="partLeader"
-                           value="false"
+                           value={false}
+                           checked={!this.state.partLeader}
                         />
                         No
                      </div>
