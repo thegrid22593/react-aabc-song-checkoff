@@ -9,6 +9,7 @@ class ActiveSongFeedbackForm extends Component {
          title: '',
          message: '',
          errors: [],
+         success: '',
          loading: false,
       };
 
@@ -28,13 +29,23 @@ class ActiveSongFeedbackForm extends Component {
          try {
             this.setState({
                loading: true,
+               success: 'We are sending your feedback',
             });
             this.props.sendFeedback(e, feedback);
-            this.setState({
-               title: '',
-               message: '',
-               loading: false,
-            });
+            setTimeout(() => {
+               this.setState({
+                  title: '',
+                  message: '',
+                  success: 'Your feedback has been sent',
+                  loading: false,
+               });
+
+               setTimeout(() => {
+                  this.setState({
+                     success: '',
+                  });
+               }, 5000);
+            }, 1000);
          } catch (error) {
             const { errors } = this.state;
             errors.push(error);
@@ -50,6 +61,7 @@ class ActiveSongFeedbackForm extends Component {
    render() {
       return (
          <form className="active-song-feedback-form">
+            <div className="success">{this.state.success}</div>
             <div className="error">{this.state.errors}</div>
             <label htmlFor="title">Title</label>
             <input
