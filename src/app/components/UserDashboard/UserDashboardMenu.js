@@ -28,6 +28,14 @@ class UserDashboardMenu extends Component {
                      Comparison
                   </NavLink>
                </li>
+               <li>
+                  <NavLink
+                     to="/dashboard/notifications"
+                     activeClassName="active"
+                  >
+                     <i className="far fa-dot-circle" aria-hidden="true" />Notifications
+                  </NavLink>
+               </li>
             </ul>
          </nav>
       );

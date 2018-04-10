@@ -11,6 +11,7 @@ import UserDashboardSummary from './UserDashboardSummary';
 import UserDashboardFeedback from './UserDashboardFeedback';
 import UserDashboardPartComparison from './UserDashboardPartComparison';
 import UserDashboardProfile from './UserDashboardProfile';
+import UserDashboardNotifications from './UserDashboardNotifications';
 import { fetchUser } from '../../actions/userActions';
 
 const mapStateToProps = state => ({
@@ -49,6 +50,10 @@ class UserDashboardPage extends Component {
                   <Route
                      path="/dashboard/part-comparison"
                      component={UserDashboardPartComparison}
+                  />
+                  <Route
+                     path="/dashboard/notifications"
+                     component={UserDashboardNotifications}
                   />
                </Switch>
             </div>
