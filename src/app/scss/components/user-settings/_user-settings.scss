@@ -57,4 +57,22 @@ form.user-settings {
          padding: 0.5rem;
       }
    }
+
+   form.user-settings {
+      div {
+         padding: 1rem;
+      }
+      input {
+         padding: 1rem;
+         font-family: $aabc-pt-sans-narrow;
+         &:focus {
+            outline: none;
+         }
+      }
+      label {
+         font-family: $aabc-pt-sans-narrow;
+         color: $aabc-dark-blue;
+         font-weight: 800;
+      }
+   }
 }
