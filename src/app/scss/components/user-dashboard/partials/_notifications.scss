@@ -1,0 +1,11 @@
+.notification-messages-container {
+  @include make-container();
+  .notification-messages {
+    @include make-row();
+
+    .message {
+      @include make-col-ready();
+      @include make-col(12);
+    }
+  }
+}

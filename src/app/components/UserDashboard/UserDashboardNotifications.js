@@ -1,55 +1,57 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 const mapStateToProps = state => ({
-   user: state.user.user,
+  user: state.user.user
 });
 
 class UserDashboardNotifications extends Component {
-   constructor(props) {
-      super(props);
-      this.state = {
-         user: this.props.user,
-         notifications: [],
-      };
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: this.props.user,
+      notifications: []
+    };
 
-      console.log(this.props.user);
-   }
+    console.log(this.props.user);
+  }
 
-   componentWillMount() {
-      const userFeedback = this.props.user.songs.filter(song => {
-         if (typeof song.notes !== 'undefined' && song.notes.length > 0) {
-            const notifications = song.notes.map(note => {
-               console.log(note);
-               return note;
+  componentWillMount() {
+    const userFeedback = this.props.user.songs.filter(song => {
+      if (typeof song.notes !== "undefined" && song.notes.length > 0) {
+        const notifications = song.notes.map(note => {
+          console.log(note);
+          return note;
+        });
+        return notifications;
+      }
+    });
+
+    console.log("userfeedback", userFeedback);
+
+    this.setState({
+      notifications: userFeedback
+    });
+  }
+
+  render() {
+    return (
+      <section className="notification-messages-container">
+        <div className="notification-messages">
+          {this.state.notifications.map(notification => {
+            return notification.notes.map(note => {
+              return <div className="message">{note.message}</div>;
             });
-            return notifications;
-         }
-      });
-
-      console.log('userfeedback', userFeedback);
-
-      this.setState({
-         notifications: userFeedback,
-      });
-   }
-
-   render() {
-      return (
-         <section className="notification-messages-container">
-            <div className="notification-messages">
-               {this.state.notifications.map(notification => {
-                  return <div className="messages">This is a message</div>;
-               })}
-            </div>
-         </section>
-      );
-   }
+          })}
+        </div>
+      </section>
+    );
+  }
 }
 
 UserDashboardNotifications.propTypes = {
-   user: PropTypes.shape().isRequired,
+  user: PropTypes.shape().isRequired
 };
 
 export default connect(mapStateToProps)(UserDashboardNotifications);
